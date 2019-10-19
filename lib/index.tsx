@@ -5,7 +5,7 @@ import Button from "./Button/button"
 
 ReactDOM.render(
     <div className='app'>
-              <Icon/>
+              <Icon name='icon'/>
               <Button/>
             </div>,
     document.getElementById('app'))

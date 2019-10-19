@@ -5,7 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
   mode: 'development',
   entry: {
-    merry: "./lib/index.ts"
+    merry: "./lib/index.tsx"
   },
   output: {
     filename: "[name].js",
@@ -30,7 +30,10 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: "merry-ui"
+      template: require('html-webpack-template'),
+      title: "merry-ui",
+      lang: 'zh-cmn-Hans',
+      appMountId: "app"
     })
   ]
 }

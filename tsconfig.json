@@ -2,10 +2,19 @@
   "compilerOptions": {
     "outDir": "./dist/",
     "noImplicitAny": true,
-    "module": "es6",
+    "module": "esnext",
     "target": "es5",
     "jsx": "react",
-    "allowJs": true,
-    "sourceMap": true
-  }
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "declaration": true,
+    "lib": ["es6", "dom"]
+  },
+  "include": [
+    "lib/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }

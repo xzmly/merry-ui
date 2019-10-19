@@ -6,4 +6,4 @@ ReactDOM.render(
     <div className='app'>
               <Icon/>
             </div>,
-    document.querySelector('#app'))
+    document.getElementById('app'))

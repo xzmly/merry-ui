@@ -7,6 +7,7 @@ module.exports = {
   entry: {
     merry: "./lib/index.tsx"
   },
+  devtool: "inline-source-map",
   output: {
     filename: "[name].js",
     path: path.resolve(__dirname, 'dist'),

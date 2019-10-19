@@ -1,7 +1,11 @@
 import * as React from 'react'
 import "./icon.styl"
 
-const Icon = () => {
+interface IconProps extends React.SVGAttributes<SVGElement>{
+  name: string;
+}
+
+const Icon: React.FunctionComponent<IconProps> = () => {
   return (
       <div className='icon'>
         icon!

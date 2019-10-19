@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
     "outDir": "./dist/",
     "noImplicitAny": true,
     "module": "esnext",
@@ -8,7 +9,9 @@
     "sourceMap": true,
     "moduleResolution": "node",
     "declaration": true,
-    "lib": ["es6", "dom"]
+    "lib": ["es6", "dom"],
+    "noUnusedLocals": true,
+    "strictNullChecks": true
   },
   "include": [
     "lib/**/*"

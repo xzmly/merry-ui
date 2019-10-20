@@ -1,7 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`icon 不是个div 1`] = `
-<div
+exports[`icon 是一个svg 1`] = `
+<svg
   className="merry-ui-icon"
-/>
+>
+  <use
+    xlinkHref="#undefined"
+  />
+</svg>
 `;

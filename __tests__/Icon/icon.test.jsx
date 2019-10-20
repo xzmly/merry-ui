@@ -3,7 +3,7 @@ import Icon from '../../lib/Icon/icon'
 import React from 'react'
 
 describe('icon',()=>{
-  it('不是个div',()=>{
+  it('是一个svg',()=>{
     const json = renderer.create(<Icon/>).toJSON()
     expect(json).toMatchSnapshot()
   })

@@ -2,6 +2,6 @@
 
 exports[`icon 不是个div 1`] = `
 <div
-  className="icon"
+  className="merry-ui-icon"
 />
 `;

@@ -1,16 +1,17 @@
 import * as React from 'react'
+import classes from "../helpers/classes"
 import "./icon.styl"
 
-interface IconProps extends React.HTMLAttributes<HTMLDivElement>{
+interface IconProps extends React.SVGAttributes<SVGElement> {
   name: string;
 }
 
 const Icon: React.FunctionComponent<IconProps> =
-    ({name}) => {
+    ({className,name,...restProps}) => {
   return (
-      <div className='icon'>
-        {name}
-      </div>
+      <svg className={classes('icon', className)} {...restProps}>
+        <use xlinkHref={`#${name}`}/>
+      </svg>
   )
 }
 

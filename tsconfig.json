@@ -11,7 +11,8 @@
     "declaration": true,
     "lib": ["es6", "dom"],
     "noUnusedLocals": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "esModuleInterop": true
   },
   "include": [
     "lib/**/*"

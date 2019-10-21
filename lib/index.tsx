@@ -5,7 +5,7 @@ import Button from './Button/button';
 
 ReactDOM.render(
     <>
-        <Icon name='alipay' className=''/>
+        <Icon name='alipay' className='icon'/>
         <Icon name='icon-game'/>
         <Button/>
     </>,

@@ -21,6 +21,10 @@ module.exports = {
         use: 'ts-loader',
       },
       {
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader'
+      },
+      {
         test: /\.styl$/,
         use: [
           MiniCssExtractPlugin.loader,

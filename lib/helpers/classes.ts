@@ -1,9 +1,12 @@
-
 const prefix: string = 'merry-ui';
-const classes = (...names: Array<number|string|undefined>): string =>
-    names
-        .filter(Boolean)
-        .map(name => `${prefix}-${name}`)
-        .join(' ');
 
-export default classes
+const classes = (
+    propsClassName?: string,
+    ...names: Array<number | string | undefined>
+): string => names
+    .filter(Boolean)
+    .map(name => `${prefix}-${name}`)
+    .concat(propsClassName ? propsClassName.split(' ') : [])
+    .join(' ');
+
+export default classes;

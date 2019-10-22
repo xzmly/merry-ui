@@ -1,5 +1,5 @@
 import renderer from 'react-test-renderer'
-import Icon from '../../lib/Icon/icon'
+import Icon from '../../../lib/Icon/icon'
 import React from 'react'
 
 describe('icon',()=>{

@@ -1,4 +1,4 @@
-import classes from "../../lib/helpers/classes"
+import classes from "../../../lib/helpers/classes"
 
 describe('classes',()=>{
   it('接受propsClassName',()=>{

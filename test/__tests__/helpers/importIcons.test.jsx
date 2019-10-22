@@ -1,0 +1,1 @@
+import Icon from '../../../lib/Icon/icon'import React from 'react'import { mount } from "enzyme"import "../../../lib/helpers/importIcons"describe('importIcons',()=>{  it('引入本地icons',()=>{    const c = mount(<Icon name={'alipay'}/>)    const path = c.find('svg').find('use').find('path')    expect(path).not.toBeNull()  })})

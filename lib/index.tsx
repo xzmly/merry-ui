@@ -7,6 +7,8 @@ ReactDOM.render(
     <>
         <Icon name='alipay' className='icon'/>
         <Icon name='icon-2'/>
-        <Button/>
+        <Button type={'warning'}>
+            123123
+        </Button>
     </>,
     document.getElementById('app'));

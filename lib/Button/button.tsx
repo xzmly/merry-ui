@@ -2,21 +2,28 @@ import * as React from 'react';
 import classes from '../helpers/classes';
 import './button.styl';
 
-interface ButtonProps {
-    disabled?: boolean;
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
     children?: React.ReactNode | string | React.ReactElement
-    type?: 'default' | 'warning'
+    color?: 'primary' | 'success' | 'warning' | 'danger' | 'info' | 'dark'
+    size?: 'default' | 'small' | 'big'
+    outline?: boolean
+    
 }
 
 const Button: React.FC<ButtonProps> =
     props => {
 
-        const { className,children,type } = props
-        const typeClass: string =  'btn-' + (type || 'default')
+        const {className, children, color, size, outline, ...restProps} = props;
+
+        const colorClass: string = 'btn-' + (color || 'primary');
+        const sizeClass: string = size === 'default' || !size ?  '' : 'btn-' + (size || '');
 
         return (
-            <button className={classes(className,'btn', typeClass)}>
+            <button data-merry-ui-outline={outline}
+                    className={
+                    classes(className, 'btn', colorClass, sizeClass)}
+                    {...restProps}>
                 <span>{children}</span>
             </button>
         );

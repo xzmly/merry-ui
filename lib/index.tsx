@@ -10,23 +10,31 @@ ReactDOM.render(
         <Button onClick={()=>console.log(123123)}>
             Primary
         </Button>
-        <Button color={'success'} size={'big'}>
+        <Button color={'success'} size={'big'} shape={'rounded'}>
             Success
         </Button>
         <Button color={'danger'}>
             danger
         </Button>
-        <Button color={'info'} outline>
+        <Button color={'info'} shape={'circle'} size={'big'} icon={{position: 'left',name: 'alipay'}}>
             Info
         </Button>
-        <Button color={'warning'} outline size={'small'}>
+        <Button color={'warning'} block outline size={'big'}>
             Warning
         </Button>
-        <Button color={'dark'} outline size={'big'}>
-            Dark
+        <Button color={'dark'} shape={'circle'} size={'big'} icon={{position: 'right',name: 'alipay'}}>
+            支付宝
         </Button>
-        <Button color={'danger'} disabled size={'big'} outline>
+        <Button color={'danger'} disabled size={'big'}
+                shape={'circle'}
+                icon={{position: 'left',name: 'alipay'}}>
+            danger
+        </Button>
+        <Button color={'gray'} size={'small'}
+                shape={'circle'}
+                >
             danger
         </Button>
     </>,
     document.getElementById('app'));
+

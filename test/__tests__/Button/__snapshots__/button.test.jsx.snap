@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`button 是一个button 1`] = `
+<button
+  className="merry-ui-btn merry-ui-btn-primary"
+>
+  <span />
+</button>
+`;

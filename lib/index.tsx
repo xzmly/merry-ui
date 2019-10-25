@@ -7,7 +7,7 @@ ReactDOM.render(
     <>
         <Icon name='alipay' className='icon'/>
         <Icon name='icon-2'/>
-        <Button size={'default'}><span>123123</span></Button>
+        <Button size={'default'} shape={'circle'} icon={{name: 'alipay'}}></Button>
     </>,
     document.getElementById('app'));
 

@@ -7,7 +7,7 @@ module.exports = {
   coverageDirectory: 'coverage',
   coverageReporters: ['text', 'lcov'],
 
-  reporters: ["default"],
+  reporters: ["default","jest-junit"],
   globals: {
     "ts-jest": {
       tsConfig: './tsconfig.test.json'

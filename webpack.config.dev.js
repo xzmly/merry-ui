@@ -3,6 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = Object.assign({},base,{
   mode: 'development',
+  entry: {
+    merry: "./lib/index.example.tsx"
+  },
   devServer: {
     contentBase: "./dist"
   },

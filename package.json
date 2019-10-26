@@ -1,6 +1,6 @@
 {
   "name": "merry-ui",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "merry.js",
   "scripts": {
@@ -9,7 +9,10 @@
     "start": "cross-env NODE_ENV=devlopment webpack-dev-server --open --config webpack.config.dev.js",
     "ci": "cross-env NODE_ENV=test JEST_JUNIT_OUTPUT_NAME=./test-results/jest/results.xml jest"
   },
-  "files": ["dist","README.md"],
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xzmly/merry-ui.git"

@@ -1,4 +1,4 @@
-const prefix: string = 'merry-ui';
+const prefix: string = 'merry';
 
 const classes = (
     propsClassName?: string,

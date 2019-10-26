@@ -2,7 +2,7 @@
 
 exports[`icon 是一个svg 1`] = `
 <svg
-  className="merry-ui-icon"
+  className="merry-icon"
 >
   <use
     xlinkHref="#undefined"

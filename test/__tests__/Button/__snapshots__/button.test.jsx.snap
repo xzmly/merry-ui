@@ -2,7 +2,7 @@
 
 exports[`button 是一个button 1`] = `
 <button
-  className="merry-ui-btn merry-ui-btn-primary"
+  className="merry-btn merry-btn-primary"
 >
   <span />
 </button>

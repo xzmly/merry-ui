@@ -1,5 +1,5 @@
 import * as React from 'react';
-import classes from '../helpers/classes';
+import classes from '../../helpers/classes';
 import Icon from '../Icon/icon'
 import './button.styl';
 

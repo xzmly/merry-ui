@@ -1,15 +1,15 @@
 import * as React from 'react';
-import classes from '../helpers/classes';
+import classes from '../../helpers/classes';
 import './icon.styl';
-import '../helpers/importIcons';
-import creatIconFont from './iconFont';
+import '../../helpers/importIcons';
+import createIconFont from './iconFont';
 
 interface IconProps extends React.SVGAttributes<SVGElement> {
     name: string;
 }
 
 interface IconComponent<P> extends React.FC<P> {
-    creatIconFont: typeof creatIconFont
+    createIconFont: typeof createIconFont
 }
 
 const Icon: IconComponent<IconProps> =
@@ -22,6 +22,6 @@ const Icon: IconComponent<IconProps> =
         );
     };
 
-Icon.creatIconFont = creatIconFont;
+Icon.createIconFont = createIconFont;
 
 export default Icon;

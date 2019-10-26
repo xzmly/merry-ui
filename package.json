@@ -1,8 +1,8 @@
 {
   "name": "merry-ui",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "description": "",
-  "main": "merry.js",
+  "main": "dist/merry.js",
   "scripts": {
     "test": "cross-env jest",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.pro.js",
@@ -10,7 +10,7 @@
     "ci": "cross-env NODE_ENV=test JEST_JUNIT_OUTPUT_NAME=./test-results/jest/results.xml jest"
   },
   "files": [
-    "dist",
+    "/dist/**/*",
     "README.md"
   ],
   "repository": {

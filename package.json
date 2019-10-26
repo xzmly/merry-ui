@@ -7,7 +7,7 @@
     "test": "cross-env jest",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.pro.js",
     "start": "cross-env NODE_ENV=devlopment webpack-dev-server --open --config webpack.config.dev.js",
-    "ci": "cross-env NODE_ENV=test JEST_JUNIT_OUTPUT_NAME=./test-results/jest/results.xml jest"
+    "ci": "cross-env NODE_ENV=test JEST_JUNIT_OUTPUT_NAME=./test-results/jest/results.xml jest --config=jest.config.ci.js"
   },
   "files": [
     "/dist/**/*",

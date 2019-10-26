@@ -10,7 +10,7 @@ type IconType = {
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
-    children?: React.ReactNode | string | React.ReactElement
+    children?: React.ReactChild
     color?: 'primary' | 'success' | 'warning' | 'danger' | 'info' | 'dark' | 'gray'
     size?: 'default' | 'small' | 'big'
     outline?: boolean

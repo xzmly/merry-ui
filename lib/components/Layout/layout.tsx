@@ -20,12 +20,17 @@ export interface LayoutComponent<P> extends React.FC<P> {
 const Layout: LayoutComponent<LayoutProps> =
         props => {
 
-  const { className,children } = props
+  const { className,children } = props;
+
+  const hasAside: string =
+      children instanceof Array &&
+      children.some((v:any) => v.type && v.type.name === 'Aside')
+      ? "layout-has-aside" : '';
 
   return (
-      <div className={classes(className,'layout')}>
+      <section className={classes(className,'layout',hasAside)}>
         {children}
-      </div>
+      </section>
   )
 };
 

@@ -1,18 +1,24 @@
 @import '../../helpers/stylus.helper.styl';
 
 layout = class-prefix + "-layout"
-header = class-prefix + "-header"
-content = class-prefix + "-content"
-footer = class-prefix + "-footer"
-aside = class-prefix + "-aside"
+header = class-prefix + "-layout-header"
+content = class-prefix + "-layout-content"
+footer = class-prefix + "-layout-footer"
+aside = class-prefix + "-layout-aside"
+has-aside = class-prefix + "-layout-has-aside"
 
 
 .{layout}
   display flex
   flex-direction column
   height 100%
-  > .{layout}
+  &.{has-aside}
+    flex-direction row
+    > .{layout}
+      flex 1
+  > .{has-aside}
     flex 1
+    flex-direction row
 
 .{header}
   width 100%
@@ -24,3 +30,6 @@ aside = class-prefix + "-aside"
 .{footer}
   width 100%
   height 64px
+
+.{aside}
+  width 104px

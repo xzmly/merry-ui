@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "../../../helpers/classes";
 
-export interface FooterProps {
+export interface FooterProps extends React.HTMLAttributes<HTMLDivElement>{
   className?: string
 }
 
@@ -11,7 +11,7 @@ const Footer: React.FC<FooterProps> =
       const {className} = props
 
       return (
-          <div className={classes(className, 'footer')}>x</div>
+          <footer className={classes(className, 'layout-footer')}>footer</footer>
       )
     };
 

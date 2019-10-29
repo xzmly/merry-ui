@@ -5,7 +5,7 @@ import Icon from "./components/Icon/icon"
 import Button from "./components/Button/button"
 import Layout from "./components/Layout/layout"
 
-const { Content, Header, Footer} = Layout;
+const { Aside,Content, Header, Footer} = Layout;
 
 const App = () => {
   return (
@@ -13,10 +13,33 @@ const App = () => {
         <div className={'layout-ex-one'}>
           <Layout>
             <Header/>
-            <Content>123</Content>
+            <Content/>
             <Footer/>
           </Layout>
         </div>
+
+        <div className={'layout-ex-one'}>
+          <Layout>
+            <Header/>
+            <Layout>
+              <Aside/>
+              <Content/>
+            </Layout>
+          </Layout>
+        </div>
+
+
+        <div className={'layout-ex-one'}>
+          <Layout>
+            <Layout>
+              <Header/>
+              <Content/>
+              <Footer/>
+            </Layout>
+            <Aside/>
+          </Layout>
+        </div>
+
         <Icon name={'alipay'}/>
         <Button>1123</Button>
       </>

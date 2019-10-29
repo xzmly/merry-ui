@@ -1,7 +1,7 @@
-import React, {HTMLAttributes} from "react";
+import React  from "react";
 import classes from "../../../helpers/classes";
 
-export interface ContentProps extends HTMLAttributes<HTMLDivElement>{
+export interface ContentProps extends React.HTMLAttributes<HTMLDivElement>{
   className?: string
 }
 
@@ -11,9 +11,10 @@ const Content: React.FC<ContentProps> =
       const {className,children} = props
 
       return (
-          <div className={classes(className, 'content')}>
+          <main className={classes(className, 'layout-content')}>
+            content
             {children}
-          </div>
+          </main>
       )
     }
 

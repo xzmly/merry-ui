@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "../../helpers/classes";
+import classes from "../../../helpers/classes";
 
 export interface AsideProps {
   className?: string

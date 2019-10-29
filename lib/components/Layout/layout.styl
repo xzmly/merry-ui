@@ -1,0 +1,26 @@
+@import '../../helpers/stylus.helper.styl';
+
+layout = class-prefix + "-layout"
+header = class-prefix + "-header"
+content = class-prefix + "-content"
+footer = class-prefix + "-footer"
+aside = class-prefix + "-aside"
+
+
+.{layout}
+  display flex
+  flex-direction column
+  height 100%
+  > .{layout}
+    flex 1
+
+.{header}
+  width 100%
+  height 64px
+
+.{content}
+  flex 1
+
+.{footer}
+  width 100%
+  height 64px

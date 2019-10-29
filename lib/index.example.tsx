@@ -1,20 +1,22 @@
 import React from "react"
 import ReactDOM from "react-dom"
+import "./index.example.styl"
 import Icon from "./components/Icon/icon"
 import Button from "./components/Button/button"
 import Layout from "./components/Layout/layout"
 
-const { Aside,Content,Header,Footer } = Layout;
+const { Content, Header, Footer} = Layout;
 
 const App = () => {
-  return(
+  return (
       <>
-        <Layout>
-          <Content/>
-          <Header/>
-          <Aside/>
-          <Footer/>
-        </Layout>
+        <div className={'layout-ex-one'}>
+          <Layout>
+            <Header/>
+            <Content>123</Content>
+            <Footer/>
+          </Layout>
+        </div>
         <Icon name={'alipay'}/>
         <Button>1123</Button>
       </>
@@ -22,7 +24,7 @@ const App = () => {
 }
 
 ReactDOM.render(
-    <App/>,document.getElementById('app')
+    <App/>, document.getElementById('app')
 )
 
 

@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "../../helpers/classes";
+import classes from "../../../helpers/classes";
 
 export interface HeaderProps {
   className?: string
@@ -11,7 +11,7 @@ const Header: React.FC<HeaderProps> =
       const {className} = props
 
       return (
-          <div className={classes(className, 'x')}>x</div>
+          <div className={classes(className, 'header')}>x</div>
       )
     };
 

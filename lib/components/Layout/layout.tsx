@@ -27,6 +27,8 @@ const Layout: LayoutComponent<LayoutProps> =
       children.some((v:any) => v.type && v.type.name === 'Aside')
       ? "layout-has-aside" : '';
 
+
+
   return (
       <section className={classes(className,'layout',hasAside)}>
         {children}

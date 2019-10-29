@@ -9,40 +9,17 @@ const { Aside,Content, Header, Footer} = Layout;
 
 const App = () => {
   return (
-      <>
-        <div className={'layout-ex-one'}>
-          <Layout>
-            <Header/>
-            <Content/>
-            <Footer/>
-          </Layout>
-        </div>
-
-        <div className={'layout-ex-one'}>
-          <Layout>
-            <Header/>
-            <Layout>
-              <Aside/>
-              <Content/>
-            </Layout>
-          </Layout>
-        </div>
-
-
-        <div className={'layout-ex-one'}>
-          <Layout>
-            <Layout>
-              <Header/>
-              <Content/>
-              <Footer/>
-            </Layout>
-            <Aside/>
-          </Layout>
-        </div>
-
-        <Icon name={'alipay'}/>
-        <Button>1123</Button>
-      </>
+      <Layout>
+        <Header>header</Header>
+        <Layout>
+          <Aside>aside</Aside>
+          <Content>
+            <Icon name={'alipay'}/>
+            <Button>1123</Button>
+          </Content>
+        </Layout>
+        <Footer>footer</Footer>
+      </Layout>
   )
 }
 

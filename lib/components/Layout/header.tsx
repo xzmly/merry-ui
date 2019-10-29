@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "../../../helpers/classes";
+import classes from "../../helpers/classes";
 
 export interface HeaderProps extends React.HTMLAttributes<HTMLDivElement>{
   className?: string
@@ -8,10 +8,11 @@ export interface HeaderProps extends React.HTMLAttributes<HTMLDivElement>{
 const Header: React.FC<HeaderProps> =
     props => {
 
-      const {className} = props
+      const {className,children} = props
 
       return (
-          <header className={classes(className, 'layout-header')}>header</header>
+          <header className={classes(className, 'layout-header')}>
+            {children}</header>
       )
     };
 

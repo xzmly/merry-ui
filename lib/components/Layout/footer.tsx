@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "../../../helpers/classes";
+import classes from "../../helpers/classes";
 
 export interface FooterProps extends React.HTMLAttributes<HTMLDivElement>{
   className?: string
@@ -8,10 +8,11 @@ export interface FooterProps extends React.HTMLAttributes<HTMLDivElement>{
 const Footer: React.FC<FooterProps> =
     props => {
 
-      const {className} = props
+      const {className,children} = props
 
       return (
-          <footer className={classes(className, 'layout-footer')}>footer</footer>
+          <footer className={classes(className, 'layout-footer')}>
+            {children}</footer>
       )
     };
 

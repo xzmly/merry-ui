@@ -7,6 +7,10 @@ footer = class-prefix + "-layout-footer"
 aside = class-prefix + "-layout-aside"
 has-aside = class-prefix + "-layout-has-aside"
 
+header-height = 64px
+footer-height = 64px
+aside-width = 200px
+
 
 .{layout}
   display flex
@@ -22,14 +26,15 @@ has-aside = class-prefix + "-layout-has-aside"
 
 .{header}
   width 100%
-  height 64px
+  height header-height
+  line-height: header-height
 
 .{content}
   flex 1
 
 .{footer}
   width 100%
-  height 64px
+  height footer-height
 
 .{aside}
-  width 104px
+  width aside-width

@@ -8,10 +8,10 @@ export interface FooterProps extends React.HTMLAttributes<HTMLDivElement>{
 const Footer: React.FC<FooterProps> =
     props => {
 
-      const {className,children} = props
+      const {className,children,style} = props
 
       return (
-          <footer className={classes(className, 'layout-footer')}>
+          <footer style={style} className={classes(className, 'layout-footer')}>
             {children}</footer>
       )
     };

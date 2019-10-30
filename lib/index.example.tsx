@@ -10,7 +10,7 @@ const { Aside,Content, Header, Footer} = Layout;
 const App = () => {
   return (
       <Layout>
-        <Header>header</Header>
+        <Header className={'header'}>header</Header>
         <Layout>
           <Aside>aside</Aside>
           <Content>

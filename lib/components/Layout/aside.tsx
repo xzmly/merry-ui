@@ -8,10 +8,10 @@ export interface AsideProps extends React.HTMLAttributes<HTMLDivElement>{
 const Aside: React.FC<AsideProps> =
     props => {
 
-      const {className,children} = props
+      const {className,children,style} = props
 
       return (
-          <aside className={classes(className, 'layout-aside')}>{children}</aside>
+          <aside style={style} className={classes(className, 'layout-aside')}>{children}</aside>
       )
     }
 

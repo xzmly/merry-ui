@@ -8,10 +8,10 @@ export interface HeaderProps extends React.HTMLAttributes<HTMLDivElement>{
 const Header: React.FC<HeaderProps> =
     props => {
 
-      const {className,children} = props
+      const {className,children,style} = props
 
       return (
-          <header className={classes(className, 'layout-header')}>
+          <header style={style} className={classes(className, 'layout-header')}>
             {children}</header>
       )
     };

@@ -8,10 +8,10 @@ export interface ContentProps extends React.HTMLAttributes<HTMLDivElement>{
 const Content: React.FC<ContentProps> =
     props => {
 
-      const {className,children} = props
+      const {className,children,style} = props
 
       return (
-          <main className={classes(className, 'layout-content')}>
+          <main style={style} className={classes(className, 'layout-content')}>
             {children}
           </main>
       )

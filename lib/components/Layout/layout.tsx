@@ -1,5 +1,6 @@
 import * as React from 'react';
 import classes from '../../helpers/classes';
+import Aside,{ AsideProps }from "./aside"
 import './layout.styl';
 
 interface LayoutProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -7,7 +8,7 @@ interface LayoutProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 interface ChildrenProps extends LayoutProps{
-  typeName: 'header' | 'main' | 'footer' | 'aside' | 'section'
+  typeName: 'header' | 'main' | 'footer'
   initClassName: string
 }
 
@@ -15,7 +16,7 @@ export interface LayoutComponent<P> extends React.FC<P> {
   Header: React.ComponentClass<LayoutProps>
   Content: React.ComponentClass<LayoutProps>
   Footer: React.ComponentClass<LayoutProps>
-  Aside: React.ComponentClass<LayoutProps>
+  Aside: React.FC<AsideProps>
 }
 
 
@@ -25,9 +26,15 @@ const Layout: LayoutComponent<LayoutProps> =
   const { className,children,style } = props;
 
   const hasAside: string =
+      children &&
+      !(children instanceof Array) &&
+      (children as any).type &&
+      (children as any).type.name === 'Aside'
+      ||
       children instanceof Array &&
       children.some((v:any) => v.type && v.type.name === 'Aside')
       ? "layout-has-aside" : '';
+
 
   return (
       <section style={style} className={classes(className,'layout',hasAside)}>
@@ -65,14 +72,11 @@ Layout.Content = createComponent(createElement,{
   initClassName: 'content'
 });
 
-Layout.Aside = createComponent(createElement,{
-  typeName: 'aside',
-  initClassName: 'aside'
-});
-
 Layout.Footer = createComponent(createElement,{
   typeName: 'footer',
   initClassName: 'footer'
 });
+
+Layout.Aside = Aside;
 
 export default Layout

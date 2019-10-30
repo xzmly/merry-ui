@@ -1,19 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`layout layout 里如果有 aside 就会增加一个has-aside className 1`] = `
-<section
-  className="merry-layout"
->
-  <section
-    className="merry-layout"
-  >
-    <aside
-      className="merry-layout-aside"
-    />
-  </section>
-</section>
-`;
-
 exports[`layout 是一个aside 1`] = `
 <aside
   className="merry-layout-aside"

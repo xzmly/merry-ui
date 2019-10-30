@@ -3,9 +3,7 @@ import classes from '../../helpers/classes';
 import Aside,{ AsideProps }from "./aside"
 import './layout.styl';
 
-interface LayoutProps extends React.HTMLAttributes<HTMLDivElement> {
-  className?: string
-}
+interface LayoutProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 interface ChildrenProps extends LayoutProps{
   typeName: 'header' | 'main' | 'footer'
@@ -13,9 +11,9 @@ interface ChildrenProps extends LayoutProps{
 }
 
 export interface LayoutComponent<P> extends React.FC<P> {
-  Header: React.ComponentClass<LayoutProps>
-  Content: React.ComponentClass<LayoutProps>
-  Footer: React.ComponentClass<LayoutProps>
+  Header: React.ComponentClass< React.HTMLAttributes<HTMLDivElement> >
+  Content: React.ComponentClass< React.HTMLAttributes<HTMLDivElement> >
+  Footer: React.ComponentClass< React.HTMLAttributes<HTMLDivElement> >
   Aside: React.FC<AsideProps>
 }
 

@@ -15,7 +15,7 @@ const App = () => {
           <Aside>aside</Aside>
           <Content>
             <Icon name={'alipay'}/>
-            <Button>1123</Button>
+            <Button>按钮</Button>
           </Content>
         </Layout>
         <Footer>footer</Footer>

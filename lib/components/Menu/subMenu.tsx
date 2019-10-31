@@ -3,7 +3,7 @@ import { useContext } from "react"
 import { MenuItemProps } from "./menuItem"
 import classes from '../../helpers/classes';
 import Icon from "../Icon/icon";
-import Context from "./context";
+import MenuContextProps from "./context";
 
 type ChildrenType = React.ReactElement<MenuItemProps> | React.ReactElement<SubMenuProps>
 
@@ -17,17 +17,17 @@ export interface SubMenuProps {
 const SubMenu: React.FC<SubMenuProps> =
     props => {
 
-      const context = useContext(Context);
+      const { openNames,onSubMenuChange } = useContext(MenuContextProps);
       const { className,children,title,name } = props;
 
-      const visible:boolean = context.openNames.includes(name);
+      const visible:boolean = openNames.includes(name);
 
       const toggleVisible = ():void => {
         const newKeys = visible ?
-            context.openNames.filter(v => v !== name) :
-            [name,...context.openNames];
+            openNames.filter(v => v !== name) :
+            [name,...openNames];
 
-        context.onSubMenuChange(newKeys);
+        onSubMenuChange(newKeys);
       };
 
       const childrenClass = (postfix:string,...names: Array<string>):string =>

@@ -11,7 +11,7 @@ const { MenuItem,SubMenu } = Menu;
 
 const App = () => {
 
-  const [names,setName] = useState<Array<number | string>>([])
+  const [names,setName] = useState<Array<number | string>>([]);
 
   const onSubMenuChange = (e:any) =>{
     setName(e)

@@ -2,7 +2,7 @@ import * as React from 'react';
 import classes from '../../helpers/classes';
 import MenuItem,{ MenuItemProps }from "./menuItem"
 import SubMenu,{ SubMenuProps }from "./subMenu";
-import Context from "./context";
+import MenuContextProps from "./context";
 import './menu.styl';
 
 export type ChildrenType = React.ReactElement<MenuItemProps> | React.ReactElement<SubMenuProps>
@@ -28,7 +28,7 @@ const Menu: MenuComponent<MenuProps> =
   const { className,children,onSubMenuChange,openNames } = props;
 
   return (
-      <Context.Provider
+      <MenuContextProps.Provider
           value={{
             onSubMenuChange: (keys: Array<string | number>) => onSubMenuChange && onSubMenuChange(keys),
             openNames: openNames || []
@@ -37,7 +37,7 @@ const Menu: MenuComponent<MenuProps> =
         <div className={classes(className,'menu')}>
           {children}
         </div>
-      </Context.Provider>
+      </MenuContextProps.Provider>
   )
 };
 

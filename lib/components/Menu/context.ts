@@ -1,13 +1,13 @@
 import * as React from "react"
 
-interface contextProps {
+interface MenuContextProps {
   openNames: Array<string | number>
   onSubMenuChange: (keys: Array<string | number>) => void
 }
 
-const Context = React.createContext<contextProps>({
+const MenuContext = React.createContext<MenuContextProps>({
   openNames: [],
   onSubMenuChange: (keys: Array<string | number>) => null
 });
 
-export default Context
+export default MenuContext

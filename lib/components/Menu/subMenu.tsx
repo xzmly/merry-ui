@@ -17,17 +17,19 @@ export interface SubMenuProps {
 const SubMenu: React.FC<SubMenuProps> =
     props => {
 
-      const { openNames,onSubMenuChange } = useContext(MenuContext);
+      const { openNames,onSubMenuChange,defaultOpenNames } = useContext(MenuContext);
       const { className,children,title,name } = props;
 
-      const visible:boolean = openNames.includes(name);
+      const defaultNamesOrNames:Array<string | number> = defaultOpenNames || openNames || [];
+
+      const visible:boolean = defaultNamesOrNames.includes(name);
 
       const toggleVisible = ():void => {
         const newKeys = visible ?
-            openNames.filter(v => v !== name) :
-            [name,...openNames];
+            defaultNamesOrNames.filter(v => v !== name) :
+            [name,...defaultNamesOrNames];
 
-        onSubMenuChange(newKeys);
+        onSubMenuChange && onSubMenuChange(newKeys);
       };
 
       const childrenClass = (postfix:string,...names: Array<string>):string =>
@@ -35,7 +37,7 @@ const SubMenu: React.FC<SubMenuProps> =
 
       return (
           <li className={classes(className,'sub-menu')}
-              onClick={() => toggleVisible()}>
+              onClick={() => defaultOpenNames || toggleVisible()}>
             <div className={childrenClass('title')}>
               {title}
               <Icon name={'arrow'}

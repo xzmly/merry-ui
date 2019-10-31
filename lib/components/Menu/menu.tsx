@@ -12,7 +12,6 @@ interface MenuProps extends MenuContextProps{
   onClick?: () => void
   className?: string
   children?: ChildrenType | Array<ChildrenType>
-
 }
 
 interface MenuComponent<P> extends React.FC<P>{
@@ -23,14 +22,18 @@ interface MenuComponent<P> extends React.FC<P>{
 const Menu: MenuComponent<MenuProps> =
         props => {
 
-  const { className,children,onSubMenuChange,openNames } = props;
+  const { className,children,onSubMenuChange,openNames,defaultOpenNames } = props;
+
+  const contextValues: MenuContextProps  = defaultOpenNames ? {
+    defaultOpenNames: defaultOpenNames
+  } : {
+    onSubMenuChange: (keys: Array<string | number>) => onSubMenuChange && onSubMenuChange(keys),
+    openNames: openNames
+  };
 
   return (
       <MenuContext.Provider
-          value={{
-            onSubMenuChange: (keys: Array<string | number>) => onSubMenuChange && onSubMenuChange(keys),
-            openNames: openNames || []
-          }}
+          value={contextValues}
       >
         <div className={classes(className,'menu')}>
           {children}

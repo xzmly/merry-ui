@@ -10,7 +10,7 @@ export type ChildrenType = React.ReactElement<MenuItemProps> | React.ReactElemen
 interface MenuProps {
   mode?: "vertical" | "horizontal"
   onSubMenuChange?: (keys: Array<string | number>) => void
-  openKeys?: Array<string | number>
+  openNames?: Array<string | number>
 
   onClick?: () => void
   className?: string
@@ -25,13 +25,13 @@ interface MenuComponent<P> extends React.FC<P>{
 const Menu: MenuComponent<MenuProps> =
         props => {
 
-  const { className,children,onSubMenuChange,openKeys } = props;
+  const { className,children,onSubMenuChange,openNames } = props;
 
   return (
       <Context.Provider
           value={{
             onSubMenuChange: (keys: Array<string | number>) => onSubMenuChange && onSubMenuChange(keys),
-            openKeys: openKeys || []
+            openNames: openNames || []
           }}
       >
         <div className={classes(className,'menu')}>

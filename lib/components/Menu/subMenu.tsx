@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useState,useContext} from "react"
+import { useContext } from "react"
 import { MenuItemProps } from "./menuItem"
 import classes from '../../helpers/classes';
 import Icon from "../Icon/icon";
@@ -16,15 +16,17 @@ export interface SubMenuProps {
 
 const SubMenu: React.FC<SubMenuProps> =
     props => {
-      const context = useContext(Context);
 
-      const [visible,setVisible] = useState<boolean>(false);
-      const { className,children,title } = props;
+      const context = useContext(Context);
+      const { className,children,title,name } = props;
+
+      const visible:boolean = context.openNames.includes(name);
 
       const toggleVisible = ():void => {
-        setVisible(!visible);
-        console.log(props.key)
-        const newKeys = [...context.openKeys];
+        const newKeys = visible ?
+            context.openNames.filter(v => v !== name) :
+            [name,...context.openNames];
+
         context.onSubMenuChange(newKeys);
       };
 

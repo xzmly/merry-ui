@@ -1,4 +1,4 @@
-import React from "react"
+import React,{ useState }from "react"
 import ReactDOM from "react-dom"
 import "./index.example.styl"
 import Icon from "./components/Icon/icon"
@@ -10,17 +10,25 @@ const { Aside,Content, Header, Footer} = Layout;
 const { MenuItem,SubMenu } = Menu;
 
 const App = () => {
+
+  const [names,setName] = useState<Array<number | string>>([])
+
+  const onSubMenuChange = (e:any) =>{
+    setName(e)
+  };
+
   return (
       <Layout>
         <Header className={'header'}>header</Header>
         <Layout>
           <Aside style={{borderRight: "1px solid #ddd"}}>
-            <Menu openKeys={[1,2]} onSubMenuChange={(xx)=>console.log(xx)}>
+            <Menu openNames={names} onSubMenuChange={(e)=>onSubMenuChange(e)}>
               {[1,2,3].map(v => <SubMenu
                 title={
                   <span>button</span>
                 }
                 key={v}
+                name={v}
               >
                 {[1,2,3].map((v:number) => <MenuItem key={v}>123</MenuItem>)}
               </SubMenu>)}

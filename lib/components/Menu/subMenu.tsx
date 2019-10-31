@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classes from '../../helpers/classes';
 
-interface SubMenuProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface SubMenuProps extends React.HTMLAttributes<HTMLDivElement> {
 
 }
 

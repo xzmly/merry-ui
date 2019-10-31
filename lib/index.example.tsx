@@ -7,6 +7,7 @@ import Layout from "./components/Layout/layout"
 import Menu from "./components/Menu/menu";
 
 const { Aside,Content, Header, Footer} = Layout;
+const { MenuItem,SubMenu } = Menu;
 
 const App = () => {
   return (
@@ -14,7 +15,11 @@ const App = () => {
         <Header className={'header'}>header</Header>
         <Layout>
           <Aside>
-            <Menu>123</Menu>
+            <Menu>
+              <SubMenu>
+                <MenuItem>123</MenuItem>
+              </SubMenu>
+            </Menu>
           </Aside>
           <Content>
             <Icon name={'alipay'}/>

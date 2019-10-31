@@ -1,14 +1,22 @@
 import * as React from 'react';
 import classes from '../../helpers/classes';
+import MenuItem,{ MenuItemProps }from "./menuItem"
+import SubMenu,{ SubMenuProps }from "./subMenu";
 import './menu.styl';
 
 interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
   mode?: "vertical" | "horizontal"
-
+  onSubMenuChange?: () => void
+  onClick?: () => void
+  openKeys?: Array<Object>
 }
 
+interface MenuComponent<P> extends React.FC<P>{
+  MenuItem: React.FC<MenuItemProps>
+  SubMenu: React.FC<SubMenuProps>
+}
 
-const Menu: React.FC<MenuProps> =
+const Menu: MenuComponent<MenuProps> =
         props => {
 
   const { className,children } = props;
@@ -18,5 +26,8 @@ const Menu: React.FC<MenuProps> =
       </div>
   )
 };
+
+Menu.MenuItem = MenuItem;
+Menu.SubMenu = SubMenu;
 
 export default Menu

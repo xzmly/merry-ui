@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classes from '../../helpers/classes';
 
-interface MenuItemProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface MenuItemProps extends React.HTMLAttributes<HTMLDivElement> {
 
 }
 

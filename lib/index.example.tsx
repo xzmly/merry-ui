@@ -15,13 +15,15 @@ const App = () => {
         <Header className={'header'}>header</Header>
         <Layout>
           <Aside style={{borderRight: "1px solid #ddd"}}>
-            <Menu>
-              <SubMenu>
-                <MenuItem>123</MenuItem>
-                <MenuItem>123</MenuItem>
-                <MenuItem>123</MenuItem>
-                <MenuItem>123</MenuItem>
-              </SubMenu>
+            <Menu openKeys={[1,2]} onSubMenuChange={(xx)=>console.log(xx)}>
+              {[1,2,3].map(v => <SubMenu
+                title={
+                  <span>button</span>
+                }
+                key={v}
+              >
+                {[1,2,3].map((v:number) => <MenuItem key={v}>123</MenuItem>)}
+              </SubMenu>)}
             </Menu>
           </Aside>
           <Content>
@@ -32,11 +34,11 @@ const App = () => {
         <Footer>footer</Footer>
       </Layout>
   )
-}
+};
 
 ReactDOM.render(
     <App/>, document.getElementById('app')
-)
+);
 
 
 

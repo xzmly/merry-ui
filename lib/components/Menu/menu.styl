@@ -7,5 +7,24 @@ menu-item = class-prefix + '-menu-item'
 .{menu}
   background orange
   min-height 80px
+  padding 0
+  font-size 14px
 
 
+.{sub-menu}
+  list-style-type none
+
+.{sub-menu}-title
+  display flex
+  justify-content space-between
+  align-items center
+  height 40px
+  cursor pointer
+  .{sub-menu}-arrow
+    font-size 12px
+    transition all .2s
+    &.{class-prefix}-active
+      transform rotate(-180deg)
+
+.{sub-menu}-content
+  transition all .2s

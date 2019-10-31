@@ -1,9 +1,9 @@
 import * as React from 'react';
 import classes from '../../helpers/classes';
 import './menu.styl';
-import {HTMLAttributes} from "react";
 
-interface MenuProps extends HTMLAttributes<HTMLDivElement> {
+interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
+  mode?: "vertical" | "horizontal"
 
 }
 

@@ -14,7 +14,7 @@ const App = () => {
       <Layout>
         <Header className={'header'}>header</Header>
         <Layout>
-          <Aside>
+          <Aside style={{borderRight: "1px solid #ddd"}}>
             <Menu>
               <SubMenu>
                 <MenuItem>123</MenuItem>

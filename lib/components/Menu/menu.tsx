@@ -2,19 +2,17 @@ import * as React from 'react';
 import classes from '../../helpers/classes';
 import MenuItem,{ MenuItemProps }from "./menuItem"
 import SubMenu,{ SubMenuProps }from "./subMenu";
-import MenuContextProps from "./context";
+import MenuContext,{ MenuContextProps }from "./context";
 import './menu.styl';
 
 export type ChildrenType = React.ReactElement<MenuItemProps> | React.ReactElement<SubMenuProps>
 
-interface MenuProps {
+interface MenuProps extends MenuContextProps{
   mode?: "vertical" | "horizontal"
-  onSubMenuChange?: (keys: Array<string | number>) => void
-  openNames?: Array<string | number>
-
   onClick?: () => void
   className?: string
   children?: ChildrenType | Array<ChildrenType>
+
 }
 
 interface MenuComponent<P> extends React.FC<P>{
@@ -28,7 +26,7 @@ const Menu: MenuComponent<MenuProps> =
   const { className,children,onSubMenuChange,openNames } = props;
 
   return (
-      <MenuContextProps.Provider
+      <MenuContext.Provider
           value={{
             onSubMenuChange: (keys: Array<string | number>) => onSubMenuChange && onSubMenuChange(keys),
             openNames: openNames || []
@@ -37,7 +35,7 @@ const Menu: MenuComponent<MenuProps> =
         <div className={classes(className,'menu')}>
           {children}
         </div>
-      </MenuContextProps.Provider>
+      </MenuContext.Provider>
   )
 };
 

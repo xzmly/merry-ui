@@ -1,6 +1,6 @@
 import * as React from "react"
 
-interface MenuContextProps {
+export interface MenuContextProps {
   openNames: Array<string | number>
   onSubMenuChange: (keys: Array<string | number>) => void
 }

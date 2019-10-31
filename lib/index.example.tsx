@@ -18,6 +18,9 @@ const App = () => {
             <Menu>
               <SubMenu>
                 <MenuItem>123</MenuItem>
+                <MenuItem>123</MenuItem>
+                <MenuItem>123</MenuItem>
+                <MenuItem>123</MenuItem>
               </SubMenu>
             </Menu>
           </Aside>

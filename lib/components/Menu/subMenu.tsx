@@ -2,21 +2,23 @@ import * as React from 'react';
 import { MenuItemProps } from "./menuItem"
 import classes from '../../helpers/classes';
 
+type ChildrenType = React.ReactElement<MenuItemProps> | React.ReactElement<SubMenuProps>
+
 export interface SubMenuProps {
-  title?: React.ReactChild
+  title?: React.ReactNode
   className?: string
-  children?: React.ReactElement<MenuItemProps> | React.ReactElement<SubMenuProps>
+  children?: ChildrenType | Array<ChildrenType>
 }
 
 const SubMenu: React.FC<SubMenuProps> =
     props => {
 
-      const { className,children } = props;
+      const { className,children,title } = props;
 
       return (
           <div className={classes(className,'sub-menu')}>
             <div className={classes("",'sub-menu-title')}>
-
+              {title}
             </div>
             {children}
           </div>

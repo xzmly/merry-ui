@@ -4,11 +4,15 @@ import MenuItem,{ MenuItemProps }from "./menuItem"
 import SubMenu,{ SubMenuProps }from "./subMenu";
 import './menu.styl';
 
-interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
+export type ChildrenType = React.ReactElement<MenuItemProps> | React.ReactElement<SubMenuProps>
+
+interface MenuProps {
   mode?: "vertical" | "horizontal"
   onSubMenuChange?: () => void
   onClick?: () => void
   openKeys?: Array<Object>
+  className?: string
+  children?: ChildrenType | Array<ChildrenType>
 }
 
 interface MenuComponent<P> extends React.FC<P>{

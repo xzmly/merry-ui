@@ -4,15 +4,24 @@ menu = class-prefix + '-menu'
 sub-menu = class-prefix + '-sub-menu'
 menu-item = class-prefix + '-menu-item'
 
+common-hover()
+  &:hover
+    color primary-color
+    transition all .2s
+
 .{menu}
-  background orange
   min-height 80px
   padding 0
   font-size 14px
-
+  color rgba(0,0,0,0.75);
 
 .{sub-menu}
   list-style-type none
+  &.{class-prefix}-active
+    .{sub-menu}-title
+      color primary-color
+    .{sub-menu}-arrow
+      transform rotate(-180deg)
 
 .{sub-menu}-title
   display flex
@@ -20,11 +29,14 @@ menu-item = class-prefix + '-menu-item'
   align-items center
   height 40px
   cursor pointer
+  common-hover()
   .{sub-menu}-arrow
     font-size 12px
     transition all .2s
-    &.{class-prefix}-active
-      transform rotate(-180deg)
 
 .{sub-menu}-content
   transition all .2s
+
+.{menu-item}
+  common-hover()
+  cursor pointer

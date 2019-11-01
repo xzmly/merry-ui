@@ -46,12 +46,11 @@ const SubMenu: React.FC<SubMenuProps> =
           classes("",`sub-menu-${postfix}`,...names);
 
       return (
-          <li className={classes(className,'sub-menu')}
-              onClick={() => toggleVisible()}>
-            <div className={childrenClass('title')}>
+          <li className={classes(className,'sub-menu',visible ? 'active':'')}>
+            <div className={childrenClass('title')} onClick={() => toggleVisible()}>
               {title}
               <Icon name={'arrow'}
-                    className={childrenClass('arrow',visible ? 'active':'')}/>
+                    className={childrenClass('arrow')}/>
             </div>
             {visible &&
             <div className={childrenClass('content')}>

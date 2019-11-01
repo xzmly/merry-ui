@@ -11,9 +11,9 @@ const { MenuItem,SubMenu } = Menu;
 
 const App = () => {
 
-  const [names,setName] = useState<Array<number | string>>([]);
+  const [names,setName] = useState<Array<string>>([]);
 
-  const onSubMenuChange = (e:any) =>{
+  const onSubMenuChange = (e:string[]) =>{
     setName(e)
   };
 
@@ -22,8 +22,8 @@ const App = () => {
         <Header className={'header'}>header</Header>
         <Layout>
           <Aside style={{borderRight: "1px solid #ddd"}}>
-            <Menu openNames={names} onSubMenuChange={(e)=>onSubMenuChange(e)}>
-              {[1,2,3].map(v => <SubMenu
+            <Menu openNames={names} onSubMenuChange={(e:string[])=>onSubMenuChange(e)}>
+              {["1","2","3"].map(v => <SubMenu
                 title={
                   <span>button</span>
                 }

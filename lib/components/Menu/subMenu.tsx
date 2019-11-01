@@ -11,7 +11,7 @@ export interface SubMenuProps {
   title?: React.ReactNode
   className?: string
   children?: ChildrenType | Array<ChildrenType>
-  name: string | number
+  name: string
 }
 
 const SubMenu: React.FC<SubMenuProps> =
@@ -20,7 +20,7 @@ const SubMenu: React.FC<SubMenuProps> =
       const { openNames,onSubMenuChange,defaultOpenNames } = useContext(MenuContext);
       const { className,children,title,name } = props;
 
-      const defaultNamesOrNames:Array<string | number> = defaultOpenNames || openNames || [];
+      const defaultNamesOrNames:Array<string> = defaultOpenNames || openNames || [];
 
       const visible:boolean = defaultNamesOrNames.includes(name);
 

@@ -27,7 +27,7 @@ const Menu: MenuComponent<MenuProps> =
   const contextValues: MenuContextProps  = defaultOpenNames ? {
     defaultOpenNames: defaultOpenNames
   } : {
-    onSubMenuChange: (keys: Array<string | number>) => onSubMenuChange && onSubMenuChange(keys),
+    onSubMenuChange: (keys: Array<string>) => onSubMenuChange && onSubMenuChange(keys),
     openNames: openNames
   };
 

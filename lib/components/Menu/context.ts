@@ -1,10 +1,5 @@
 import * as React from "react"
-
-export interface MenuContextProps {
-  openNames?: Array<string>
-  onSubMenuChange?: (keys: Array<string>) => void
-  defaultOpenNames?: Array<string>
-}
+import {MenuContextProps} from "./menu"
 
 const MenuContext = React.createContext<MenuContextProps>({
   openNames: [],

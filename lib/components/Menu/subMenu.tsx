@@ -17,8 +17,18 @@ export interface SubMenuProps {
 const SubMenu: React.FC<SubMenuProps> =
     props => {
 
-      const { openNames,onSubMenuChange,defaultOpenNames } = useContext(MenuContext);
-      const { className,children,title,name } = props;
+      const {
+        openNames,
+        onSubMenuChange,
+        defaultOpenNames
+      } = useContext(MenuContext);
+
+      const {
+        className,
+        children,
+        title,
+        name
+      } = props;
 
       const defaultNamesOrNames:Array<string> = defaultOpenNames || openNames || [];
 
@@ -37,7 +47,7 @@ const SubMenu: React.FC<SubMenuProps> =
 
       return (
           <li className={classes(className,'sub-menu')}
-              onClick={() => defaultOpenNames || toggleVisible()}>
+              onClick={() => toggleVisible()}>
             <div className={childrenClass('title')}>
               {title}
               <Icon name={'arrow'}

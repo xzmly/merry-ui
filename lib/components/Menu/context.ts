@@ -3,7 +3,7 @@ import {MenuContextProps} from "./menu"
 
 const MenuContext = React.createContext<MenuContextProps>({
   openNames: [],
-  onSubMenuChange: (keys: Array<string>) => null,
+  onSubMenuChange: (names: Array<string>) => null,
   defaultOpenNames: []
 });
 

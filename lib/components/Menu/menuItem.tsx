@@ -10,9 +10,9 @@ const MenuItem: React.FC<MenuItemProps> =
       const { className,children } = props;
 
       return (
-          <div className={classes(className,'menu-item')}>
+          <li className={classes(className,'menu-item')}>
             {children}
-          </div>
+          </li>
       )
     };
 

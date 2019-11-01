@@ -50,9 +50,9 @@ const Menu: MenuComponent<MenuProps> =
       <MenuContext.Provider
           value={contextValues}
       >
-        <div className={classes(className,'menu')}>
+        <ul className={classes(className,'menu')}>
           {children}
-        </div>
+        </ul>
       </MenuContext.Provider>
   )
 };

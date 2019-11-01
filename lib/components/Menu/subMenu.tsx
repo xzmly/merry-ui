@@ -53,9 +53,9 @@ const SubMenu: React.FC<SubMenuProps> =
                     className={childrenClass('arrow')}/>
             </div>
             {visible &&
-            <div className={childrenClass('content')}>
+            <ul className={childrenClass('content')}>
               {children}
-            </div>}
+            </ul>}
           </li>
       )
     };

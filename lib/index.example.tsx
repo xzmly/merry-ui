@@ -8,6 +8,33 @@ import Menu from "./components/Menu/menu";
 
 const { Aside,Content, Header, Footer} = Layout;
 const { MenuItem,SubMenu } = Menu;
+const arr: any = [
+    {
+      name: "button",
+      items: [{name: "button"}],
+      children: [{
+        name: "buttonChildren",
+        items: [{name: "buttonChildren"}],
+      }]
+    },
+    {
+      name: "icon",
+      items: [{name: "icon"}],
+      children: [{
+        name: "iconChildren",
+        items: [{name: "iconChildren"}],
+      }]
+    },
+    {
+      name: "menu",
+      items: [{name: "menu"}],
+      children: [{
+        name: "menuChildren",
+        items: [{name: "menuChildren"}],
+      }]
+    }
+  ];
+
 
 const App = () => {
 
@@ -23,14 +50,29 @@ const App = () => {
         <Layout>
           <Aside style={{borderRight: "1px solid #ddd"}}>
             <Menu openNames={names} onSubMenuChange={(e:string[])=>onSubMenuChange(e)}>
-              {["1","2","3"].map(v => <SubMenu
+              {arr.map((v:any) => <SubMenu
                 title={
-                  <span>button</span>
+                  <span>
+                    <Icon name={'table'} style={{marginRight: "6px",fontSize: "18px"}}/>
+                    <span>{v.name}</span>
+                  </span>
                 }
-                key={v}
-                name={v}
+                key={v.name}
+                name={v.name}
               >
-                {[1,2,3].map((v:number) => <MenuItem key={v}>123</MenuItem>)}
+                {
+                  v.children.map((x: any) =>
+                      <SubMenu
+                          title={
+                             <span>{x.name}</span>
+                          }
+                          key={x.name}
+                          name={x.name}>
+                        {v.items.map((y:any) => <MenuItem key={y.name}>{y.name}</MenuItem>)}
+                      </SubMenu>
+                  )
+                }
+                {v.items.map((z:any) => <MenuItem key={z.name}>{z.name}</MenuItem>)}
               </SubMenu>)}
             </Menu>
           </Aside>

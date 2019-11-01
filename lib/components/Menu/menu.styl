@@ -3,40 +3,49 @@
 menu = class-prefix + '-menu'
 sub-menu = class-prefix + '-sub-menu'
 menu-item = class-prefix + '-menu-item'
+font-color = rgba(0,0,0,0.75)
 
 common-hover()
   &:hover
     color primary-color
     transition all .2s
 
+.{sub-menu}-content,.{menu}
+  list-style-type none
+  padding-inline-start 0
+
+
 .{menu}
   min-height 80px
-  padding 0
-  font-size 14px
-  color rgba(0,0,0,0.75);
+  padding 0 8px 0 16px
 
 .{sub-menu}
-  list-style-type none
+  color rgba(0,0,0,0.75)
+  font-size 14px
   &.{class-prefix}-active
-    .{sub-menu}-title
+    > .{sub-menu}-title
       color primary-color
+      > .{sub-menu}-arrow
+        transform rotate(-180deg)
+        color font-color
+  .{sub-menu}-title
+    display flex
+    justify-content space-between
+    align-items center
+    height 40px
+    cursor pointer
+    common-hover()
     .{sub-menu}-arrow
-      transform rotate(-180deg)
+      font-size 12px
+      transition all .2s
+  .{sub-menu}-content
+    padding 0 0 0 24px
 
-.{sub-menu}-title
-  display flex
-  justify-content space-between
-  align-items center
-  height 40px
-  cursor pointer
-  common-hover()
-  .{sub-menu}-arrow
-    font-size 12px
-    transition all .2s
-
-.{sub-menu}-content
-  transition all .2s
 
 .{menu-item}
   common-hover()
   cursor pointer
+  height 40px
+  display flex
+  justify-content space-between
+  align-items center

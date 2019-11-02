@@ -12,6 +12,7 @@ export interface MenuContextProps {
   openNames?: Array<string>
   onSubMenuChange?: (keys: Array<string>) => void
   defaultOpenNames?: Array<string>
+  onClick?: (name: string) => void
 }
 
 interface MenuProps extends MenuContextProps{
@@ -33,17 +34,20 @@ const Menu: MenuComponent<MenuProps> =
     children,
     onSubMenuChange,
     openNames,
-    defaultOpenNames
+    defaultOpenNames,
+    onClick
   } = props;
 
   const [defaultValues,setDefaultValues] = useState<Array<string> | undefined>(defaultOpenNames);
 
   const contextValues: MenuContextProps  = defaultOpenNames ? {
     defaultOpenNames: defaultValues,
-    onSubMenuChange: (names: Array<string>) => setDefaultValues(names)
+    onSubMenuChange: (names: Array<string>) => setDefaultValues(names),
+    onClick: (name: string) => onClick && onClick(name)
   } : {
     openNames: openNames,
-    onSubMenuChange: (names: Array<string>) => onSubMenuChange && onSubMenuChange(names)
+    onSubMenuChange: (names: Array<string>) => onSubMenuChange && onSubMenuChange(names),
+    onClick: (name: string) => onClick && onClick(name)
   };
 
   return (

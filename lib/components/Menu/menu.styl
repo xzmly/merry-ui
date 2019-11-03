@@ -17,7 +17,6 @@ common-hover()
 
 .{menu}
   min-height 80px
-  padding 0 8px 0 16px
 
 .{sub-menu}
   color rgba(0,0,0,0.75)
@@ -34,13 +33,13 @@ common-hover()
     align-items center
     height 40px
     cursor pointer
+    padding-right: 16px;
     common-hover()
     .{sub-menu}-arrow
       font-size 12px
       transition all .2s
   .{sub-menu}-content
-    padding 0 0 0 24px
-
+    padding: 0
 
 .{menu-item}
   common-hover()
@@ -49,5 +48,8 @@ common-hover()
   display flex
   justify-content space-between
   align-items center
+  padding-right: 16px;
   &.{class-prefix}-active
-    background rgba(21, 171, 255, 0.54)
+    background rgba(21, 171, 255, 0.24)
+    color primary-color
+    border-right 3px solid primary-color

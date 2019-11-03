@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { useContext } from "react"
 import { MenuItemProps } from "./menuItem"
-import { RestDataType } from "./menu"
 import classes from '../../helpers/classes';
 import Icon from "../Icon/icon";
-import MenuContext from "./context";
+import MenuContext,{RestDataType}from "./context";
 
 type ChildrenType = React.ReactElement<MenuItemProps> | React.ReactElement<SubMenuProps>
 

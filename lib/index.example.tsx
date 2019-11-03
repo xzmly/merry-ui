@@ -10,7 +10,7 @@ const { Aside,Content, Header, Footer} = Layout;
 const { MenuItem,SubMenu } = Menu;
 const arr: any = [
     {
-      name: "button",
+      name: "我是一个button，我超出以后会换行，并且会现实点点点",
       items: [{name: "button1"}],
       children: [{
         name: "buttonChildren",

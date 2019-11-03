@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useContext } from "react"
 import { MenuItemProps } from "./menuItem"
+import { RestDataType } from "./menu"
 import classes from '../../helpers/classes';
 import Icon from "../Icon/icon";
 import MenuContext from "./context";
@@ -13,6 +14,8 @@ export interface SubMenuProps {
   children?: ChildrenType | Array<ChildrenType>
   name: string
   subMenuIndex?: number
+  style?: React.CSSProperties
+  restData?: RestDataType
 }
 
 const SubMenu: React.FC<SubMenuProps> =
@@ -29,7 +32,8 @@ const SubMenu: React.FC<SubMenuProps> =
         children,
         title,
         name,
-        subMenuIndex
+        subMenuIndex,
+        restData
       } = props;
 
       const defaultNamesOrNames:Array<string> = defaultOpenNames || openNames || [];
@@ -41,20 +45,20 @@ const SubMenu: React.FC<SubMenuProps> =
             defaultNamesOrNames.filter(v => v !== name) :
             [name,...defaultNamesOrNames];
 
-        onSubMenuChange && onSubMenuChange(newKeys);
+        onSubMenuChange && onSubMenuChange(newKeys,restData);
       };
 
       const childrenClass = (postfix:string,...names: Array<string>):string =>
           classes("",`sub-menu-${postfix}`,...names);
 
-      const childrens: any =
+      const _children: any =
           (
               curArray: any,
               preArray: any = []
           ) => {
             curArray && curArray.forEach((item: any) =>
               item instanceof Array ?
-                  childrens(item,preArray) :
+                  _children(item,preArray) :
                   item.type.name === 'SubMenu' ?
                       preArray.push(React.cloneElement(item, { subMenuIndex: (subMenuIndex || 1) + 1 })) :
                   item.type.name == 'MenuItem' ?
@@ -76,7 +80,7 @@ const SubMenu: React.FC<SubMenuProps> =
             </div>
             {visible &&
             <ul className={childrenClass('content')}>
-              {childrens(children)}
+              {_children(children)}
             </ul>}
           </li>
       )

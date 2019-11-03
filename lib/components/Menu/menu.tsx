@@ -10,15 +10,16 @@ export type ChildrenType = React.ReactElement<MenuItemProps> | React.ReactElemen
 
 export interface MenuContextProps {
   openNames?: Array<string>
-  onSubMenuChange?: (keys: Array<string>) => void
+  onSubMenuChange?: (keys: Array<string>,restData?: RestDataType) => void
   defaultOpenNames?: Array<string>
-  onSelect?: (name: string) => void
+  onSelect?: (name: string,restData?: RestDataType) => void
 }
 
-interface MenuProps extends MenuContextProps{
+interface MenuProps {
   mode?: "vertical" | "horizontal"
   className?: string
   children?: ChildrenType | Array<ChildrenType>
+  style?: React.CSSProperties
 }
 
 interface MenuComponent<P> extends React.FC<P>{
@@ -26,7 +27,11 @@ interface MenuComponent<P> extends React.FC<P>{
   SubMenu: React.FC<SubMenuProps>
 }
 
-const Menu: MenuComponent<MenuProps> =
+export type RestDataType = {
+  item: object
+}
+
+const Menu: MenuComponent<MenuProps & MenuContextProps> =
         props => {
 
   const {
@@ -46,10 +51,10 @@ const Menu: MenuComponent<MenuProps> =
     openNames: openNames,
     onSubMenuChange: defaultOpenNames ?
         (names: Array<string>) => setDefaultValues(names) :
-        (names: Array<string>) => onSubMenuChange && onSubMenuChange(names),
-    onSelect: (name: string) => {
+        (names: Array<string>,restData?: RestDataType) => onSubMenuChange && onSubMenuChange(names,restData),
+    onSelect: (name: string,restData?: RestDataType) => {
       setSelectedName(name);
-      onSelect && onSelect(name)
+      onSelect && onSelect(name,restData)
     },
     selectedName: selectedName
   };

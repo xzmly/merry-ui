@@ -40,7 +40,8 @@ const App = () => {
 
   const [names,setName] = useState<Array<string>>([]);
 
-  const onSubMenuChange = (e:string[]) =>{
+  const onSubMenuChange = (e:string[],x:any) =>{
+    console.log(e,x);
     setName(e)
   };
 
@@ -49,8 +50,13 @@ const App = () => {
         <Header className={'header'}>header</Header>
         <Layout>
           <Aside style={{borderRight: "1px solid #ddd"}}>
-            <Menu openNames={names} onSubMenuChange={(e:string[])=>onSubMenuChange(e)}>
+            <Menu openNames={names}
+                  onSelect={(e,x)=>console.log(e,x)}
+                  onSubMenuChange={(e:string[],x:any)=>onSubMenuChange(e,x)}>
               {arr.map((v:any) => <SubMenu
+                restData={
+                  {item: v}
+                }
                 title={
                   <span>
                     <Icon name={'table'} style={{marginRight: "6px",fontSize: "18px"}}/>
@@ -63,6 +69,9 @@ const App = () => {
                 {
                   v.children.map((x: any) =>
                       <SubMenu
+                          restData={
+                            {item: x}
+                          }
                           title={
                              <span>{x.name}</span>
                           }
@@ -72,7 +81,7 @@ const App = () => {
                       </SubMenu>
                   )
                 }
-                {v.items.map((z:any) => <MenuItem key={z.name} name={z.name}>{z.name}</MenuItem>)}
+                {v.items.map((z:any) => <MenuItem restData={{item: z}} key={z.name} name={z.name}>{z.name}</MenuItem>)}
               </SubMenu>)}
             </Menu>
           </Aside>

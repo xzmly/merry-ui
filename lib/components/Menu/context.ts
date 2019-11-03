@@ -1,8 +1,18 @@
 import * as React from "react"
-import {MenuContextProps, RestDataType} from "./menu"
 
 export interface ContextType {
   selectedName?: string | undefined
+}
+
+export type RestDataType = {
+  item: object
+}
+
+export interface MenuContextProps {
+  openNames?: Array<string>
+  onSubMenuChange?: (keys: Array<string>,restData?: RestDataType) => void
+  defaultOpenNames?: Array<string>
+  onSelect?: (name: string,restData?: RestDataType) => void
 }
 
 const MenuContext = React.createContext<ContextType & MenuContextProps>({

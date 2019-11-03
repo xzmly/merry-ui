@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { useContext } from "react"
 import classes from '../../helpers/classes';
-import MenuContext from "./context";
-import {RestDataType} from "./menu";
+import MenuContext,{RestDataType}from "./context";
 
 export interface MenuItemProps extends React.HTMLAttributes<HTMLElement> {
   name: string

@@ -11,26 +11,26 @@ const { MenuItem,SubMenu } = Menu;
 const arr: any = [
     {
       name: "button",
-      items: [{name: "button"}],
+      items: [{name: "button1"}],
       children: [{
         name: "buttonChildren",
-        items: [{name: "buttonChildren"}],
+        items: [{name: "buttonChildren1"}],
       }]
     },
     {
       name: "icon",
-      items: [{name: "icon"}],
+      items: [{name: "icon1"}],
       children: [{
         name: "iconChildren",
-        items: [{name: "iconChildren"}],
+        items: [{name: "iconChildren1"}],
       }]
     },
     {
       name: "menu",
-      items: [{name: "menu"}],
+      items: [{name: "menu1"}],
       children: [{
         name: "menuChildren",
-        items: [{name: "menuChildren"}],
+        items: [{name: "menuChildren1"}],
       }]
     }
   ];
@@ -68,11 +68,11 @@ const App = () => {
                           }
                           key={x.name}
                           name={x.name}>
-                        {v.items.map((y:any) => <MenuItem key={y.name}>{y.name}</MenuItem>)}
+                        {x.items.map((y:any) => <MenuItem key={y.name} name={y.name}>{y.name}</MenuItem>)}
                       </SubMenu>
                   )
                 }
-                {v.items.map((z:any) => <MenuItem key={z.name}>{z.name}</MenuItem>)}
+                {v.items.map((z:any) => <MenuItem key={z.name} name={z.name}>{z.name}</MenuItem>)}
               </SubMenu>)}
             </Menu>
           </Aside>

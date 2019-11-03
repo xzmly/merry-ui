@@ -2,7 +2,7 @@ import * as React from 'react';
 import classes from '../../helpers/classes';
 import MenuItem,{ MenuItemProps }from "./menuItem"
 import SubMenu,{ SubMenuProps }from "./subMenu";
-import MenuContext from "./context";
+import MenuContext,{ContextType}from "./context";
 import './menu.styl';
 import {useState} from "react";
 
@@ -12,7 +12,7 @@ export interface MenuContextProps {
   openNames?: Array<string>
   onSubMenuChange?: (keys: Array<string>) => void
   defaultOpenNames?: Array<string>
-  onClick?: (name: string) => void
+  onSelect?: (name: string) => void
 }
 
 interface MenuProps extends MenuContextProps{
@@ -35,19 +35,23 @@ const Menu: MenuComponent<MenuProps> =
     onSubMenuChange,
     openNames,
     defaultOpenNames,
-    onClick
+    onSelect
   } = props;
 
   const [defaultValues,setDefaultValues] = useState<Array<string> | undefined>(defaultOpenNames);
+  const [selectedName,setSelectedName] = useState<string | undefined>("");
 
-  const contextValues: MenuContextProps  = defaultOpenNames ? {
+  const contextValues: MenuContextProps & ContextType = {
     defaultOpenNames: defaultValues,
-    onSubMenuChange: (names: Array<string>) => setDefaultValues(names),
-    onClick: (name: string) => onClick && onClick(name)
-  } : {
     openNames: openNames,
-    onSubMenuChange: (names: Array<string>) => onSubMenuChange && onSubMenuChange(names),
-    onClick: (name: string) => onClick && onClick(name)
+    onSubMenuChange: defaultOpenNames ?
+        (names: Array<string>) => setDefaultValues(names) :
+        (names: Array<string>) => onSubMenuChange && onSubMenuChange(names),
+    onSelect: (name: string) => {
+      setSelectedName(name);
+      onSelect && onSelect(name)
+    },
+    selectedName: selectedName
   };
 
   return (

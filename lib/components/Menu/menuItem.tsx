@@ -10,12 +10,12 @@ export interface MenuItemProps extends React.HTMLAttributes<HTMLElement> {
 const MenuItem: React.FC<MenuItemProps> =
     props => {
 
-      const { onClick } = useContext(MenuContext)
+      const { onSelect,selectedName } = useContext(MenuContext)
       const { className,children,name } = props;
 
       return (
-          <li className={classes(className,'menu-item')}
-              onClick={()=>onClick && onClick(name)}>
+          <li className={classes(className,'menu-item',selectedName === name ? 'active' : "")}
+              onClick={()=>onSelect && onSelect(name)}>
             {children}
           </li>
       )

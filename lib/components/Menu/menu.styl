@@ -17,6 +17,8 @@ common-hover()
 
 .{menu}
   min-height 80px
+  width 100%
+  overflow hidden
 
 .{sub-menu}
   color rgba(0,0,0,0.75)
@@ -25,16 +27,15 @@ common-hover()
     > .{sub-menu}-title
       color primary-color
       > .{sub-menu}-arrow
-        transform rotate(-180deg)
+        transform rotate(-180deg) translate(-50%,50%)
         color font-color
   .{sub-menu}-title
-    display flex
-    justify-content space-between
-    align-items center
     height 40px
+    line-height 40px
     cursor pointer
     padding-right 16px
     margin: 4px 0
+    position relative
     overflow: hidden;
     text-overflow: ellipsis;
     white-space:nowrap;
@@ -42,6 +43,10 @@ common-hover()
     .{sub-menu}-arrow
       font-size 12px
       transition all .2s
+      position absolute
+      right 8px
+      top 50%
+      transform translate(50%,-50%)
   .{sub-menu}-content
     padding: 0
 

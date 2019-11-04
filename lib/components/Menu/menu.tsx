@@ -2,11 +2,15 @@ import * as React from 'react';
 import classes from '../../helpers/classes';
 import MenuItem, {MenuItemProps} from "./menuItem"
 import SubMenu, {SubMenuProps} from "./subMenu";
+import ItemGroup, {ItemGroupProps} from "./itemGroup";
 import MenuContext, {MenuContextProps, OnChangeType} from "./context";
 import './menu.styl';
 import {useState} from "react";
 
-export type ChildrenType = React.ReactElement<MenuItemProps> | React.ReactElement<SubMenuProps>
+export type ChildrenType =
+    React.ReactElement<MenuItemProps> |
+    React.ReactElement<SubMenuProps> |
+    React.ReactElement<ItemGroupProps>
 
 interface MenuProps {
   mode?: "vertical" | "horizontal"
@@ -18,6 +22,7 @@ interface MenuProps {
 interface MenuComponent<P> extends React.FC<P> {
   MenuItem: React.FC<MenuItemProps>
   SubMenu: React.FC<SubMenuProps>
+  ItemGroup: React.FC<ItemGroupProps>
 }
 
 const Menu: MenuComponent<MenuProps & MenuContextProps> =
@@ -69,5 +74,6 @@ const Menu: MenuComponent<MenuProps & MenuContextProps> =
 
 Menu.MenuItem = MenuItem;
 Menu.SubMenu = SubMenu;
+Menu.ItemGroup = ItemGroup;
 
 export default Menu

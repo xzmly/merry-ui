@@ -16,7 +16,8 @@ const MenuItem: React.FC<MenuItemProps> =
 
       const {
         onSelect,
-        selectedName
+        selectedNames,
+        defaultSelectedNames
       } = useContext(MenuContext);
 
       const {
@@ -29,9 +30,15 @@ const MenuItem: React.FC<MenuItemProps> =
 
       const paddingLeft:number = ((itemIndex || defaultIndex) - 1)*24 + 40;
 
+      const names:Array<string> = selectedNames || defaultSelectedNames || [];
+
+      const onClick = ():void => {
+        onSelect && onSelect([name],restData)
+      };
+
       return (
-          <li className={classes(className,'menu-item',selectedName === name ? 'active' : "")}
-              onClick={()=>onSelect && onSelect(name,restData)}
+          <li className={classes(className,'menu-item', names.includes(name) ? 'active' : "")}
+              onClick={()=>onClick()}
               style={{paddingLeft: `${paddingLeft}px`}}
           >
             {children}

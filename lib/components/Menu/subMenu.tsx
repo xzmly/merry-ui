@@ -35,7 +35,7 @@ const SubMenu: React.FC<SubMenuProps> =
         restData
       } = props;
 
-      const defaultNamesOrNames:Array<string> = defaultOpenNames || openNames || [];
+      const defaultNamesOrNames:Array<string> = openNames || defaultOpenNames || [];
 
       const visible:boolean = defaultNamesOrNames.includes(name);
 
@@ -60,9 +60,9 @@ const SubMenu: React.FC<SubMenuProps> =
                   _children(item,preArray) :
                   item.type.name === 'SubMenu' ?
                       preArray.push(React.cloneElement(item, { subMenuIndex: (subMenuIndex || 1) + 1 })) :
-                  item.type.name == 'MenuItem' ?
+                  item.type.name === 'MenuItem' ?
                       preArray.push(React.cloneElement(item, { itemIndex: subMenuIndex || 1 })) :
-                      preArray.push(item)
+                  preArray.push(item)
             );
             return preArray
       };

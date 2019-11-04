@@ -2,7 +2,7 @@ import * as React from 'react';
 import classes from '../../helpers/classes';
 import MenuItem, {MenuItemProps} from "./menuItem"
 import SubMenu, {SubMenuProps} from "./subMenu";
-import MenuContext, {ContextType, MenuContextProps, RestDataType} from "./context";
+import MenuContext, {MenuContextProps, RestDataType} from "./context";
 import './menu.styl';
 import {useState} from "react";
 
@@ -29,23 +29,31 @@ const Menu: MenuComponent<MenuProps & MenuContextProps> =
         onSubMenuChange,
         openNames,
         defaultOpenNames,
-        onSelect
+        onSelect,
+        defaultSelectedNames,
+        selectedNames
       } = props;
 
-      const [defaultValues, setDefaultValues] = useState<Array<string> | undefined>(defaultOpenNames);
-      const [selectedName, setSelectedName] = useState<string | undefined>("");
+      const [defaultValues, setDefaultValues] =
+          useState<Array<string> | undefined>(defaultOpenNames);
 
-      const contextValues: MenuContextProps & ContextType = {
+      const [defaultSelectedValue, setDefaultSelectedValue] =
+          useState<Array<string> | undefined>(defaultSelectedNames);
+
+      const contextValues: MenuContextProps = {
         defaultOpenNames: defaultValues,
         openNames: openNames,
-        onSubMenuChange: defaultOpenNames ?
-            (names: Array<string>) => setDefaultValues(names) :
-            (names: Array<string>, restData?: RestDataType) => onSubMenuChange && onSubMenuChange(names, restData),
-        onSelect: (name: string, restData?: RestDataType) => {
-          setSelectedName(name);
-          onSelect && onSelect(name, restData)
-        },
-        selectedName: selectedName
+        onSubMenuChange: (names: Array<string>, restData?: RestDataType) =>
+            openNames ?
+                onSubMenuChange && onSubMenuChange(names, restData) :
+                setDefaultValues(names),
+
+        defaultSelectedNames: defaultSelectedValue,
+        selectedNames: selectedNames,
+        onSelect: (names: Array<string>, restData?: RestDataType) =>
+            selectedNames ?
+              onSelect && onSelect(names, restData) :
+              setDefaultSelectedValue(names)
       };
 
       return (

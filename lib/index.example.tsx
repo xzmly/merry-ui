@@ -39,6 +39,7 @@ const arr: any = [
 const App = () => {
 
   const [names,setName] = useState<Array<string>>([]);
+  const [item,setItem] =  useState<Array<string>>([]);
 
   const onSubMenuChange = (e:string[],x:any) =>{
     console.log(e,x);
@@ -51,8 +52,13 @@ const App = () => {
         <Layout>
           <Aside style={{borderRight: "1px solid #ddd",width: "256px"}}>
             <Menu openNames={names}
-                  onSelect={(e,x)=>console.log(e,x)}
-                  onSubMenuChange={(e:string[],x:any)=>onSubMenuChange(e,x)}>
+                  defaultOpenNames={["icon"]}
+                  onSubMenuChange={(e:string[],x:any)=>onSubMenuChange(e,x)}
+
+                  onSelect={(e,x)=>setItem(e)}
+                  defaultSelectedNames={["icon1"]}
+                  selectedNames={item}
+                  >
               {arr.map((v:any) => <SubMenu
                 restData={
                   {item: v}

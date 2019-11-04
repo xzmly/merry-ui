@@ -71,7 +71,7 @@ const SubMenu: React.FC<SubMenuProps> =
           <li className={classes(className,'sub-menu',visible ? 'active':'')}>
             <div className={childrenClass('title')}
                  onClick={() => toggleVisible()}
-                 style={{paddingLeft: `${(subMenuIndex || 1)*24}px`}}
+                 style={{paddingLeft: `${(subMenuIndex || 1)*20}px`}}
             >
               {title}
               <Icon name={'arrow'}

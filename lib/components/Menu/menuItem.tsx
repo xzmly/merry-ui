@@ -27,7 +27,7 @@ const MenuItem: React.FC<MenuItemProps> =
         restData
       } = props;
 
-      const paddingLeft:number = ((itemIndex || defaultIndex) - 1)*24 + 48;
+      const paddingLeft:number = ((itemIndex || defaultIndex) - 1)*24 + 40;
 
       return (
           <li className={classes(className,'menu-item',selectedName === name ? 'active' : "")}

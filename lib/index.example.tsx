@@ -49,7 +49,7 @@ const App = () => {
       <Layout>
         <Header className={'header'}>header</Header>
         <Layout>
-          <Aside style={{borderRight: "1px solid #ddd"}}>
+          <Aside style={{borderRight: "1px solid #ddd",width: "256px"}}>
             <Menu openNames={names}
                   onSelect={(e,x)=>console.log(e,x)}
                   onSubMenuChange={(e:string[],x:any)=>onSubMenuChange(e,x)}>
@@ -59,7 +59,7 @@ const App = () => {
                 }
                 title={
                   <span>
-                    <Icon name={'table'} style={{marginRight: "6px",fontSize: "18px"}}/>
+                    <Icon name={'table'} style={{marginRight: "2px",fontSize: "18px"}}/>
                     <span>{v.name}</span>
                   </span>
                 }

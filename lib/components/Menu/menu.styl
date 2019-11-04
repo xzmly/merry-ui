@@ -10,10 +10,15 @@ common-hover()
     color primary-color
     transition all .2s
 
+content-ellipsis()
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space:nowrap;
+
+
 .{sub-menu}-content,.{menu}
   list-style-type none
   padding-inline-start 0
-
 
 .{menu}
   min-height 80px
@@ -36,9 +41,7 @@ common-hover()
     padding-right 32px
     margin: 4px 0
     position relative
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space:nowrap;
+    content-ellipsis()
     common-hover()
     .{sub-menu}-arrow
       font-size 12px
@@ -54,12 +57,13 @@ common-hover()
   common-hover()
   cursor pointer
   height 40px
-  display flex
-  justify-content space-between
-  align-items center
+  line-height 40px
   padding-right: 13px;
   margin: 4px 0
+  box-sizing border-box
+  content-ellipsis()
   &.{class-prefix}-active
+    transition all .2s
     background rgba(21, 171, 255, 0.24)
     color primary-color
     border-right 3px solid primary-color

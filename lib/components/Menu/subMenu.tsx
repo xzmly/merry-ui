@@ -39,12 +39,16 @@ const SubMenu: React.FC<SubMenuProps> =
 
       const visible:boolean = defaultNamesOrNames.includes(name);
 
-      const toggleVisible = ():void => {
+      const toggleVisible = (e:React.MouseEvent<HTMLElement>):void => {
         const newKeys = visible ?
             defaultNamesOrNames.filter(v => v !== name) :
             [name,...defaultNamesOrNames];
 
-        onSubMenuChange && onSubMenuChange(newKeys,restData);
+        onSubMenuChange && onSubMenuChange({
+          names: newKeys,
+          event: e,
+          restData
+        });
       };
 
       const childrenClass = (postfix:string,...names: Array<string>):string =>
@@ -70,7 +74,7 @@ const SubMenu: React.FC<SubMenuProps> =
       return (
           <li className={classes(className,'sub-menu',visible ? 'active':'')}>
             <div className={childrenClass('title')}
-                 onClick={() => toggleVisible()}
+                 onClick={toggleVisible}
                  style={{paddingLeft: `${(subMenuIndex || 1)*20}px`}}
             >
               {title}

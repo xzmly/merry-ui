@@ -4,21 +4,27 @@ export type RestDataType = {
   item: object
 }
 
+export type OnChangeType = {
+  names: Array<string>
+  event:React.MouseEvent
+  restData?: RestDataType
+};
+
 export interface MenuContextProps {
   openNames?: Array<string>
-  onSubMenuChange?: (keys: Array<string>,restData?: RestDataType) => void
+  onSubMenuChange?: (params: OnChangeType) => void
   defaultOpenNames?: Array<string>
 
-  onSelect?: (names: Array<string>,restData?: RestDataType) => void
+  onSelect?: (params: OnChangeType) => void
   defaultSelectedNames?: Array<string>
   selectedNames?: Array<string>
 }
 
 const MenuContext = React.createContext<MenuContextProps>({
   openNames: [],
-  onSubMenuChange: (names: Array<string>,restData: RestDataType) => null,
+  onSubMenuChange: (params: OnChangeType) => null,
   defaultOpenNames: [],
-  onSelect: (names: Array<string>,restData?: RestDataType) => null,
+  onSelect: (params: OnChangeType) => null,
   defaultSelectedNames: [],
   selectedNames: []
 });

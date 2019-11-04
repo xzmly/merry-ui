@@ -32,13 +32,17 @@ const MenuItem: React.FC<MenuItemProps> =
 
       const names:Array<string> = selectedNames || defaultSelectedNames || [];
 
-      const onClick = ():void => {
-        onSelect && onSelect([name],restData)
+      const onClick = (e:React.MouseEvent<HTMLElement>):void => {
+        onSelect && onSelect({
+          names: [name],
+          event: e,
+          restData
+        })
       };
 
       return (
           <li className={classes(className,'menu-item', names.includes(name) ? 'active' : "")}
-              onClick={()=>onClick()}
+              onClick={onClick}
               style={{paddingLeft: `${paddingLeft}px`}}
           >
             {children}

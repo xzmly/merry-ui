@@ -2,7 +2,7 @@ import * as React from 'react';
 import classes from '../../helpers/classes';
 import MenuItem, {MenuItemProps} from "./menuItem"
 import SubMenu, {SubMenuProps} from "./subMenu";
-import MenuContext, {MenuContextProps, RestDataType} from "./context";
+import MenuContext, {MenuContextProps, OnChangeType} from "./context";
 import './menu.styl';
 import {useState} from "react";
 
@@ -43,16 +43,16 @@ const Menu: MenuComponent<MenuProps & MenuContextProps> =
       const contextValues: MenuContextProps = {
         defaultOpenNames: defaultValues,
         openNames: openNames,
-        onSubMenuChange: (names: Array<string>, restData?: RestDataType) =>
+        onSubMenuChange: ({names,...restParams}: OnChangeType) =>
             openNames ?
-                onSubMenuChange && onSubMenuChange(names, restData) :
+                onSubMenuChange && onSubMenuChange({names,...restParams}) :
                 setDefaultValues(names),
 
         defaultSelectedNames: defaultSelectedValue,
         selectedNames: selectedNames,
-        onSelect: (names: Array<string>, restData?: RestDataType) =>
+        onSelect: ({names,...restParams}: OnChangeType) =>
             selectedNames ?
-              onSelect && onSelect(names, restData) :
+              onSelect && onSelect({names,...restParams}) :
               setDefaultSelectedValue(names)
       };
 

@@ -41,9 +41,8 @@ const App = () => {
   const [names,setName] = useState<Array<string>>([]);
   const [item,setItem] =  useState<Array<string>>([]);
 
-  const onSubMenuChange = (e:string[],x:any) =>{
-    console.log(e,x);
-    setName(e)
+  const onSubMenuChange = (names:any) =>{
+    setName(names)
   };
 
   return (
@@ -53,9 +52,9 @@ const App = () => {
           <Aside style={{borderRight: "1px solid #ddd",width: "256px"}}>
             <Menu openNames={names}
                   defaultOpenNames={["icon"]}
-                  onSubMenuChange={(e:string[],x:any)=>onSubMenuChange(e,x)}
+                  onSubMenuChange={({names})=>onSubMenuChange(names)}
 
-                  onSelect={(e,x)=>setItem(e)}
+                  onSelect={({names})=>setItem(names)}
                   defaultSelectedNames={["icon1"]}
                   selectedNames={item}
                   >

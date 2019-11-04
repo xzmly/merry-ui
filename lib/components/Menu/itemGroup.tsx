@@ -6,7 +6,7 @@ import {SubMenuProps} from "./subMenu";
 export interface ItemGroupProps {
   children?: React.ReactElement<MenuItemProps> | React.ReactElement<SubMenuProps>
   className?: string
-  title?: React.ReactNode
+  title: React.ReactNode
 }
 
 const ItemGroup: React.FC<ItemGroupProps> =
@@ -14,14 +14,17 @@ const ItemGroup: React.FC<ItemGroupProps> =
 
   const { children,className,title } = props;
 
-  return (<li className={classes(className,'menu-item-group')}>
-    <div className={classes(undefined,'menu-item-group-title')}>
-      {title}
-    </div>
-    <ul>
-      {children}
-    </ul>
-  </li>)
+  return (
+      <li className={classes(className,'menu-item-group')}>
+        <div className={classes(undefined,'menu-item-group-title')}
+        >
+          {title}
+        </div>
+        <ul>
+          {children}
+        </ul>
+      </li>
+  )
 };
 
 export default ItemGroup

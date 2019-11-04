@@ -52,6 +52,8 @@ const SubMenu: React.FC<SubMenuProps> =
       const childrenClass = (postfix:string,...names: Array<string>):string =>
           classes("",`sub-menu-${postfix}`,...names);
 
+      const paddingLeft: number = (subMenuIndex || 1)*20;
+
       const _children: any =
           (
               curArray: any,
@@ -63,7 +65,7 @@ const SubMenu: React.FC<SubMenuProps> =
                   item.type.name === 'SubMenu' ?
                       preArray.push(React.cloneElement(item, { subMenuIndex: (subMenuIndex || 1) + 1 })) :
                   item.type.name === 'MenuItem' ?
-                      preArray.push(React.cloneElement(item, { itemIndex: subMenuIndex || 1 })) :
+                      preArray.push(React.cloneElement(item, { itemPaddingLeft: subMenuIndex || 1 })) :
                   preArray.push(item)
             );
             return preArray
@@ -73,7 +75,7 @@ const SubMenu: React.FC<SubMenuProps> =
           <li className={classes(className,'sub-menu',visible ? 'active':'')}>
             <div className={childrenClass('title')}
                  onClick={toggleVisible}
-                 style={{paddingLeft: `${(subMenuIndex || 1)*20}px`}}
+                 style={{paddingLeft: `${paddingLeft}px`}}
             >
               {title}
               <Icon name={'arrow'}

@@ -7,6 +7,7 @@ export interface MenuItemProps extends React.HTMLAttributes<HTMLElement> {
   name: string
   itemIndex?: number
   restData?: RestDataType
+  disabled?: boolean
 }
 
 const defaultIndex:number = 1;
@@ -25,7 +26,8 @@ const MenuItem: React.FC<MenuItemProps> =
         children,
         name,
         itemIndex,
-        restData
+        restData,
+        disabled
       } = props;
 
       const paddingLeft:number = ((itemIndex || defaultIndex) - 1)*24 + 40;
@@ -33,6 +35,7 @@ const MenuItem: React.FC<MenuItemProps> =
       const names:Array<string> = selectedNames || defaultSelectedNames || [];
 
       const onClick = (e:React.MouseEvent<HTMLElement>):void => {
+        if (disabled) return;
         onSelect && onSelect({
           names: [name],
           event: e,
@@ -41,7 +44,12 @@ const MenuItem: React.FC<MenuItemProps> =
       };
 
       return (
-          <li className={classes(className,'menu-item', names.includes(name) ? 'active' : "")}
+          <li className={classes(
+              className,
+              'menu-item',
+              names.includes(name) ? 'active' : "",
+              disabled ? "disabled" : ""
+          )}
               onClick={onClick}
               style={{paddingLeft: `${paddingLeft}px`}}
           >

@@ -82,7 +82,8 @@ const App = () => {
                           }
                           key={x.name}
                           name={x.name}>
-                        {x.items.map((y:any) => <MenuItem key={y.name} name={y.name}>{y.name}</MenuItem>)}
+                        {x.items.map((y:any) =>
+                            <MenuItem key={y.name} name={y.name} disabled>{y.name}</MenuItem>)}
                       </SubMenu>
                   )
                 }

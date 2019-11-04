@@ -5,9 +5,9 @@ sub-menu = class-prefix + '-sub-menu'
 menu-item = class-prefix + '-menu-item'
 font-color = rgba(0,0,0,0.75)
 
-common-hover()
+common-hover(color)
   &:hover
-    color primary-color
+    color color
     transition all .2s
 
 content-ellipsis()
@@ -42,7 +42,7 @@ content-ellipsis()
     margin: 4px 0
     position relative
     content-ellipsis()
-    common-hover()
+    common-hover(primary-color)
     .{sub-menu}-arrow
       font-size 12px
       transition all .2s
@@ -54,7 +54,7 @@ content-ellipsis()
     padding: 0
 
 .{menu-item}
-  common-hover()
+  common-hover(primary-color)
   cursor pointer
   height 40px
   line-height 40px
@@ -62,6 +62,10 @@ content-ellipsis()
   margin: 4px 0
   box-sizing border-box
   content-ellipsis()
+  &.{class-prefix}-disabled
+    opacity 0.5
+    cursor not-allowed
+    common-hover(font-color)
   &.{class-prefix}-active
     transition all .2s
     background rgba(21, 171, 255, 0.24)

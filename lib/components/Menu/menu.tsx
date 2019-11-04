@@ -13,10 +13,10 @@ export type ChildrenType =
     React.ReactElement<ItemGroupProps>
 
 interface MenuProps {
-  mode?: "vertical" | "horizontal"
   className?: string
   children?: ChildrenType | Array<ChildrenType>
   style?: React.CSSProperties
+  theme?: 'default' | 'black' | 'blue' | 'green'
 }
 
 interface MenuComponent<P> extends React.FC<P> {
@@ -36,7 +36,8 @@ const Menu: MenuComponent<MenuProps & MenuContextProps> =
         defaultOpenNames,
         onSelect,
         defaultSelectedNames,
-        selectedNames
+        selectedNames,
+        theme
       } = props;
 
       const [defaultValues, setDefaultValues] =
@@ -65,7 +66,7 @@ const Menu: MenuComponent<MenuProps & MenuContextProps> =
           <MenuContext.Provider
               value={contextValues}
           >
-            <ul className={classes(className, 'menu')}>
+            <ul className={classes(className, 'menu',theme && `menu-theme-${theme}`)}>
               {children}
             </ul>
           </MenuContext.Provider>

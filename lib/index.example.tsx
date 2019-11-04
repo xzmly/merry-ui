@@ -57,6 +57,8 @@ const App = () => {
                   onSelect={({names}) => setItem(names)}
                   defaultSelectedNames={["icon1"]}
                   selectedNames={item}
+
+                  theme={'blue'}
             >
               {arr.map((v: any) =>
                   <ItemGroup title={v.name} key={v.name}>
@@ -87,7 +89,7 @@ const App = () => {
                                 name={x.name}>
                               {x.items.map((y: any) =>
                                   <ItemGroup title={y.name} key={y.name}>
-                                    <MenuItem key={y.name} name={y.name} disabled>{y.name}</MenuItem>
+                                    <MenuItem key={y.name} name={y.name}>{y.name}</MenuItem>
                                   </ItemGroup>
                                     )}
                               </SubMenu>

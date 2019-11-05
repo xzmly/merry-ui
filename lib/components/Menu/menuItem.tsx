@@ -5,9 +5,9 @@ import MenuContext,{RestDataType}from "./context";
 
 export interface MenuItemProps extends React.HTMLAttributes<HTMLElement> {
   name: string
-  itemPaddingLeft?: number
   restData?: RestDataType
   disabled?: boolean
+  paddingLeft?:number
 }
 
 const MenuItem: React.FC<MenuItemProps> =
@@ -23,9 +23,9 @@ const MenuItem: React.FC<MenuItemProps> =
         className,
         children,
         name,
-        itemPaddingLeft,
         restData,
-        disabled
+        disabled,
+        paddingLeft
       } = props;
 
       const names:Array<string> = selectedNames || defaultSelectedNames || [];
@@ -47,7 +47,7 @@ const MenuItem: React.FC<MenuItemProps> =
               disabled ? "disabled" : ""
           )}
               onClick={onClick}
-              style={{paddingLeft: `${itemPaddingLeft || 20}px`}}
+              style={{paddingLeft: `${paddingLeft}px`}}
           >
             {children}
           </li>

@@ -48,14 +48,30 @@ const App = () => {
                   <span>组件</span>
                 </span>
               }>
-                <ItemGroup title={'通用'}>
+                <SubMenu key={'key6'} name={'nav'} title={
+                  <span>
+                    <Icon name={'nav'} style={{fontSize: '18px',marginRight: '8px'}}/>
+                    <span>脚步</span>
+                  </span>
+                }>
+                  <MenuItem key={'footer'} name={'footer'}>Footer</MenuItem>
+                </SubMenu>
+                <ItemGroup title={'通用'} key={1}>
                   <MenuItem key={'icon'} name={'icon'}>Icon</MenuItem>
                   <MenuItem key={'button'} name={'button'}>button</MenuItem>
+                  <SubMenu key={'key5'} name={'common1'} title={
+                    <span>
+                      <Icon name={'download'} style={{fontSize: '18px',marginRight: '8px'}}/>
+                      <span>头部</span>
+                    </span>
+                  }>
+                    <MenuItem key={'navBar'} name={'navBar'}>NavBar</MenuItem>
+                  </SubMenu>
                 </ItemGroup>
-                <ItemGroup title={'布局'}>
+                <ItemGroup title={'布局'} key={2}>
                   <MenuItem key={'layout'} name={'layout'}>Layout</MenuItem>
                 </ItemGroup>
-                <ItemGroup title={'导航'}>
+                <ItemGroup title={'导航'} key={3}>
                   <MenuItem key={'menu'} name={'menu'}>Menu</MenuItem>
                 </ItemGroup>
               </SubMenu>

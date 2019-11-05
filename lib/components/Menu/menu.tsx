@@ -1,11 +1,11 @@
 import * as React from 'react';
+import {useState} from "react";
 import classes from '../../helpers/classes';
 import MenuItem, {MenuItemProps} from "./menuItem"
 import SubMenu, {SubMenuProps} from "./subMenu";
 import ItemGroup, {ItemGroupProps} from "./itemGroup";
 import MenuContext, {MenuContextProps, OnChangeType} from "./context";
 import './menu.styl';
-import {useState} from "react";
 
 export type ChildrenType =
     React.ReactElement<MenuItemProps> |
@@ -62,12 +62,39 @@ const Menu: MenuComponent<MenuProps & MenuContextProps> =
               setDefaultSelectedValue(names)
       };
 
+      const _children:any = (
+          cur: any,
+          pre: any = [],
+          padding: any = 20
+      ) => {
+        if(cur instanceof Array){
+          cur.forEach((item: any) => {
+            if(item.type.name === 'SubMenu'){
+              pre.push(
+                  React.cloneElement(item,{paddingLeft: padding},_children(item.props.children,[],padding + 20))
+              )
+            }else if(item.type.name === 'MenuItem'){
+              pre.push(React.cloneElement(item,{paddingLeft: padding}))
+            }else if(item.type.name === 'ItemGroup'){
+              pre.push(
+                  React.cloneElement(item,{},_children(item.props.children,[],padding))
+              )
+            }else{
+              pre.push(item)
+            }
+          });
+          return pre
+        }else{
+          return React.cloneElement(cur,{paddingLeft:padding})
+        }
+      };
+
       return (
           <MenuContext.Provider
               value={contextValues}
           >
             <ul className={classes(className, 'menu',theme && `menu-theme-${theme}`)}>
-              {children}
+              {_children(children)}
             </ul>
           </MenuContext.Provider>
       )

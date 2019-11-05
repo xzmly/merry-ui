@@ -3,8 +3,10 @@ import classes from '../../helpers/classes';
 import {MenuItemProps} from "./menuItem";
 import {SubMenuProps} from "./subMenu";
 
+type ChildrenType = React.ReactElement<MenuItemProps> | React.ReactElement<SubMenuProps>
+
 export interface ItemGroupProps {
-  children?: React.ReactElement<MenuItemProps> | React.ReactElement<SubMenuProps>
+  children?: ChildrenType | Array<ChildrenType>
   className?: string
   title: React.ReactNode
 }

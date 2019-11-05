@@ -8,32 +8,6 @@ import Menu from "./components/Menu/menu";
 
 const {Aside, Content, Header, Footer} = Layout;
 const {MenuItem, SubMenu, ItemGroup} = Menu;
-const arr: any = [
-  {
-    name: "button",
-    items: [{name: "button1"}],
-    children: [{
-      name: "buttonChildren",
-      items: [{name: "buttonChildren1"}],
-    }]
-  },
-  {
-    name: "icon",
-    items: [{name: "icon1"}],
-    children: [{
-      name: "iconChildren",
-      items: [{name: "iconChildren1"}],
-    }]
-  },
-  {
-    name: "menu",
-    items: [{name: "menu1"}],
-    children: [{
-      name: "menuChildren",
-      items: [{name: "menuChildren1"}],
-    }]
-  }
-];
 
 
 const App = () => {
@@ -60,46 +34,42 @@ const App = () => {
 
                   theme={'blue'}
             >
-              {arr.map((v: any) =>
-                  <ItemGroup title={v.name} key={v.name}>
-                    <SubMenu
-                        restData={
-                          {item: v}
-                        }
-                        title={
-                          <span>
-                            <Icon name={'table'} style={{marginRight: "2px", fontSize: "18px"}}/>
-                            <span>{v.name}</span>
-                          </span>
-                        }
-                        key={v.name}
-                        name={v.name}
-                    >
-                      {
-                        v.children.map((x: any) =>
+              <MenuItem key={'key1'} name={'key1'}>
+                <Icon name={'alipay'} style={{fontSize: '18px',marginRight: '8px'}}/>
+                Option1
+              </MenuItem>
+              <MenuItem key={'key2'} name={'key2'}>
+                <Icon name={'email'} style={{fontSize: '18px',marginRight: '8px'}}/>
+                Option1
+              </MenuItem>
+              <SubMenu key={'key3'} name={'common'} title={
+                <span>
+                  <Icon name={'table'} style={{fontSize: '18px',marginRight: '8px'}}/>
+                  <span>组件</span>
+                </span>
+              }>
+                <ItemGroup title={'通用'}>
+                  <MenuItem key={'icon'} name={'icon'}>Icon</MenuItem>
+                  <MenuItem key={'button'} name={'button'}>button</MenuItem>
+                </ItemGroup>
+                <ItemGroup title={'布局'}>
+                  <MenuItem key={'layout'} name={'layout'}>Layout</MenuItem>
+                </ItemGroup>
+                <ItemGroup title={'导航'}>
+                  <MenuItem key={'menu'} name={'menu'}>Menu</MenuItem>
+                </ItemGroup>
+              </SubMenu>
+              <SubMenu key={'key4'} name={'key4'} title={
+                <span>
+                  <Icon name={'time'} style={{fontSize: '18px',marginRight: '8px'}}/>
+                  <span>时间</span>
+                </span>
+              }>
+                <MenuItem key={'option4'} name={'option4'}>Option4</MenuItem>
+                <MenuItem key={'option5'} name={'option5'}>Option5</MenuItem>
+                <MenuItem key={'option6'} name={'option6'}>Option6</MenuItem>
+              </SubMenu>
 
-                              <SubMenu
-                                restData={
-                                  {item: x}
-                                }
-                                title={
-                                  <span>{x.name}</span>
-                                }
-                                key={x.name}
-                                name={x.name}>
-                              {x.items.map((y: any) =>
-                                  <ItemGroup title={y.name} key={y.name}>
-                                    <MenuItem key={y.name} name={y.name}>{y.name}</MenuItem>
-                                  </ItemGroup>
-                                    )}
-                              </SubMenu>
-                        )
-                      }
-                      {v.items.map((z: any) => <MenuItem restData={{item: z}} key={z.name}
-                                                         name={z.name}>{z.name}</MenuItem>)}
-                    </SubMenu>
-                  </ItemGroup>
-              )}
             </Menu>
           </Aside>
           <Content>

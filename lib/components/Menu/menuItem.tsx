@@ -5,12 +5,10 @@ import MenuContext,{RestDataType}from "./context";
 
 export interface MenuItemProps extends React.HTMLAttributes<HTMLElement> {
   name: string
-  itemIndex?: number
+  itemPaddingLeft?: number
   restData?: RestDataType
   disabled?: boolean
 }
-
-const defaultIndex:number = 1;
 
 const MenuItem: React.FC<MenuItemProps> =
     props => {
@@ -25,12 +23,10 @@ const MenuItem: React.FC<MenuItemProps> =
         className,
         children,
         name,
-        itemIndex,
+        itemPaddingLeft,
         restData,
         disabled
       } = props;
-
-      const paddingLeft:number = ((itemIndex || defaultIndex) - 1)*24 + 40;
 
       const names:Array<string> = selectedNames || defaultSelectedNames || [];
 
@@ -51,7 +47,7 @@ const MenuItem: React.FC<MenuItemProps> =
               disabled ? "disabled" : ""
           )}
               onClick={onClick}
-              style={{paddingLeft: `${paddingLeft}px`}}
+              style={{paddingLeft: `${itemPaddingLeft || 20}px`}}
           >
             {children}
           </li>

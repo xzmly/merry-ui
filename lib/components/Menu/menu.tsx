@@ -79,18 +79,19 @@ const Menu: MenuComponent<MenuProps & MenuContextProps> =
       type childrenNameType = 'SubMenu' | 'MenuItem' | 'ItemGroup'
 
       const _children = (
-          cur?: ChildrenType | Array<ChildrenType>,
+          cur: any,
           pre: any = [],
           padding: number = 20
-      ): ChildrenType | Array<ChildrenType> => {
+      ): any => {
 
-        if (!(cur instanceof Array)) return React.cloneElement(cur as React.ReactElement, {paddingLeft: padding});
+        if (!(cur instanceof Array)) {
+          return React.cloneElement(cur as React.ReactElement, {paddingLeft: padding});
+        }
 
         cur.forEach((item: ChildrenType) => {
           const _padding: number = (item?.type as any)?.name === 'SubMenu' ? padding + 20 : padding;
 
-          // @ts-ignore
-          childrenMaps[item?.type?.name as childrenNameType] ?
+          childrenMaps[(item?.type as any)?.name as childrenNameType] ?
               pre.push(
                   childrenMaps[(item?.type as any)?.name as childrenNameType](
                       item,
@@ -107,7 +108,7 @@ const Menu: MenuComponent<MenuProps & MenuContextProps> =
               value={contextValues}
           >
             <ul className={classes(className, 'menu', theme && `menu-theme-${theme}`)}>
-              {_children(children as ChildrenType | Array<ChildrenType>)}
+              {_children(children)}
             </ul>
           </MenuContext.Provider>
       )

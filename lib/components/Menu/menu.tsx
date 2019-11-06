@@ -25,6 +25,9 @@ interface MenuComponent<P> extends React.FC<P> {
   ItemGroup: React.FC<ItemGroupProps>
 }
 
+type CloneType = (e: React.ReactElement, props: { paddingLeft: number }, children: React.ReactNode[])
+    => React.ReactElement
+
 const Menu: MenuComponent<MenuProps & MenuContextProps> =
     props => {
 
@@ -49,52 +52,62 @@ const Menu: MenuComponent<MenuProps & MenuContextProps> =
       const contextValues: MenuContextProps = {
         defaultOpenNames: defaultValues,
         openNames: openNames,
-        onSubMenuChange: ({names,...restParams}: OnChangeType) =>
+        onSubMenuChange: ({names, ...restParams}: OnChangeType) =>
             openNames ?
-                onSubMenuChange && onSubMenuChange({names,...restParams}) :
+                onSubMenuChange && onSubMenuChange({names, ...restParams}) :
                 setDefaultValues(names),
 
         defaultSelectedNames: defaultSelectedValue,
         selectedNames: selectedNames,
-        onSelect: ({names,...restParams}: OnChangeType) =>
+        onSelect: ({names, ...restParams}: OnChangeType) =>
             selectedNames ?
-              onSelect && onSelect({names,...restParams}) :
-              setDefaultSelectedValue(names)
+                onSelect && onSelect({names, ...restParams}) :
+                setDefaultSelectedValue(names)
       };
 
-      const _children:any = (
-          cur: any,
+
+      const childrenMaps: {
+        SubMenu: CloneType
+        MenuItem: CloneType
+        ItemGroup: CloneType
+      } = {
+        'SubMenu': (e, props, children) => React.cloneElement(e, props, children),
+        'MenuItem': (e, props) => React.cloneElement(e, props),
+        'ItemGroup': (e, props, children) => React.cloneElement(e, {}, children)
+      };
+
+      type childrenNameType = 'SubMenu' | 'MenuItem' | 'ItemGroup'
+
+      const _children = (
+          cur?: ChildrenType | Array<ChildrenType>,
           pre: any = [],
-          padding: any = 20
-      ) => {
-        if(cur instanceof Array){
-          cur.forEach((item: any) => {
-            if(item.type.name === 'SubMenu'){
+          padding: number = 20
+      ): ChildrenType | Array<ChildrenType> => {
+
+        if (!(cur instanceof Array)) return React.cloneElement(cur as React.ReactElement, {paddingLeft: padding});
+
+        cur.forEach((item: ChildrenType) => {
+          const _padding: number = (item?.type as any)?.name === 'SubMenu' ? padding + 20 : padding;
+
+          // @ts-ignore
+          childrenMaps[item?.type?.name as childrenNameType] ?
               pre.push(
-                  React.cloneElement(item,{paddingLeft: padding},_children(item.props.children,[],padding + 20))
-              )
-            }else if(item.type.name === 'MenuItem'){
-              pre.push(React.cloneElement(item,{paddingLeft: padding}))
-            }else if(item.type.name === 'ItemGroup'){
-              pre.push(
-                  React.cloneElement(item,{},_children(item.props.children,[],padding))
-              )
-            }else{
-              pre.push(item)
-            }
-          });
-          return pre
-        }else{
-          return React.cloneElement(cur,{paddingLeft:padding})
-        }
+                  childrenMaps[(item?.type as any)?.name as childrenNameType](
+                      item,
+                      {paddingLeft: padding},
+                      _children(item.props.children, [], _padding)
+                  )) :
+              pre.push(item);
+        });
+        return pre
       };
 
       return (
           <MenuContext.Provider
               value={contextValues}
           >
-            <ul className={classes(className, 'menu',theme && `menu-theme-${theme}`)}>
-              {_children(children)}
+            <ul className={classes(className, 'menu', theme && `menu-theme-${theme}`)}>
+              {_children(children as ChildrenType | Array<ChildrenType>)}
             </ul>
           </MenuContext.Provider>
       )

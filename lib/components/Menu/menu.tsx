@@ -28,6 +28,8 @@ interface MenuComponent<P> extends React.FC<P> {
 type CloneType = (e: React.ReactElement, props: { paddingLeft: number }, children: React.ReactNode[])
     => React.ReactElement
 
+type childrenNameType = 'SubMenu' | 'MenuItem' | 'ItemGroup'
+
 const Menu: MenuComponent<MenuProps & MenuContextProps> =
     props => {
 
@@ -65,7 +67,6 @@ const Menu: MenuComponent<MenuProps & MenuContextProps> =
                 setDefaultSelectedValue(names)
       };
 
-
       const childrenMaps: {
         SubMenu: CloneType
         MenuItem: CloneType
@@ -75,8 +76,6 @@ const Menu: MenuComponent<MenuProps & MenuContextProps> =
         'MenuItem': (e, props) => React.cloneElement(e, props),
         'ItemGroup': (e, props, children) => React.cloneElement(e, {}, children)
       };
-
-      type childrenNameType = 'SubMenu' | 'MenuItem' | 'ItemGroup'
 
       const _children = (
           cur: any,

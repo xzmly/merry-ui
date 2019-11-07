@@ -11,22 +11,22 @@ export type OnChangeType = {
 };
 
 export interface MenuContextProps {
-  openNames?: Array<string>
+  openKeys?: Array<string>
   onSubMenuChange?: (params: OnChangeType) => void
-  defaultOpenNames?: Array<string>
+  defaultOpenKeys?: Array<string>
 
   onSelect?: (params: OnChangeType) => void
-  defaultSelectedNames?: Array<string>
-  selectedNames?: Array<string>
+  defaultSelectedKeys?: Array<string>
+  selectedKeys?: Array<string>
 }
 
 const MenuContext = React.createContext<MenuContextProps>({
-  openNames: [],
+  openKeys: [],
   onSubMenuChange: (params: OnChangeType) => null,
-  defaultOpenNames: [],
+  defaultOpenKeys: [],
   onSelect: (params: OnChangeType) => null,
-  defaultSelectedNames: [],
-  selectedNames: []
+  defaultSelectedKeys: [],
+  selectedKeys: []
 });
 
 export default MenuContext

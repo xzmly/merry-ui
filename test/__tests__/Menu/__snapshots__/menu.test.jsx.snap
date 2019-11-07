@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu menu 是个 ul 1`] = `
+<ul
+  className="merry-menu"
+/>
+`;
+
+exports[`Menu menu 的 children 1`] = `
+<ul
+  className="merry-menu"
+>
+  <li
+    className="merry-menu-item"
+    onClick={[Function]}
+    style={
+      Object {
+        "paddingLeft": "20px",
+      }
+    }
+  >
+    option1
+  </li>
+  <li
+    className="merry-sub-menu"
+  >
+    <div
+      className="merry-sub-menu-title"
+      onClick={[Function]}
+      style={
+        Object {
+          "paddingLeft": "20px",
+        }
+      }
+    >
+      <svg
+        className="merry-icon merry-sub-menu-arrow"
+      >
+        <use
+          xlinkHref="#arrow"
+        />
+      </svg>
+    </div>
+  </li>
+  <li
+    className="merry-menu-item-group"
+  >
+    <div
+      className="merry-menu-item-group-title"
+    >
+      通用
+    </div>
+    <ul>
+      <li
+        className="merry-menu-item"
+        onClick={[Function]}
+        style={
+          Object {
+            "paddingLeft": "20px",
+          }
+        }
+      >
+        option3
+      </li>
+      <li
+        className="merry-sub-menu"
+      >
+        <div
+          className="merry-sub-menu-title"
+          onClick={[Function]}
+          style={
+            Object {
+              "paddingLeft": "20px",
+            }
+          }
+        >
+          <svg
+            className="merry-icon merry-sub-menu-arrow"
+          >
+            <use
+              xlinkHref="#arrow"
+            />
+          </svg>
+        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+`;

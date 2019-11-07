@@ -9,7 +9,7 @@ export interface SubMenuProps {
   title?: React.ReactNode
   className?: string
   children?: ChildrenType | Array<ChildrenType>
-  name: string
+  _key: string
   style?: React.CSSProperties
   restData?: RestDataType
   paddingLeft?: number
@@ -19,28 +19,28 @@ const SubMenu: React.FC<SubMenuProps> =
     props => {
 
       const {
-        openNames,
+        openKeys,
         onSubMenuChange,
-        defaultOpenNames,
+        defaultOpenKeys,
       } = useContext(MenuContext);
 
       const {
         className,
         children,
         title,
-        name,
+        _key,
         restData,
         paddingLeft
       } = props;
 
-      const defaultNamesOrNames:Array<string> = openNames || defaultOpenNames || [];
+      const defaultNamesOrNames:Array<string> = openKeys || defaultOpenKeys || [];
 
-      const visible:boolean = defaultNamesOrNames.includes(name);
+      const visible:boolean = defaultNamesOrNames.includes(_key);
 
       const toggleVisible = (e:React.MouseEvent<HTMLElement>):void => {
         const newKeys = visible ?
-            defaultNamesOrNames.filter(v => v !== name) :
-            [name,...defaultNamesOrNames];
+            defaultNamesOrNames.filter(v => v !== _key) :
+            [_key,...defaultNamesOrNames];
 
         onSubMenuChange && onSubMenuChange({
           names: newKeys,

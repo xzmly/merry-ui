@@ -14,7 +14,7 @@ export type ChildrenType =
 
 interface MenuProps {
   className?: string
-  children?: ChildrenType | Array<ChildrenType>
+  children: ChildrenType | Array<ChildrenType>
   style?: React.CSSProperties
   theme?: 'default' | 'dark' | 'blue'
 }
@@ -37,32 +37,33 @@ const Menu: MenuComponent<MenuProps & MenuContextProps> =
         className,
         children,
         onSubMenuChange,
-        openNames,
-        defaultOpenNames,
+        openKeys,
+        defaultOpenKeys,
         onSelect,
-        defaultSelectedNames,
-        selectedNames,
-        theme
+        defaultSelectedKeys,
+        selectedKeys,
+        theme,
+        ...restProps
       } = props;
 
       const [defaultValues, setDefaultValues] =
-          useState<Array<string> | undefined>(defaultOpenNames);
+          useState<Array<string> | undefined>(defaultOpenKeys);
 
       const [defaultSelectedValue, setDefaultSelectedValue] =
-          useState<Array<string> | undefined>(defaultSelectedNames);
+          useState<Array<string> | undefined>(defaultSelectedKeys);
 
       const contextValues: MenuContextProps = {
-        defaultOpenNames: defaultValues,
-        openNames: openNames,
+        defaultOpenKeys: defaultValues,
+        openKeys: openKeys,
         onSubMenuChange: ({names, ...restParams}: OnChangeType) =>
-            openNames ?
+            openKeys ?
                 onSubMenuChange && onSubMenuChange({names, ...restParams}) :
                 setDefaultValues(names),
 
-        defaultSelectedNames: defaultSelectedValue,
-        selectedNames: selectedNames,
+        defaultSelectedKeys: defaultSelectedValue,
+        selectedKeys: selectedKeys,
         onSelect: ({names, ...restParams}: OnChangeType) =>
-            selectedNames ?
+            selectedKeys ?
                 onSelect && onSelect({names, ...restParams}) :
                 setDefaultSelectedValue(names)
       };
@@ -82,7 +83,7 @@ const Menu: MenuComponent<MenuProps & MenuContextProps> =
           pre: any = [],
           padding: number = 20
       ): any => {
-
+        if(!cur) return;
         if (!(cur instanceof Array)) {
           return React.cloneElement(cur as React.ReactElement, {paddingLeft: padding});
         }
@@ -108,7 +109,7 @@ const Menu: MenuComponent<MenuProps & MenuContextProps> =
           <MenuContext.Provider
               value={contextValues}
           >
-            <ul className={classes(className, 'menu', _theme)}>
+            <ul className={classes(className, 'menu', _theme)} {...restProps}>
               {_children(children)}
             </ul>
           </MenuContext.Provider>

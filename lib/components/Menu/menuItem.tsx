@@ -4,7 +4,7 @@ import classes from '../../helpers/classes';
 import MenuContext,{RestDataType}from "./context";
 
 export interface MenuItemProps extends React.HTMLAttributes<HTMLElement> {
-  name: string
+  _key: string
   restData?: RestDataType
   disabled?: boolean
   paddingLeft?:number
@@ -15,25 +15,25 @@ const MenuItem: React.FC<MenuItemProps> =
 
       const {
         onSelect,
-        selectedNames,
-        defaultSelectedNames
+        selectedKeys,
+        defaultSelectedKeys
       } = useContext(MenuContext);
 
       const {
         className,
         children,
-        name,
+        _key,
         restData,
         disabled,
         paddingLeft
       } = props;
 
-      const names:Array<string> = selectedNames || defaultSelectedNames || [];
+      const names:Array<string> = selectedKeys || defaultSelectedKeys || [];
 
       const onClick = (e:React.MouseEvent<HTMLElement>):void => {
         if (disabled) return;
         onSelect && onSelect({
-          names: [name],
+          names: [_key],
           event: e,
           restData
         })
@@ -43,7 +43,7 @@ const MenuItem: React.FC<MenuItemProps> =
           <li className={classes(
               className,
               'menu-item',
-              names.includes(name) ? 'active' : "",
+              names.includes(_key) ? 'active' : "",
               disabled ? "disabled" : ""
           )}
               onClick={onClick}

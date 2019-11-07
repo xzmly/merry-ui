@@ -16,7 +16,7 @@ interface MenuProps {
   className?: string
   children?: ChildrenType | Array<ChildrenType>
   style?: React.CSSProperties
-  theme?: 'default' | 'black' | 'blue' | 'green'
+  theme?: 'default' | 'dark' | 'blue'
 }
 
 interface MenuComponent<P> extends React.FC<P> {
@@ -102,11 +102,13 @@ const Menu: MenuComponent<MenuProps & MenuContextProps> =
         return pre
       };
 
+      const _theme:string = !theme || theme === 'default' ? '' : `menu-theme-${theme}`
+
       return (
           <MenuContext.Provider
               value={contextValues}
           >
-            <ul className={classes(className, 'menu', theme && `menu-theme-${theme}`)}>
+            <ul className={classes(className, 'menu', _theme)}>
               {_children(children)}
             </ul>
           </MenuContext.Provider>

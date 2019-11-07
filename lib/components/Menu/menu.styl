@@ -1,10 +1,12 @@
 @import '../../helpers/stylus.helper.styl';
+@import './theme.styl'
 
 menu = class-prefix + '-menu'
 sub-menu = class-prefix + '-sub-menu'
 menu-item = class-prefix + '-menu-item'
 item-group = class-prefix + '-menu-item-group'
 font-color = rgba(0,0,0,0.85)
+white-font-color = rgba(255,255,255,0.75)
 
 common-hover(color)
   &:hover
@@ -24,6 +26,7 @@ content-ellipsis()
   min-height 80px
   width 100%
   margin 0
+  overflow hidden
 
 .{sub-menu}
   color font-color
@@ -84,3 +87,10 @@ content-ellipsis()
     background rgba(21, 171, 255, 0.24)
     color primary-color
     border-right 3px solid primary-color
+
+.{menu}.{menu}-theme-blue
+  theme(primary-color,white-font-color,rgba(39, 76, 244, 0.59),#274cf4)
+
+.{menu}.{menu}-theme-dark
+  theme(dark-color,white-font-color,#0075f4, #0258f4)
+

@@ -1,0 +1,21 @@
+
+theme(background,li-font-color,item-active-background,item-border)
+  background background
+  li
+    color li-font-color
+  .{sub-menu}
+    &.{class-prefix}-active
+      > .{sub-menu}-title
+        color rgba(255,255,255,1)
+        > .{sub-menu}-arrow
+          color rgba(255,255,255,1)
+    .{sub-menu}-title
+      common-hover(rgba(255,255,255,1))
+  .{item-group} > .{item-group}-title
+    color rgba(255,255,255,0.5)
+  .{menu-item}
+    common-hover(rgba(255,255,255,1))
+    &.{class-prefix}-active
+      color rgba(255,255,255,1)
+      background item-active-background
+      border-right 3px solid item-border

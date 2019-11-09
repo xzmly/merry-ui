@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useContext } from "react"
 import classes from '../../helpers/classes';
-import MenuContext,{RestDataType}from "./context";
+import MenuContext,{RestDataType}from "./Context";
 
 export interface MenuItemProps extends React.HTMLAttributes<HTMLElement> {
   _key: string
@@ -10,7 +10,7 @@ export interface MenuItemProps extends React.HTMLAttributes<HTMLElement> {
   paddingLeft?:number
 }
 
-const MenuItem: React.FC<MenuItemProps> =
+const Item: React.FC<MenuItemProps> =
     props => {
 
       const {
@@ -54,4 +54,4 @@ const MenuItem: React.FC<MenuItemProps> =
       )
     };
 
-export default MenuItem
+export default Item

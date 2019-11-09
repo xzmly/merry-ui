@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classes from '../../helpers/classes';
-import './icon.styl';
+import './Icon.styl';
 import '../../helpers/importIcons';
 import createIconFont from './iconFont';
 

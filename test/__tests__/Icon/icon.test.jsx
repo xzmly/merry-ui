@@ -1,5 +1,5 @@
 import renderer from 'react-test-renderer'
-import Icon from '../../../lib/components/Icon/icon'
+import Icon from '../../../lib/components/Icon/Icon'
 import React from 'react'
 import {mount} from "enzyme/build/index";
 

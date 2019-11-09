@@ -2,8 +2,8 @@ import * as React from 'react';
 import { useContext } from "react"
 import classes from '../../helpers/classes';
 import Icon from "../Icon/icon";
-import {ChildrenType} from "./menu"
-import MenuContext,{RestDataType}from "./context";
+import {ChildrenType} from "./Menu"
+import MenuContext,{RestDataType}from "./Context";
 
 export interface SubMenuProps {
   title?: React.ReactNode

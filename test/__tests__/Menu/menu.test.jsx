@@ -1,23 +1,23 @@
-import Menu from '../../../lib/components/Menu/menu'
+import Menu from '../../../lib/components/Menu/Menu'
 import {mount} from "enzyme/build/index";
 import React from 'react'
 import renderer from "react-test-renderer";
 
-const { MenuItem,SubMenu,ItemGroup } = Menu;
+const { Item,SubMenu,ItemGroup } = Menu;
 
 const example =
     <Menu>
-      <MenuItem key={'1'} _key={'1'}>option1</MenuItem>
+      <Item key={'1'} _key={'1'}>option1</Item>
       <SubMenu _key={'2'} key={'2'}>
-        <MenuItem key={'3'} _key={'3'}>option2</MenuItem>
+        <Item key={'3'} _key={'3'}>option2</Item>
         <SubMenu _key={'8'} key={'8'}>
-          <MenuItem key={'9'} _key={'9'}>option2</MenuItem>
+          <Item key={'9'} _key={'9'}>option2</Item>
         </SubMenu>
       </SubMenu>
       <ItemGroup title={'通用'} key={'5'}>
-        <MenuItem key={'4'} _key={'4'}>option3</MenuItem>
+        <Item key={'4'} _key={'4'}>option3</Item>
         <SubMenu _key={'6'} key={'6'}>
-          <MenuItem key={'7'} _key={'7'}>option2</MenuItem>
+          <Item key={'7'} _key={'7'}>option2</Item>
         </SubMenu>
       </ItemGroup>
     </Menu>
@@ -61,7 +61,7 @@ describe('Menu',()=> {
     const c = mount(<Menu defaultOpenKeys={["2","8"]} onSubMenuChange={fn}>
       <SubMenu _key={'2'} key={'2'}>
         <SubMenu _key={'8'} key={'8'}>
-          <MenuItem key={'9'} _key={'9'}>option2</MenuItem>
+          <Item key={'9'} _key={'9'}>option2</Item>
         </SubMenu>
       </SubMenu>
     </Menu>);
@@ -74,7 +74,7 @@ describe('Menu',()=> {
     const c = mount(<Menu openKeys={["2","8"]}>
       <SubMenu _key={'2'} key={'2'}>
         <SubMenu _key={'8'} key={'8'}>
-          <MenuItem key={'9'} _key={'9'}>option2</MenuItem>
+          <Item key={'9'} _key={'9'}>option2</Item>
         </SubMenu>
       </SubMenu>
     </Menu>);
@@ -89,7 +89,7 @@ describe('Menu',()=> {
     const c = mount(<Menu openKeys={["2"]} onSubMenuChange={fn}>
       <SubMenu _key={'2'} key={'2'}>
         <SubMenu _key={'8'} key={'8'}>
-          <MenuItem key={'9'} _key={'9'}>option2</MenuItem>
+          <Item key={'9'} _key={'9'}>option2</Item>
         </SubMenu>
       </SubMenu>
     </Menu>);
@@ -100,8 +100,8 @@ describe('Menu',()=> {
   it('onSelect',()=>{
     const fn = jest.fn();
     const c = mount(<Menu selectedKeys={[]} onSelect={fn}>
-      <MenuItem key={'9'} _key={'9'}>option2</MenuItem>
-      <MenuItem key={'10'} _key={'10'} disabled>option3</MenuItem>
+      <Item key={'9'} _key={'9'}>option2</Item>
+      <Item key={'10'} _key={'10'} disabled>option3</Item>
     </Menu>);
     const items = c.find('.merry-menu-item');
     items.first().simulate('click');
@@ -113,7 +113,7 @@ describe('Menu',()=> {
   it('default',()=>{
     const fn = jest.fn();
     const c = mount(<Menu defaultSelectedKeys={["9"]} onSelect={fn}>
-      <MenuItem key={'9'} _key={'9'}>option2</MenuItem>
+      <Item key={'9'} _key={'9'}>option2</Item>
     </Menu>);
     const item = c.find('.merry-menu-item');
     item.simulate('click');

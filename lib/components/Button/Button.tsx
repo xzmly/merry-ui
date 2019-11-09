@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classes from '../../helpers/classes';
 import Icon from '../Icon/icon'
-import './button.styl';
+import './Button.styl';
 
 type IconType = {
     position?: 'left' | 'right'

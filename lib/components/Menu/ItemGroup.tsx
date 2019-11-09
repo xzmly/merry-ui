@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classes from '../../helpers/classes';
-import {MenuItemProps} from "./menuItem";
+import {MenuItemProps} from "./Item";
 import {SubMenuProps} from "./subMenu";
 
 type ChildrenType = React.ReactElement<MenuItemProps> | React.ReactElement<SubMenuProps>

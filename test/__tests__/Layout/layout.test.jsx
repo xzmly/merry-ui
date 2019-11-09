@@ -1,5 +1,5 @@
 import renderer from 'react-test-renderer'
-import Layout from '../../../lib/components/Layout/layout'
+import Layout from '../../../lib/components/Layout/Layout'
 import React from 'react'
 import {mount} from "enzyme/build/index";
 

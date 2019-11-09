@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {useState} from "react";
 import classes from '../../helpers/classes';
-import MenuItem, {MenuItemProps} from "./menuItem"
-import SubMenu, {SubMenuProps} from "./subMenu";
-import ItemGroup, {ItemGroupProps} from "./itemGroup";
-import MenuContext, {MenuContextProps, OnChangeType} from "./context";
-import './menu.styl';
+import MenuItem, {MenuItemProps} from "./Item"
+import SubMenu, {SubMenuProps} from "./SubMenu";
+import ItemGroup, {ItemGroupProps} from "./ItemGroup";
+import MenuContext, {MenuContextProps, OnChangeType} from "./Context";
+import './Menu.styl';
 
 export type ChildrenType =
     React.ReactElement<MenuItemProps> |
@@ -20,7 +20,7 @@ interface MenuProps {
 }
 
 interface MenuComponent<P> extends React.FC<P> {
-  MenuItem: React.FC<MenuItemProps>
+  Item: React.FC<MenuItemProps>
   SubMenu: React.FC<SubMenuProps>
   ItemGroup: React.FC<ItemGroupProps>
 }
@@ -28,7 +28,7 @@ interface MenuComponent<P> extends React.FC<P> {
 type CloneType = (e: React.ReactElement, props: { paddingLeft: number }, children: React.ReactNode[])
     => React.ReactElement
 
-type childrenNameType = 'SubMenu' | 'MenuItem' | 'ItemGroup'
+type childrenNameType = 'SubMenu' | 'Item' | 'ItemGroup'
 
 const Menu: MenuComponent<MenuProps & MenuContextProps> =
     props => {
@@ -70,11 +70,11 @@ const Menu: MenuComponent<MenuProps & MenuContextProps> =
 
       const childrenMaps: {
         SubMenu: CloneType
-        MenuItem: CloneType
+        Item: CloneType
         ItemGroup: CloneType
       } = {
         'SubMenu': (e, props, children) => React.cloneElement(e, props, children),
-        'MenuItem': (e, props) => React.cloneElement(e, props),
+        'Item': (e, props) => React.cloneElement(e, props),
         'ItemGroup': (e, props, children) => React.cloneElement(e, {}, children)
       };
 
@@ -117,7 +117,7 @@ const Menu: MenuComponent<MenuProps & MenuContextProps> =
       )
     };
 
-Menu.MenuItem = MenuItem;
+Menu.Item = MenuItem;
 Menu.SubMenu = SubMenu;
 Menu.ItemGroup = ItemGroup;
 

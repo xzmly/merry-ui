@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classes from '../../helpers/classes';
-import Aside,{ AsideProps }from "./aside"
-import './layout.styl';
+import Aside,{ AsideProps }from "./Aside"
+import './Layout.styl';
 
 interface LayoutProps extends React.HTMLAttributes<HTMLDivElement> {}
 

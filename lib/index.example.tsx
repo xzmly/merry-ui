@@ -5,9 +5,11 @@ import Icon from "./components/Icon/Icon"
 import Button from "./components/Button/Button"
 import Layout from "./components/Layout/Layout"
 import Menu from "./components/Menu/Menu";
+import Row from "./components/Grid/Row"
 
 const {Aside, Content, Header, Footer} = Layout;
 const {Item, SubMenu, ItemGroup} = Menu;
+const { Col } = Row;
 
 
 const App = () => {
@@ -24,7 +26,7 @@ const App = () => {
       <Layout>
         <Header className={'header'}>header</Header>
         <Layout>
-          <Aside style={{borderRight: "1px solid #ddd", width: "256px"}}>
+          <Aside style={{borderRight: "1px solid #ddd", width: "256px",overflow: "scroll"}}>
             <Menu openKeys={names}
                   defaultOpenKeys={["icon"]}
                   onSubMenuChange={({keys,event}) => onSubMenuChange(keys,event)}
@@ -33,7 +35,7 @@ const App = () => {
                   defaultSelectedKeys={["icon1"]}
                   selectedKeys={item}
 
-                  theme={'dark'}
+                  theme={'default'}
             >
               <Item key={'key1'} _key={'key1'}>
                 <Icon name={'alipay'} style={{fontSize: '18px',marginRight: '8px'}}/>
@@ -92,6 +94,9 @@ const App = () => {
           <Content>
             <Icon name={'alipay'}/>
             <Button>按钮</Button>
+            <Row>
+              <Col>123</Col>
+            </Row>
           </Content>
         </Layout>
         <Footer>footer</Footer>

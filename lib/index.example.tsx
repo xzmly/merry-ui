@@ -12,11 +12,12 @@ const {MenuItem, SubMenu, ItemGroup} = Menu;
 
 const App = () => {
 
-  const [names, setName] = useState<Array<string>>([]);
+  const [names, setName] = useState<Array<string>>(["key4","common"]);
   const [item, setItem] = useState<Array<string>>([]);
 
-  const onSubMenuChange = (names: any) => {
-    setName(names)
+  const onSubMenuChange = (keys: any,event: any) => {
+    console.log(event);
+    setName(keys)
   };
 
   return (
@@ -26,13 +27,13 @@ const App = () => {
           <Aside style={{borderRight: "1px solid #ddd", width: "256px"}}>
             <Menu openKeys={names}
                   defaultOpenKeys={["icon"]}
-                  onSubMenuChange={({names}) => onSubMenuChange(names)}
+                  onSubMenuChange={({keys,event}) => onSubMenuChange(keys,event)}
 
-                  onSelect={({names}) => setItem(names)}
+                  onSelect={({keys,event}) => setItem(keys)}
                   defaultSelectedKeys={["icon1"]}
                   selectedKeys={item}
 
-                  theme={'blue'}
+                  theme={'dark'}
             >
               <MenuItem key={'key1'} _key={'key1'}>
                 <Icon name={'alipay'} style={{fontSize: '18px',marginRight: '8px'}}/>
@@ -81,7 +82,7 @@ const App = () => {
                   <span>时间</span>
                 </span>
               }>
-                <MenuItem key={'option4'} _key={'option4'}>Option4</MenuItem>
+                <MenuItem key={'option4'} disabled _key={'option4'}>Option4</MenuItem>
                 <MenuItem key={'option5'} _key={'option5'}>Option5</MenuItem>
                 <MenuItem key={'option6'} _key={'option6'}>Option6</MenuItem>
               </SubMenu>

@@ -33,7 +33,7 @@ const MenuItem: React.FC<MenuItemProps> =
       const onClick = (e:React.MouseEvent<HTMLElement>):void => {
         if (disabled) return;
         onSelect && onSelect({
-          names: [_key],
+          keys: [_key],
           event: e,
           restData
         })

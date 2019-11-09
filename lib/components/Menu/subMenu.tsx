@@ -43,7 +43,7 @@ const SubMenu: React.FC<SubMenuProps> =
             [_key,...defaultNamesOrNames];
 
         onSubMenuChange && onSubMenuChange({
-          names: newKeys,
+          keys: newKeys,
           event: e,
           restData
         });

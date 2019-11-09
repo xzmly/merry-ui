@@ -5,7 +5,7 @@ export type RestDataType = {
 }
 
 export type OnChangeType = {
-  names: Array<string>
+  keys: Array<string>
   event:React.MouseEvent
   restData?: RestDataType
 };
@@ -20,13 +20,6 @@ export interface MenuContextProps {
   selectedKeys?: Array<string>
 }
 
-const MenuContext = React.createContext<MenuContextProps>({
-  openKeys: [],
-  onSubMenuChange: (params: OnChangeType) => null,
-  defaultOpenKeys: [],
-  onSelect: (params: OnChangeType) => null,
-  defaultSelectedKeys: [],
-  selectedKeys: []
-});
+const MenuContext = React.createContext<MenuContextProps>({});
 
 export default MenuContext

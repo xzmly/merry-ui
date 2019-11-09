@@ -55,17 +55,17 @@ const Menu: MenuComponent<MenuProps & MenuContextProps> =
       const contextValues: MenuContextProps = {
         defaultOpenKeys: defaultValues,
         openKeys: openKeys,
-        onSubMenuChange: ({names, ...restParams}: OnChangeType) =>
+        onSubMenuChange: ({keys, ...restParams}: OnChangeType) =>
             openKeys ?
-                onSubMenuChange && onSubMenuChange({names, ...restParams}) :
-                setDefaultValues(names),
+                onSubMenuChange && onSubMenuChange({keys, ...restParams}) :
+                setDefaultValues(keys),
 
         defaultSelectedKeys: defaultSelectedValue,
         selectedKeys: selectedKeys,
-        onSelect: ({names, ...restParams}: OnChangeType) =>
+        onSelect: ({keys, ...restParams}: OnChangeType) =>
             selectedKeys ?
-                onSelect && onSelect({names, ...restParams}) :
-                setDefaultSelectedValue(names)
+                onSelect && onSelect({keys, ...restParams}) :
+                setDefaultSelectedValue(keys)
       };
 
       const childrenMaps: {
@@ -89,11 +89,12 @@ const Menu: MenuComponent<MenuProps & MenuContextProps> =
         }
 
         cur.forEach((item: ChildrenType) => {
-          const _padding: number = (item?.type as any)?.name === 'SubMenu' ? padding + 20 : padding;
+          const typeName: childrenNameType =  (item?.type as any)?.name;
+          const _padding: number = typeName === 'SubMenu' ? padding + 22 : padding;
 
-          childrenMaps[(item?.type as any)?.name as childrenNameType] ?
+          childrenMaps[typeName] ?
               pre.push(
-                  childrenMaps[(item?.type as any)?.name as childrenNameType](
+                  childrenMaps[typeName](
                       item,
                       {paddingLeft: padding},
                       _children(item.props.children, [], _padding)

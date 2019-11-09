@@ -1,5 +1,5 @@
 import Menu from '../../../lib/components/Menu/menu'
-import {mount,shallow} from "enzyme/build/index";
+import {mount} from "enzyme/build/index";
 import React from 'react'
 import renderer from "react-test-renderer";
 
@@ -47,10 +47,18 @@ describe('Menu',()=> {
   });
   it('menu 的 children', () => {
     const json = renderer.create(example)
-    expect(json).toMatchSnapshot()
+    expect(json).toMatchSnapshot();
+  });
+  it('children 是其他元素',()=>{
+    const json = renderer.create(<Menu>
+      <div>123123</div>
+      <div>123123</div>
+    </Menu>);
+    expect(json).toMatchSnapshot();
   });
   it('不受控组件 defaultOpenKeys',()=>{
-    const c = mount(<Menu defaultOpenKeys={["2","8"]}>
+    const fn = jest.fn();
+    const c = mount(<Menu defaultOpenKeys={["2","8"]} onSubMenuChange={fn}>
       <SubMenu _key={'2'} key={'2'}>
         <SubMenu _key={'8'} key={'8'}>
           <MenuItem key={'9'} _key={'9'}>option2</MenuItem>
@@ -58,17 +66,58 @@ describe('Menu',()=> {
       </SubMenu>
     </Menu>);
     expect(c.find('.merry-menu').children().find('.merry-active').length).toBe(2)
+    const subMenu = c.find('.merry-sub-menu').first().children().find('.merry-sub-menu-title').first();
+    subMenu.simulate('click');
+    expect(fn).toHaveBeenCalledTimes(0)
   })
   it('受控组件 openKeys',()=>{
-    const openKeys = []
-    const onSubMenuChange = (e) => console.log(123123123)
-    const c = shallow(<Menu openKeys={openKeys} onSubMenuChange={onSubMenuChange}>
+    const c = mount(<Menu openKeys={["2","8"]}>
       <SubMenu _key={'2'} key={'2'}>
         <SubMenu _key={'8'} key={'8'}>
           <MenuItem key={'9'} _key={'9'}>option2</MenuItem>
         </SubMenu>
       </SubMenu>
     </Menu>);
-    c.find('.merry-menu').children().simulate('click',()=>console.log(123123123));
+    expect(c.find('.merry-menu').children().find('.merry-active').length).toBe(2);
+    c.setProps({ openKeys: [] })
+    expect(c.find('.merry-menu').children().find('.merry-active').length).toBe(0);
+    c.setProps({ defaultOpenKeys: ["2"] })
+    expect(c.find('.merry-menu').children().find('.merry-active').length).toBe(0)
   })
-})
+  it("onSubMenuChange",()=>{
+    const fn = jest.fn();
+    const c = mount(<Menu openKeys={["2"]} onSubMenuChange={fn}>
+      <SubMenu _key={'2'} key={'2'}>
+        <SubMenu _key={'8'} key={'8'}>
+          <MenuItem key={'9'} _key={'9'}>option2</MenuItem>
+        </SubMenu>
+      </SubMenu>
+    </Menu>);
+    const subMenu = c.find('.merry-sub-menu').first().children().first().find('.merry-sub-menu-title');
+    subMenu.simulate('click');
+    expect(fn).toHaveBeenCalledTimes(1)
+  });
+  it('onSelect',()=>{
+    const fn = jest.fn();
+    const c = mount(<Menu selectedKeys={[]} onSelect={fn}>
+      <MenuItem key={'9'} _key={'9'}>option2</MenuItem>
+      <MenuItem key={'10'} _key={'10'} disabled>option3</MenuItem>
+    </Menu>);
+    const items = c.find('.merry-menu-item');
+    items.first().simulate('click');
+    expect(fn).toHaveBeenCalledTimes(1);
+    expect(items.last().hasClass('merry-disabled')).toBe(true)
+    items.last().simulate('click');
+    expect(fn).toHaveBeenCalledTimes(1);
+  })
+  it('default',()=>{
+    const fn = jest.fn();
+    const c = mount(<Menu defaultSelectedKeys={["9"]} onSelect={fn}>
+      <MenuItem key={'9'} _key={'9'}>option2</MenuItem>
+    </Menu>);
+    const item = c.find('.merry-menu-item');
+    item.simulate('click');
+    expect(fn).toHaveBeenCalledTimes(0);
+    expect(item.hasClass('merry-active')).toBe(true)
+  })
+});

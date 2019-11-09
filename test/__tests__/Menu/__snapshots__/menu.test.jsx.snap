@@ -1,5 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Menu children 是其他元素 1`] = `
+<ul
+  className="merry-menu"
+>
+  <div>
+    123123
+  </div>
+  <div>
+    123123
+  </div>
+</ul>
+`;
+
 exports[`Menu menu 是个 ul 1`] = `
 <ul
   className="merry-menu"

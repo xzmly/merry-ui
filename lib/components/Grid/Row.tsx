@@ -9,9 +9,17 @@ type SpacingType = string | number
 
 type ChildrenType = Array<React.ReactElement<ColProps>> | React.ReactElement<ColProps>
 
+enum Justify {
+  end = "flex-end",
+  start = "flex-start",
+  around = "space-around",
+  between = "space-between",
+  center  = "center"
+}
+
 interface RowProps extends React.HTMLAttributes<HTMLElement> {
-  align?: "center" | "top" | "bottom"
-  justify?: "start" | "end" | "center" | "space-around" | "space-between"
+  align?: "start" | "end" | "center"
+  justify?: "start" | "end" | "center" | "around" | "between"
   spacing?: [SpacingType?,SpacingType?,SpacingType?,SpacingType?]
   children: ChildrenType
 }
@@ -38,7 +46,7 @@ const Row: RowComponent<RowProps> =
   const propsStyle: React.CSSProperties = {
     display: "flex",
     alignItems: align,
-    justifyContent: justify,
+    justifyContent: justify ? Justify[justify] : undefined,
   };
 
   const ContextValue:RowContextProps = {

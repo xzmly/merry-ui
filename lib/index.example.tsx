@@ -94,7 +94,7 @@ const App = () => {
           <Content>
             <Icon name={'alipay'}/>
             <Button>按钮</Button>
-            <Row style={{background: "#ddd"}}>
+            <Row style={{background: "#ddd"}} spacing={[8,8]} justify={'center'}>
               <Col span={3} style={{background: "#4285f4"}}>1</Col>
               <Col span={8} style={{background: "#ffb928"}}>2</Col>
               <Col span={8} style={{background: "#4285f4"}}>3</Col>

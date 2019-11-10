@@ -94,8 +94,10 @@ const App = () => {
           <Content>
             <Icon name={'alipay'}/>
             <Button>按钮</Button>
-            <Row>
-              <Col>123</Col>
+            <Row style={{background: "#ddd"}}>
+              <Col span={3} style={{background: "#4285f4"}}>1</Col>
+              <Col span={8} style={{background: "#ffb928"}}>2</Col>
+              <Col span={8} style={{background: "#4285f4"}}>3</Col>
             </Row>
           </Content>
         </Layout>

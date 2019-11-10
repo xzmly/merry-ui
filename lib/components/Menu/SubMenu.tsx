@@ -3,7 +3,7 @@ import { useContext } from "react"
 import classes from '../../helpers/classes';
 import Icon from "../Icon/icon";
 import {ChildrenType} from "./Menu"
-import MenuContext,{RestDataType}from "./Context";
+import MenuContext, {MenuContextProps, RestDataType} from "./Context";
 
 export interface SubMenuProps {
   title?: React.ReactNode
@@ -22,7 +22,7 @@ const SubMenu: React.FC<SubMenuProps> =
         openKeys,
         onSubMenuChange,
         defaultOpenKeys,
-      } = useContext(MenuContext);
+      } = useContext<MenuContextProps>(MenuContext);
 
       const {
         className,

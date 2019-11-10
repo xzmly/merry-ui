@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useContext } from "react"
 import classes from '../../helpers/classes';
-import MenuContext,{RestDataType}from "./Context";
+import MenuContext,{RestDataType,MenuContextProps}from "./Context";
 
 export interface MenuItemProps extends React.HTMLAttributes<HTMLElement> {
   _key: string
@@ -17,7 +17,7 @@ const Item: React.FC<MenuItemProps> =
         onSelect,
         selectedKeys,
         defaultSelectedKeys
-      } = useContext(MenuContext);
+      } = useContext<MenuContextProps>(MenuContext);
 
       const {
         className,

@@ -14,7 +14,11 @@ const Col: React.FC<ColProps> =
     props => {
 
       const {
-        span
+        span,
+        className,
+        children,
+        style,
+        ...restProps
       } = props;
 
       const {
@@ -23,19 +27,32 @@ const Col: React.FC<ColProps> =
         spacing
       } = useContext<RowContextProps>(RowContext);
 
-      const propsStyle: React.CSSProperties = {
+      const padding: string | undefined = props.spacing ? props.spacing.map((v:SpacingType) => v + 'px').join(' ') : spacing
+
+      const colStyle: React.CSSProperties = {
         width: totalWidth ? ((totalWidth/grids * (span || 0))/totalWidth)*100 + "%" : undefined,
-        margin: props.spacing ?
-            props.spacing.map((v:SpacingType) => v + 'px').join(' ') : spacing
+        padding,
+        background: !props.spacing && !spacing ? style && style.background : 'none',
       };
 
-      const { className,children,style,...restProps } = props;
+      const colContentStyle: React.CSSProperties = {
+        padding: (props.spacing || spacing) ? undefined : padding,
+        background: (props.spacing || spacing) && style && style.background,
+      };
 
       return (
           <div className={classes(className,'col')}
-                style={{...style,...propsStyle}}
+                style={{...style,...colStyle}}
                {...restProps}>
-            {children}
+            {
+              props.spacing || spacing ?
+                  <div
+                      className={classes("",'col-content')}
+                      style={{...colContentStyle}}
+                  >
+                    {children}
+                  </div> : children
+            }
           </div>
       )
     };

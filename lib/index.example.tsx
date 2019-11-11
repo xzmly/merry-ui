@@ -25,13 +25,9 @@ const App = () => {
   return (
       <Layout>
         <Header className={'header'}>
-          <Row type={'flex'} style={{width: '50%'}}>
-            <Col span={3}>logo</Col>
-            <Col span={5}>search</Col>
-          </Row>
-          <Row type={'flex'} style={{width: '50%'}} justify={'end'}>
-            <Col span={3}>version</Col>
-            <Col span={5}>github</Col>
+          <Row type={'flex'}>
+            <Col span={4}>logo</Col>
+            <Col span={20}>search</Col>
           </Row>
         </Header>
         <Layout>

@@ -30,7 +30,7 @@ const App = () => {
             <Col span={20}>search</Col>
           </Row>
         </Header>
-        <Layout>
+        <Layout className={'warp'}>
           <Aside style={{borderRight: "1px solid #ddd", width: "256px",overflowY: "scroll"}}>
             <Menu openKeys={names}
                   defaultOpenKeys={["icon"]}

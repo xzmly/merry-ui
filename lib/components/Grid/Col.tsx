@@ -2,10 +2,12 @@ import * as React from 'react';
 import { useContext }from "react";
 import classes from '../../helpers/classes';
 import RowContext,{ RowContextProps }from "./Context"
+import {SpacingType} from "./Row"
 import './Grid.styl';
 
 export interface ColProps extends React.HTMLAttributes<HTMLElement> {
   span?: number
+  spacing?: [SpacingType?,SpacingType?,SpacingType?,SpacingType?]
 }
 
 const Col: React.FC<ColProps> =
@@ -23,7 +25,8 @@ const Col: React.FC<ColProps> =
 
       const propsStyle: React.CSSProperties = {
         width: totalWidth ? ((totalWidth/grids * (span || 0))/totalWidth)*100 + "%" : undefined,
-        margin: spacing
+        margin: props.spacing ?
+            props.spacing.map((v:SpacingType) => v + 'px').join(' ') : spacing
       };
 
       const { className,children,style,...restProps } = props;

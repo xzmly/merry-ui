@@ -7,7 +7,7 @@ import Layout from "./components/Layout/Layout"
 import Menu from "./components/Menu/Menu";
 import Row from "./components/Grid/Row"
 
-const {Aside, Content, Header, Footer} = Layout;
+const {Aside, Content, Header } = Layout;
 const {Item, SubMenu, ItemGroup} = Menu;
 const { Col } = Row;
 
@@ -26,7 +26,7 @@ const App = () => {
       <Layout>
         <Header className={'header'}>header</Header>
         <Layout>
-          <Aside style={{borderRight: "1px solid #ddd", width: "256px",overflow: "scroll"}}>
+          <Aside style={{borderRight: "1px solid #ddd", width: "256px",overflowY: "scroll"}}>
             <Menu openKeys={names}
                   defaultOpenKeys={["icon"]}
                   onSubMenuChange={({keys,event}) => onSubMenuChange(keys,event)}
@@ -94,14 +94,14 @@ const App = () => {
           <Content>
             <Icon name={'alipay'}/>
             <Button>按钮</Button>
-            <Row style={{background: "#ddd"}} spacing={[8,8]} justify={'center'}>
-              <Col span={3} style={{background: "#4285f4"}}>1</Col>
-              <Col span={8} style={{background: "#ffb928"}}>2</Col>
-              <Col span={8} style={{background: "#4285f4"}}>3</Col>
+            <Row style={{background: "#ddd"}} type={'flex'} justify={'start'} wrap={'wrap'}>
+              <Col span={3} style={{background: "#4285f4"}} >1</Col>
+              <Col span={8} style={{background: "#ffb928"}} >2</Col>
+              <Col span={8} style={{background: "#4285f4"}} spacing={[4,4]}>3</Col>
+              <Col span={8} style={{background: "#4285f4"}} spacing={[8,8]}>3</Col>
             </Row>
           </Content>
         </Layout>
-        <Footer>footer</Footer>
       </Layout>
   )
 };

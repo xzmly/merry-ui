@@ -5,7 +5,7 @@ import Col,{ ColProps }from "./Col"
 import RowContext,{ RowContextProps }from "./Context";
 import './Grid.styl';
 
-type SpacingType = string | number
+export type SpacingType = string | number
 
 type ChildrenType = Array<React.ReactElement<ColProps>> | React.ReactElement<ColProps>
 
@@ -16,11 +16,20 @@ enum Justify {
   between = "space-between",
   center  = "center"
 }
+enum Align {
+  start = 'flex-start',
+  end = 'flex-end',
+  center = 'center',
+  baseline = 'baseline',
+  stretch = 'stretch'
+}
 
 interface RowProps extends React.HTMLAttributes<HTMLElement> {
-  align?: "start" | "end" | "center"
+  type?: "block" | "flex"
+  align?: "start" | "end" | "center" | "baseline" | "stretch"
   justify?: "start" | "end" | "center" | "around" | "between"
   spacing?: [SpacingType?,SpacingType?,SpacingType?,SpacingType?]
+  wrap?: "wrap" | "nowrap" | "wrap-reverse"
   children: ChildrenType
 }
 
@@ -40,12 +49,15 @@ const Row: RowComponent<RowProps> =
     spacing,
     style,
     children,
+    wrap,
+    type,
     ...restProps
   } = props;
 
   const propsStyle: React.CSSProperties = {
-    display: "flex",
-    alignItems: align,
+    display: type || "block",
+    flexWrap: wrap,
+    alignItems: align ? Align[align] : undefined,
     justifyContent: justify ? Justify[justify] : undefined,
   };
 

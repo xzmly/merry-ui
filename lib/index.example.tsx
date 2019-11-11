@@ -24,7 +24,16 @@ const App = () => {
 
   return (
       <Layout>
-        <Header className={'header'}>header</Header>
+        <Header className={'header'}>
+          <Row type={'flex'} style={{width: '50%'}}>
+            <Col span={3}>logo</Col>
+            <Col span={5}>search</Col>
+          </Row>
+          <Row type={'flex'} style={{width: '50%'}} justify={'end'}>
+            <Col span={3}>version</Col>
+            <Col span={5}>github</Col>
+          </Row>
+        </Header>
         <Layout>
           <Aside style={{borderRight: "1px solid #ddd", width: "256px",overflowY: "scroll"}}>
             <Menu openKeys={names}
@@ -94,12 +103,6 @@ const App = () => {
           <Content>
             <Icon name={'alipay'}/>
             <Button>按钮</Button>
-            <Row style={{background: "#ddd"}} type={'flex'} justify={'start'} wrap={'wrap'}>
-              <Col span={3} style={{background: "#4285f4"}} >1</Col>
-              <Col span={8} style={{background: "#ffb928"}} >2</Col>
-              <Col span={8} style={{background: "#4285f4"}} spacing={[4,4]}>3</Col>
-              <Col span={8} style={{background: "#4285f4"}} spacing={[8,8]}>3</Col>
-            </Row>
           </Content>
         </Layout>
       </Layout>

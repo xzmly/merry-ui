@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Grid render row and col 1`] = `
+<div
+  className="merry-row"
+  style={
+    Object {
+      "alignItems": undefined,
+      "display": "block",
+      "flexWrap": undefined,
+      "justifyContent": undefined,
+    }
+  }
+>
+  <div
+    className="merry-col"
+    style={
+      Object {
+        "background": undefined,
+        "marginLeft": undefined,
+        "marginRight": undefined,
+        "padding": undefined,
+        "width": undefined,
+      }
+    }
+  >
+    123
+  </div>
+</div>
+`;

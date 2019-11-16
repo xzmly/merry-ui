@@ -100,7 +100,10 @@ const App = () => {
           <Content>
             <Icon name={'alipay'}/>
             <Button>按钮</Button>
-            <Checkbox>Checkbox</Checkbox>
+            <Checkbox
+                onChange={(event:React.ChangeEvent<HTMLInputElement>) => console.log(event.target)}>
+              Checkbox
+            </Checkbox>
           </Content>
         </Layout>
       </Layout>

@@ -1,31 +1,74 @@
 @import '../../helpers/stylus.helper.styl';
 
 checkbox = class-prefix + "-checkbox"
-input = class-prefix + "-checkbox-input"
+input = checkbox + "-input"
 input-wrap = input + "-wrap"
+input-inner = input + "-inner"
+input-text = checkbox + "-text"
+
 
 .{input-wrap}
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0
-  list-style: none;
-  position: relative;
-  white-space: nowrap;
-  vertical-align: middle;
-  outline: none;
-  background: red;
-  cursor: pointer;
-  color: rgba(0,0,0,0.65);
-  font-size: 14px;
+  margin 0
+  padding 0
+  outline none
+  position relative
+  display inline-block
+  box-sizing border-box
+  white-space nowrap
+  vertical-align middle
+  list-style: none
+  width 16px
+  height 16px
+  overflow hidden
+  top: -0.09em
+  font-size 14px
+
 
 .{input}
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  opacity: 0;
+  position absolute
+  top 0
+  right 0
+  bottom 0
+  left 0
+  width 100%
+  height 100%
+  z-index 1
+  margin 0
+  padding 0
+  border 0
+  cursor pointer
+  box-sizing border-box
+  opacity 0
+  &:checked + span.{input-inner}
+    background primary-color
+    &:after
+      content: " "
+      position absolute
+      width: 5px;
+      height: 12px;
+      transform rotate(45deg) scale(0.7) translate(-50%,-50%)
+      border  2px solid #fff
+      border-left 0
+      border-top 0
+      top 28%
+      left 17%
+
+
+.{input-inner}
+  position relative
+  display inline-block
+  width 16px
+  height 16px
+  border: 1px solid #d9d9d9;
+  border-radius 2px
+  border-collapse: separate;
+  transition all .3s
+  vertical-align center
+  box-sizing border-box
+
+.{input-text}
+  padding 0 8px
+  font-size 14px
+  color rgba(0,0,0,0.75)
+  cursor pointer
+

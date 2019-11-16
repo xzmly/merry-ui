@@ -100,7 +100,7 @@ const App = () => {
           <Content>
             <Icon name={'alipay'}/>
             <Button>按钮</Button>
-            <Checkbox>123</Checkbox>
+            <Checkbox>Checkbox</Checkbox>
           </Content>
         </Layout>
       </Layout>

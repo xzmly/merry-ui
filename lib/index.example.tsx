@@ -6,6 +6,7 @@ import Button from "./components/Button/Button"
 import Layout from "./components/Layout/Layout"
 import Menu from "./components/Menu/Menu";
 import Row from "./components/Grid/Row"
+import Checkbox from "./components/Checkbox/Checkbox";
 
 const {Aside, Content, Header } = Layout;
 const {Item, SubMenu, ItemGroup} = Menu;
@@ -99,6 +100,7 @@ const App = () => {
           <Content>
             <Icon name={'alipay'}/>
             <Button>按钮</Button>
+            <Checkbox>123</Checkbox>
           </Content>
         </Layout>
       </Layout>

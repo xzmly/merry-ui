@@ -17,6 +17,7 @@ const App = () => {
 
   const [names, setName] = useState<Array<string>>(["key4","common"]);
   const [item, setItem] = useState<Array<string>>([]);
+  //const [checked, setChecked] = useState<boolean>(false);
 
   const onSubMenuChange = (keys: any,event: any) => {
     console.log(event);
@@ -101,8 +102,8 @@ const App = () => {
             <Icon name={'alipay'}/>
             <Button>按钮</Button>
             <Checkbox
-                onChange={(event:React.ChangeEvent<HTMLInputElement>) => console.log(event.target)}>
-              Checkbox
+                onChange={(event:React.ChangeEvent<HTMLInputElement>) => console.log(event)}>
+              Checkbox123
             </Checkbox>
           </Content>
         </Layout>

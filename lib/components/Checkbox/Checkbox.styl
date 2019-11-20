@@ -12,6 +12,9 @@ input-text = checkbox + "-text"
     .{input-inner}
       border 1px solid primary-color
 
+.merry-checkbox-disabled
+  opacity 0.5
+
 .{input-wrap}
   margin 0
   padding 0
@@ -57,6 +60,10 @@ input-text = checkbox + "-text"
       border-top 0
       top 28%
       left 17%
+  &:disabled + span.{input-inner}
+    background gray-color
+    border: 1px solid #999
+
 
 .{input-inner}
   position relative

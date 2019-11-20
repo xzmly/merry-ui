@@ -35,7 +35,11 @@ const Checkbox: React.FC<LabelProps & InputCheckboxProps> =
   };
 
   return(
-      <label className={classes(className,'checkbox')}
+      <label className={classes(
+          className,
+          'checkbox',
+          checkboxProps.disabled ? 'checkbox-disabled' : ''
+      )}
              htmlFor={htmlFor}
              form={form}
              style={style}
@@ -48,7 +52,7 @@ const Checkbox: React.FC<LabelProps & InputCheckboxProps> =
           />
            <span className={restClass('input-inner')}/>
         </span>
-        <span className={restClass('text')}>
+        <span className={restClass(`text`)}>
           {children}
         </span>
       </label>

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox render Checkbox 1`] = `
+<label
+  className="merry-checkbox"
+>
+  <span
+    className="merry-checkbox-input-wrap"
+  >
+    <input
+      className="merry-checkbox-input"
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <span
+      className="merry-checkbox-input-inner"
+    />
+  </span>
+  <span
+    className="merry-checkbox-text"
+  />
+</label>
+`;
+
+exports[`Checkbox render Group 1`] = `
+<div
+  className="checkbox-group"
+/>
+`;

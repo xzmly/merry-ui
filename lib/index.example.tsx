@@ -116,7 +116,7 @@ const App = () => {
 
             </Checkbox.Group>
             <Checkbox
-                name={'cwh'}
+                disabled
                 onChange={(event:React.ChangeEvent<HTMLInputElement>) => console.log(event)}>
               Checkbox123
             </Checkbox>

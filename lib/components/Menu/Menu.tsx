@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useState} from "react";
+import {useState,useEffect} from "react";
 import classes from '../../helpers/classes';
 import MenuItem, {MenuItemProps} from "./Item"
 import SubMenu, {SubMenuProps} from "./SubMenu";
@@ -52,14 +52,13 @@ const Menu: MenuComponent<MenuProps & MenuContextProps> =
       const [defaultSelectedValue, setDefaultSelectedValue] =
           useState<Array<string> | undefined>(defaultSelectedKeys);
 
-      // TODO: 验证是否更新
-      // useEffect(()=>{
-      //   setDefaultValues(defaultOpenKeys)
-      // },[defaultOpenKeys]);
-      //
-      // useEffect(()=>{
-      //   setDefaultSelectedValue(defaultSelectedKeys)
-      // },[defaultSelectedKeys]);
+      useEffect(()=>{
+        setDefaultValues(defaultOpenKeys)
+      },[defaultOpenKeys]);
+
+      useEffect(()=>{
+        setDefaultSelectedValue(defaultSelectedKeys)
+      },[defaultSelectedKeys]);
 
       const contextValues: MenuContextProps = {
         defaultOpenKeys: defaultValues,

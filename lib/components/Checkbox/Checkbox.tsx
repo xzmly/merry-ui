@@ -35,7 +35,6 @@ const Checkbox: CheckboxComponent<LabelProps & InputCheckboxProps> =
       classes('',`checkbox-${name}`);
   
   const onChange:onChangeType = (event):void => {
-    event.stopPropagation();
     checkboxProps.onChange && checkboxProps.onChange(event);
   };
 

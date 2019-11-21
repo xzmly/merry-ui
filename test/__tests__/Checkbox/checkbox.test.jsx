@@ -10,10 +10,6 @@ describe('Checkbox',()=>{
     const json = renderer.create(<Checkbox/>).toJSON();
     expect(json).toMatchSnapshot()
   });
-  it('render Group',()=>{
-    const json = renderer.create(<Group/>).toJSON();
-    expect(json).toMatchSnapshot()
-  });
   it('受控组件',()=>{
     const fn = jest.fn();
     const c = mount(<Checkbox checked={true} onChange={fn}/>);
@@ -36,4 +32,11 @@ describe('Checkbox',()=>{
     c.find('.merry-checkbox-input').props().disabled;
     expect(c.find('.merry-checkbox-input').props().disabled).toBe(true)
   })
+});
+
+describe('Group',()=>{
+  it('render Group',()=>{
+    const json = renderer.create(<Group/>).toJSON();
+    expect(json).toMatchSnapshot()
+  });
 });

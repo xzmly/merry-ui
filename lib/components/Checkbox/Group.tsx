@@ -60,7 +60,7 @@ const Group: React.FC<GroupProps> =
             <Checkbox
                 checked={valueOrDefaultValue.includes(v.value)}
                 onChange={(event) => onChange(event, v.onChange)}
-                disabled={'disabled' in options ? v.disabled : disabled}
+                disabled={'disabled' in v ? v.disabled : disabled}
                 key={v.value.toString()}
                 value={v.value.toString()}
             >

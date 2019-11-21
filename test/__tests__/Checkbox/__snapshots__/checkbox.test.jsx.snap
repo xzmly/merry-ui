@@ -22,7 +22,7 @@ exports[`Checkbox render Checkbox 1`] = `
 </label>
 `;
 
-exports[`Checkbox render Group 1`] = `
+exports[`Group render Group 1`] = `
 <div
   className="checkbox-group"
 />

@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useEffect, useState} from "react"
 import ReactDOM from "react-dom"
 import "./index.example.styl"
 import Icon from "./components/Icon/Icon"
@@ -17,7 +17,16 @@ const App = () => {
 
   const [names, setName] = useState<Array<string>>(["key4","common"]);
   const [item, setItem] = useState<Array<string>>([]);
-  //const [checked, setChecked] = useState<boolean>(false);
+  //@ts-ignore
+  const [checked, setChecked] = useState<boolean>(false);
+  //@ts-ignore
+  const [value,setValue] = useState<any[]>([]);
+
+  useEffect(()=>{
+    setTimeout(()=>{
+      setValue(["AAA"]);
+    },3000);
+  },[]);
 
   const onSubMenuChange = (keys: any,event: any) => {
     console.log(event);
@@ -101,7 +110,13 @@ const App = () => {
           <Content>
             <Icon name={'alipay'}/>
             <Button>按钮</Button>
+            <Checkbox.Group options={[
+              {value: "AAA",label: "AAA"},{value: "BBB",label: "BBB"}
+            ]} defaultValue={value} value={[]}>
+
+            </Checkbox.Group>
             <Checkbox
+                name={'cwh'}
                 onChange={(event:React.ChangeEvent<HTMLInputElement>) => console.log(event)}>
               Checkbox123
             </Checkbox>

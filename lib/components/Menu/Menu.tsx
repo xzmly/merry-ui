@@ -52,6 +52,15 @@ const Menu: MenuComponent<MenuProps & MenuContextProps> =
       const [defaultSelectedValue, setDefaultSelectedValue] =
           useState<Array<string> | undefined>(defaultSelectedKeys);
 
+      // TODO: 验证是否更新
+      // useEffect(()=>{
+      //   setDefaultValues(defaultOpenKeys)
+      // },[defaultOpenKeys]);
+      //
+      // useEffect(()=>{
+      //   setDefaultSelectedValue(defaultSelectedKeys)
+      // },[defaultSelectedKeys]);
+
       const contextValues: MenuContextProps = {
         defaultOpenKeys: defaultValues,
         openKeys: openKeys,

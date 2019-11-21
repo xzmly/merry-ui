@@ -1,8 +1,9 @@
 import * as React from 'react';
 import classes from '../../helpers/classes';
+import Group, { GroupProps } from "./Group"
 import './Checkbox.styl';
 
-interface LabelProps {
+export interface LabelProps {
   className?: string
   children?: React.ReactNode
   htmlFor?: string
@@ -10,11 +11,15 @@ interface LabelProps {
   style?: React.CSSProperties
 }
 
-type onChangeType = (event:React.ChangeEvent<HTMLInputElement>) => void
+export type onChangeType = (event:React.ChangeEvent<HTMLInputElement>) => void
 
-interface InputCheckboxProps extends React.InputHTMLAttributes<HTMLInputElement>{}
+export interface InputCheckboxProps extends React.InputHTMLAttributes<HTMLInputElement>{}
 
-const Checkbox: React.FC<LabelProps & InputCheckboxProps> =
+interface CheckboxComponent<P> extends React.FC<P>{
+  Group: React.FC<GroupProps>
+}
+
+const Checkbox: CheckboxComponent<LabelProps & InputCheckboxProps> =
         props => {
 
   const { 
@@ -58,5 +63,7 @@ const Checkbox: React.FC<LabelProps & InputCheckboxProps> =
       </label>
   )
 };
+
+Checkbox.Group = Group;
 
 export default Checkbox

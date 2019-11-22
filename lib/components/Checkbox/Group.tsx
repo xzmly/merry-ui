@@ -50,7 +50,7 @@ const Group: React.FC<GroupProps> =
 
       const newValue: Array<ValueType> = checked ?
           [...valueOrDefaultValue, value] :
-          valueOrDefaultValue.filter(v => v !== value);
+          valueOrDefaultValue.filter(v => !(v === value));
 
       props.onChange && props.onChange(newValue);
       !props.value && setDefaultValue(newValue);

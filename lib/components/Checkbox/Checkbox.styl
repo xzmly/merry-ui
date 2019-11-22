@@ -8,11 +8,13 @@ input-text = checkbox + "-text"
 
 
 .{checkbox}
+  display inline-block
+  min-width 80px
   &:hover
     .{input-inner}
       border 1px solid primary-color
 
-.merry-checkbox-disabled
+.{checkbox}-disabled
   opacity 0.5
 
 .{input-wrap}
@@ -82,4 +84,8 @@ input-text = checkbox + "-text"
   font-size 14px
   color rgba(0,0,0,0.75)
   cursor pointer
+
+.{checkbox}-group
+  > .{checkbox}
+      margin-right 8px
 

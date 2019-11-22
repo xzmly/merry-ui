@@ -111,10 +111,15 @@ const App = () => {
             <Icon name={'alipay'}/>
             <Button>按钮</Button>
             <Checkbox.Group options={[
-              {value: "AAA",label: "AAA",disabled: true},{value: "BBB",label: "BBB"}
-            ]} defaultValue={value} value={[]}>
+              {value: "AAA",label: "AAA"},
+              {value: "BBB",label: "BBB"},
+              {value: "CCC",label: "CCC"}
+            ]} onChange={(e)=>console.log(e)}/>
 
-            </Checkbox.Group>
+            <Checkbox.Group options={[
+             "DDD","EEE","FFF"
+            ]} onChange={(e)=>console.log(e)}/>
+
             <Checkbox
                 disabled={true}
                 onChange={(event:React.ChangeEvent<HTMLInputElement>) => console.log(event)}>

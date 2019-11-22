@@ -16,9 +16,10 @@ export interface GroupProps {
   defaultValue?: Array<ValueType>
   disabled?: boolean
 
-  options?: Array<OptionType>
+  options?: Array<OptionType | string>
   value?: Array<ValueType>
   onChange?: (checkedValue: Array<ValueType>) => void
+  className?: string
 }
 
 const Group: React.FC<GroupProps> =
@@ -31,6 +32,7 @@ const Group: React.FC<GroupProps> =
       value,
       options,
       disabled,
+      className,
     } = props;
 
     useEffect(() => {
@@ -50,14 +52,25 @@ const Group: React.FC<GroupProps> =
           [...valueOrDefaultValue, value] :
           valueOrDefaultValue.filter(v => v !== value);
 
+      props.onChange && props.onChange(newValue);
       !props.value && setDefaultValue(newValue);
       fn && fn(event);
-      props.onChange && props.onChange(newValue);
     };
 
     const renderChildren: React.ReactNodeArray | undefined =
-        options?.map((v: OptionType) =>
-            <Checkbox
+        options?.map((v: OptionType | string) =>{
+          if(typeof v === 'string'){
+            return <Checkbox
+                checked={valueOrDefaultValue.includes(v)}
+                onChange={(event) => onChange(event)}
+                disabled={disabled}
+                key={v}
+                value={v}
+            >
+              {v}
+            </Checkbox>
+          }else{
+            return <Checkbox
                 checked={valueOrDefaultValue.includes(v.value)}
                 onChange={(event) => onChange(event, v.onChange)}
                 disabled={'disabled' in v ? v.disabled : disabled}
@@ -65,10 +78,12 @@ const Group: React.FC<GroupProps> =
                 value={v.value.toString()}
             >
               {v.label}
-            </Checkbox>);
+            </Checkbox>
+          }
+        });
 
     return (
-        <div className={classes('checkbox-group')}>
+        <div className={classes(className,'checkbox-group')}>
           {renderChildren}
         </div>
     )

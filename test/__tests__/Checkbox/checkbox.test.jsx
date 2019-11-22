@@ -67,7 +67,7 @@ describe('Group',()=>{
     const inputs = c.find('.merry-checkbox-input');
     expect(inputs.length).toBe(3);
 
-    inputs.at(0).simulate('change');
+    inputs.at(2).simulate('change');
 
     expect(fn).toBeCalledTimes(1);
   })

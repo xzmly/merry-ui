@@ -7,6 +7,7 @@ import Layout from "./components/Layout/Layout"
 import Menu from "./components/Menu/Menu";
 import Row from "./components/Grid/Row"
 import Checkbox from "./components/Checkbox/Checkbox";
+import Input from "./components/Input/Input"
 
 const {Aside, Content, Header } = Layout;
 const {Item, SubMenu, ItemGroup} = Menu;
@@ -115,16 +116,15 @@ const App = () => {
               {value: "BBB",label: "BBB"},
               {value: "CCC",label: "CCC"}
             ]} onChange={(e)=>console.log(e)}/>
-
             <Checkbox.Group options={[
              "DDD","EEE","FFF"
             ]} onChange={(e)=>console.log(e)}/>
-
             <Checkbox
                 disabled={true}
                 onChange={(event:React.ChangeEvent<HTMLInputElement>) => console.log(event)}>
               Checkbox123
             </Checkbox>
+            <Input>123</Input>
           </Content>
         </Layout>
       </Layout>

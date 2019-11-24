@@ -10,14 +10,14 @@ interface LabelProps {
   style?: React.CSSProperties
 }
 
-type SizeType = {
+type restProps = {
   size?: "default" | "small" | "big"
+  labelPosition?: "top" | "left"
 }
 
-type InputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>,"size"> & SizeType
+type InputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>,"size">
 
-
-const Input: React.FC<LabelProps & InputProps> =
+const Input: React.FC<LabelProps & InputProps & restProps> =
         props => {
 
   const {
@@ -27,6 +27,7 @@ const Input: React.FC<LabelProps & InputProps> =
     style,
     children,
     size,
+    labelPosition,
     ...inputProps
   } = props;
 
@@ -34,19 +35,28 @@ const Input: React.FC<LabelProps & InputProps> =
 
   const sizeClass: string = size === "default" ? "" : `input-${size}`;
 
+  const labelPsClass: string = labelPosition === "left" ? "" : `input-label-${labelPosition}`;
+
   return (
-      <label className={classes(className,"input-label")}
+      <label className={classes(className,"input-label",labelPsClass)}
              {...labelProps}>
-        {children}
+        {
+          children &&
+          <span className={classes("","input-label-text")}>
+            {children}
+          </span>
+        }
         <input {...inputProps}
                className={classes('',"input",sizeClass)}
-               type="text"/>
+               type={inputProps.type}/>
       </label>
   )
 };
 
 Input.defaultProps = {
-  size: "default"
+  size: "default",
+  type: "text",
+  labelPosition: "left"
 };
 
 export default Input

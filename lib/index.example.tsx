@@ -124,9 +124,13 @@ const App = () => {
                 onChange={(event:React.ChangeEvent<HTMLInputElement>) => console.log(event)}>
               Checkbox123
             </Checkbox>
-            <Input>123</Input>
-            <Input size={"small"}>456</Input>
-            <Input size={"big"}>789</Input>
+            <div style={{width: "350px"}}>
+              <Input placeholder={"default"}>Email</Input>
+              <br/>
+              <Input placeholder={"small"}  labelPosition={'top'}>Password</Input>
+              <br/>
+              <Input placeholder={"big"}  labelPosition={'top'}>Name</Input>
+            </div>
           </Content>
         </Layout>
       </Layout>

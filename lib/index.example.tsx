@@ -130,8 +130,8 @@ const App = () => {
               <Input placeholder={"small"}  size={"big"} labelPosition={'top'}><span>Password</span></Input>
               <br/>
               <Input placeholder={"big"}
-                     prefix={<Icon name={"email"}/>}
-                     suffix={<Icon name={"email"}/>}
+                     prefix={"$"}
+                     suffix={"RMB"}
                      labelPosition={'top'}>Name</Input>
             </div>
           </Content>

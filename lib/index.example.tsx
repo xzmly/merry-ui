@@ -127,7 +127,9 @@ const App = () => {
             <div style={{width: "350px"}}>
               <Input placeholder={"default"}>Email</Input>
               <br/>
-              <Input placeholder={"small"}  size={"big"} labelPosition={'top'}><span>Password</span></Input>
+              <Input.Password>Email</Input.Password>
+              <br/>
+              <Input placeholder={"small"} labelPosition={'top'}><span>Password</span></Input>
               <br/>
               <Input placeholder={"big"}
                      prefix={"$"}

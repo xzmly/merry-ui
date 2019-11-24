@@ -67,8 +67,11 @@ common-size-style(padding,fontSize,height)
   font-size min-font-size
   width 100%
   .{input}
-    padding-right 30px
-    padding-left 30px
+    width 100%
+    &:not(:last-child)
+      padding-right 30px
+    &:not(:first-child)
+      padding-left 30px
   .{input}-affix-prefix
     position absolute
     left 10px

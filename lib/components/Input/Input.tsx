@@ -27,7 +27,9 @@ interface InputComponent<T> extends React.FC<T>{
   Textarea: React.FC<TextareaProps>
 }
 
-const Input: InputComponent<LabelProps & InputProps & restProps> =
+export type TotalProps = LabelProps & InputProps & restProps;
+
+const Input: InputComponent<TotalProps> =
         props => {
 
   const {

@@ -125,6 +125,8 @@ const App = () => {
               Checkbox123
             </Checkbox>
             <Input>123</Input>
+            <Input size={"small"}>456</Input>
+            <Input size={"big"}>789</Input>
           </Content>
         </Layout>
       </Layout>

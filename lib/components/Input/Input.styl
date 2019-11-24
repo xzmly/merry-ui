@@ -3,8 +3,39 @@
 label = class-prefix + "-input-label"
 input = class-prefix + "-input"
 
+default-size-height = 32px
+small-size-height = 24px
+big-size-height = 40px
+
+common-size-style(padding,fontSize,height)
+  padding padding
+  font-size fontSize
+  height height
+
 
 .{label}
   font-size min-font-size
   vertical-align middle
   color font-default-color
+
+.{input}
+  outline none
+  border 1px solid #d9d9d9
+  height default-size-height
+  background #fff
+  padding 4px 11px
+  box-sizing border-box
+  font-size min-font-size
+  border-radius 4px
+  color font-default-color
+  display inline-block
+  line-height 1.5
+  transition all .2s
+  &.{input}-small
+    common-size-style(1px 7px,very-min-font-size,small-size-height)
+  &.{input}-big
+    common-size-style(6px 11px,middle-font-size,big-size-height)
+  &:focus
+    outline none
+    border-color warning-color
+    box-shadow: 0 0 0 2px rgba(255, 185, 17, 0.23)

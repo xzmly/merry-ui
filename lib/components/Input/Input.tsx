@@ -1,5 +1,7 @@
 import * as React from 'react';
 import classes from '../../helpers/classes';
+import Password,{ PasswordProps } from "./Password";
+import Textarea,{ TextareaProps} from "./Textarea";
 import "./Input.styl";
 
 interface LabelProps {
@@ -13,11 +15,17 @@ interface LabelProps {
 type restProps = {
   size?: "default" | "small" | "big"
   labelPosition?: "top" | "left"
+  type?: "text" | "password" | "textarea"
 }
 
-type InputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>,"size">
+type InputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>,"size" | "type">
 
-const Input: React.FC<LabelProps & InputProps & restProps> =
+interface InputComponent<T> extends React.FC<T>{
+  Password: React.FC<PasswordProps>
+  Textarea: React.FC<TextareaProps>
+}
+
+const Input: InputComponent<LabelProps & InputProps & restProps> =
         props => {
 
   const {
@@ -28,14 +36,17 @@ const Input: React.FC<LabelProps & InputProps & restProps> =
     children,
     size,
     labelPosition,
+    type,
     ...inputProps
   } = props;
 
   const labelProps: LabelProps = { htmlFor, form, style };
 
-  const sizeClass: string = size === "default" ? "" : `input-${size}`;
+  const sizeClass: string =
+      size === "default" ? "" : `input-${size}`;
 
-  const labelPsClass: string = labelPosition === "left" ? "" : `input-label-${labelPosition}`;
+  const labelPsClass: string =
+      labelPosition === "left" ? "" : `input-label-${labelPosition}`;
 
   return (
       <label className={classes(className,"input-label",labelPsClass)}
@@ -48,7 +59,7 @@ const Input: React.FC<LabelProps & InputProps & restProps> =
         }
         <input {...inputProps}
                className={classes('',"input",sizeClass)}
-               type={inputProps.type}/>
+               type={type}/>
       </label>
   )
 };
@@ -58,5 +69,8 @@ Input.defaultProps = {
   type: "text",
   labelPosition: "left"
 };
+
+Input.Password = Password;
+Input.Textarea = Textarea;
 
 export default Input

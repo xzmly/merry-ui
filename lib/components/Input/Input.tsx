@@ -16,9 +16,11 @@ type restProps = {
   size?: "default" | "small" | "big"
   labelPosition?: "top" | "left"
   type?: "text" | "password" | "textarea"
+  prefix?: string | React.ReactNode
+  suffix?: React.ReactNode
 }
 
-type InputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>,"size" | "type">
+type InputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>,"size" | "type" | "prefix" | "suffix">
 
 interface InputComponent<T> extends React.FC<T>{
   Password: React.FC<PasswordProps>
@@ -37,6 +39,8 @@ const Input: InputComponent<LabelProps & InputProps & restProps> =
     size,
     labelPosition,
     type,
+    prefix,
+    suffix,
     ...inputProps
   } = props;
 
@@ -48,18 +52,29 @@ const Input: InputComponent<LabelProps & InputProps & restProps> =
   const labelPsClass: string =
       labelPosition === "left" ? "" : `input-label-${labelPosition}`;
 
+  const restClass = (name:string):string =>
+      classes('',`input-${name}`);
+
+  const renderInput = ():React.ReactElement =>
+      <input {...inputProps}
+             className={classes('',"input",sizeClass)}
+             type={type}/>;
+
   return (
       <label className={classes(className,"input-label",labelPsClass)}
              {...labelProps}>
-        {
-          children &&
-          <span className={classes("","input-label-text")}>
+        {children &&
+          <span className={restClass("label-text")}>
             {children}
-          </span>
+          </span>}
+        {prefix || suffix ?
+          <span className={restClass("affix-wrap")}>
+            {prefix && <span className={restClass("affix-prefix")}>{prefix}</span>}
+            {renderInput()}
+            {suffix && <span className={restClass("affix-suffix")}>{suffix}</span>}
+          </span> :
+          renderInput()
         }
-        <input {...inputProps}
-               className={classes('',"input",sizeClass)}
-               type={type}/>
       </label>
   )
 };

@@ -61,3 +61,22 @@ common-size-style(padding,fontSize,height)
     outline none
     border-color warning-color
     box-shadow: 0 0 0 2px rgba(255, 185, 17, 0.23)
+
+.{input}-affix-wrap
+  position relative
+  font-size min-font-size
+  width 100%
+  .{input}
+    padding-right 30px
+    padding-left 30px
+  .{input}-affix-prefix
+    position absolute
+    left 0
+    top: 50%
+    transform translate(50%,-50%)
+  .{input}-affix-suffix
+    position absolute
+    right 0
+    top: 50%
+    transform translate(-50%,-50%)
+

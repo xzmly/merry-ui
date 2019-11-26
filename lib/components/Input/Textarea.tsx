@@ -1,16 +1,35 @@
 import * as React from 'react';
-import Input from "./Input";
+import { LabelProps } from "./Input";
+import classes from '../../helpers/classes';
+import "./Textarea.styl";
 
-export interface TextareaProps {
-  children?: React.ReactNode
+export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement>{
+  autoSize?: { minRows?: number,maxRows?: number }
 }
 
-const Textarea: React.FC<TextareaProps> =
+const Textarea: React.FC<TextareaProps & LabelProps> =
     props => {
 
-      const {children} = props;
+      const {
+        children,
+        className,
+        htmlFor,
+        form,
+        style,
+        ...textareaProps
+      } = props;
 
-      return (<Input type={'textarea'}>{children}</Input>)
+      const labelProps: LabelProps = { htmlFor, form, style };
+
+      return (
+          <label
+              {...labelProps}
+              className={classes(className,"textarea")}
+          >
+            <span>{children}</span>
+            <textarea {...textareaProps}/>
+          </label>
+      )
     };
 
 export default Textarea

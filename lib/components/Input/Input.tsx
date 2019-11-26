@@ -1,10 +1,10 @@
 import * as React from 'react';
 import classes from '../../helpers/classes';
-import Password,{ PasswordProps } from "./Password";
-import Textarea,{ TextareaProps} from "./Textarea";
+import Password from "./Password";
+import Textarea,{TextareaProps}from "./Textarea";
 import "./Input.styl";
 
-interface LabelProps {
+export interface LabelProps {
   className?: string
   children?: React.ReactNode
   htmlFor?: string
@@ -23,8 +23,8 @@ type restProps = {
 type InputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>,"size" | "type" | "prefix" | "suffix">
 
 interface InputComponent<T> extends React.FC<T>{
-  Password: React.FC<PasswordProps>
-  Textarea: React.FC<TextareaProps>
+  Password: React.FC<TotalProps>
+  Textarea: React.FC<TextareaProps & LabelProps>
 }
 
 export type TotalProps = LabelProps & InputProps & restProps;

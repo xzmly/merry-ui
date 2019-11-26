@@ -127,7 +127,7 @@ const App = () => {
             <div style={{width: "350px"}}>
               <Input placeholder={"default"}>Email</Input>
               <br/>
-              <Input.Password placeholder={"password"} size={'big'}>Email</Input.Password>
+              <Input.Password className={"password"} placeholder={"password"} size={'big'}>Email</Input.Password>
               <br/>
               <Input placeholder={"small"} labelPosition={'top'}><span>Password</span></Input>
               <br/>
@@ -135,6 +135,8 @@ const App = () => {
                      prefix={"$"}
                      suffix={"RMB"}
                      labelPosition={'top'}>Name</Input>
+              <br/>
+              <Input.Textarea>123</Input.Textarea>
             </div>
           </Content>
         </Layout>

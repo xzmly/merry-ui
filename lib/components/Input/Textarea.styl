@@ -1,0 +1,48 @@
+@import '../../helpers/stylus.helper.styl';
+
+textarea = class-prefix + "-textarea"
+
+hover-and-focus()
+  transition all .2s,height 0s
+  outline none
+  border-color warning-color
+  box-shadow: 0 0 0 2px rgba(255, 185, 17, 0.23)
+
+.{textarea}
+  display flex
+  > textarea
+    min-height 32px
+    line-height 1.5
+    font-size min-font-size
+    outline none
+    border 1px solid #d9d9d9
+    border-radius 4px
+    box-sizing border-box
+    font-family: inherit;
+    color font-default-color
+    flex 1
+    display inline-block
+    background-color #fff
+    background-image none
+    &:focus
+      hover-and-focus()
+    &:hover
+      hover-and-focus()
+  > span
+    color font-default-color
+    &:after
+      content ':'
+      padding 0 6px 0 3px
+      top -0.6px
+      position relative
+
+.{textarea}-top
+  flex-direction column
+  > textarea
+    max-width 100%
+    min-width 100%
+    flex none
+  > span
+    padding-bottom 8px
+    &:after
+      display none

@@ -136,7 +136,7 @@ const App = () => {
                      suffix={"RMB"}
                      labelPosition={'top'}>Name</Input>
               <br/>
-              <Input.Textarea>123</Input.Textarea>
+              <Input.Textarea labelPosition={'top'} placeholder={"Textarea"}>123</Input.Textarea>
             </div>
           </Content>
         </Layout>

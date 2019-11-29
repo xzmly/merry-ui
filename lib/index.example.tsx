@@ -136,8 +136,8 @@ const App = () => {
                      suffix={"RMB"}
                      labelPosition={'top'}>Name</Input>
               <br/>
-              <Input.Textarea autoSize={true} labelPosition={'top'} placeholder={"Textarea"}>123</Input.Textarea>
-              <Input.Textarea autoSize={true} labelPosition={'top'} placeholder={"Textarea"}>123</Input.Textarea>
+              <Input.Textarea labelPosition={'top'} placeholder={"Textarea"}>123</Input.Textarea>
+              <Input.Textarea autoSize={{minRows: 3,maxRows: 20}} labelPosition={'top'} placeholder={"Textarea"}>123</Input.Textarea>
             </div>
           </Content>
         </Layout>

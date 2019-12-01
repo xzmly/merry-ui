@@ -2,6 +2,7 @@ import * as React from 'react';
 import classes from '../../helpers/classes';
 import Password from "./Password";
 import Textarea,{TextareaProps}from "./Textarea";
+import Search,{SearchProps} from "./Search"
 import "./Input.styl";
 
 export interface LabelProps {
@@ -25,6 +26,7 @@ type InputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>,"size" | "typ
 interface InputComponent<T> extends React.FC<T>{
   Password: React.FC<TotalProps>
   Textarea: React.FC<TextareaProps & LabelProps>
+  Search: React.FC<SearchProps>
 }
 
 export type TotalProps = LabelProps & InputProps & restProps;
@@ -89,5 +91,6 @@ Input.defaultProps = {
 
 Input.Password = Password;
 Input.Textarea = Textarea;
+Input.Search = Search;
 
 export default Input

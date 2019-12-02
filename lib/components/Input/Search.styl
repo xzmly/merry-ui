@@ -1,0 +1,24 @@
+@import "./Input.styl"
+
+search = input + "-search"
+
+
+.{search}
+  .{input}-affix-wrap
+    display flex
+    .{input}
+      border-radius: 4px 0 0 4px
+      &:not(:last-child)
+        padding-right: 11px;
+    .{input}-affix-suffix
+      position relative
+      right 0
+      top 0
+      transform none
+      .search-btn
+        min-width 46px
+        margin 0
+        border-radius 0 4px 4px 0
+        &.merry-btn-big
+          height 40px
+

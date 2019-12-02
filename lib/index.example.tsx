@@ -138,10 +138,12 @@ const App = () => {
               <br/>
               <Input.Textarea labelPosition={'top'} placeholder={"Textarea"}>123</Input.Textarea>
               <Input.Textarea autoSize={{minRows: 3,maxRows: 20}} labelPosition={'top'} placeholder={"Textarea"}>123</Input.Textarea>
-              <Input.Search labelPosition={'top'}
+              <Input.Search labelPosition={'left'}
+                            enterButton={'search'}
                             defaultValue={123}
                             onChange={(e) => console.log(e.target.value)}
                             onSearch={(e,v) => console.log(e,v)}
+                            size={'big'}
               >Search</Input.Search>
             </div>
           </Content>

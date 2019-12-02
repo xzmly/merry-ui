@@ -3,6 +3,7 @@ import {useState,useEffect} from "react";
 import Input,{TotalProps}from "./Input";
 import classes from '../../helpers/classes';
 import Icon from "../Icon/Icon"
+import Button from "../Button/Button"
 import "./Search.styl"
 
 type DefaultValueType = string | number | string[] | undefined
@@ -17,7 +18,7 @@ export interface SearchProps extends TotalProps{
 const Search: React.FC<SearchProps> =
   props => {
 
-    const {className,children,onSearch,...restProps} = props;
+    const {className,children,onSearch,enterButton,...restProps} = props;
 
     const [defaultValue,setDefaultValue] = useState<DefaultValueType>(restProps?.defaultValue);
 
@@ -25,8 +26,8 @@ const Search: React.FC<SearchProps> =
       setDefaultValue(restProps?.defaultValue)
     },[props.defaultValue]);
 
-    const _onSearch = (e:React.MouseEvent):void => {
-      onSearch && onSearch(restProps.value || defaultValue,e)
+    const _onSearch = (event:React.MouseEvent):void => {
+      onSearch && onSearch(restProps.value || defaultValue,event)
     };
 
     const onChange:onChangeType = (e) => {
@@ -39,7 +40,15 @@ const Search: React.FC<SearchProps> =
              onChange={onChange}
              defaultValue={defaultValue}
              suffix={
-               <Icon name={'search'} onClick={_onSearch}/>
+               enterButton ?
+                   <Button className={'search-btn'} onClick={_onSearch} size={restProps.size}>
+                     {
+                       typeof enterButton === 'boolean' ?
+                         <Icon name={'search'}/> :
+                         enterButton
+                     }
+                   </Button> :
+                   <Icon name={'search'} onClick={_onSearch}/>
              }>
         {children}
       </Input>

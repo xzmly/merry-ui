@@ -112,7 +112,7 @@ const Menu: MenuComponent<MenuProps & MenuContextProps> =
         return pre
       };
 
-      const _theme:string = !theme || theme === 'default' ? '' : `menu-theme-${theme}`
+      const _theme:string = !theme || theme === 'default' ? '' : `menu-theme-${theme}`;
 
       return (
           <MenuContext.Provider

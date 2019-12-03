@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`input render input 1`] = `
+<label
+  className="merry-input-label"
+>
+  <input
+    className="merry-input"
+    type="text"
+  />
+</label>
+`;

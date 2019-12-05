@@ -65,3 +65,14 @@ exports[`Search render Search 1`] = `
   </span>
 </label>
 `;
+
+exports[`Textarea render Textarea 1`] = `
+<label
+  className="merry-textarea"
+>
+  <textarea
+    onChange={[Function]}
+    style={Object {}}
+  />
+</label>
+`;

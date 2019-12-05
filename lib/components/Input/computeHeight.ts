@@ -55,6 +55,8 @@ export function copyTextareaStyle(node: HTMLElement){
       style.getPropertyValue('-moz-box-sizing') ||
       style.getPropertyValue('-webkit-box-sizing');
 
+  console.log(boxSizing);
+
   const paddingSize:number =
       parseFloat(style.getPropertyValue('padding-bottom')) +
       parseFloat(style.getPropertyValue('padding-top'));
@@ -102,7 +104,7 @@ export function computeHeight(
 
 
   if (boxSizing === 'border-box') {
-    height += borderSize;
+    height += paddingSize;
   } else if (boxSizing === 'content-box') {
     height -= paddingSize;
   }

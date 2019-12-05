@@ -3,7 +3,7 @@ import Input from '../../../lib/components/Input/Input'
 import React from 'react'
 import {mount} from "enzyme/build/index";
 
-const { Password,Search } = Input;
+const { Password,Search,Textarea } = Input;
 
 describe('Input',()=>{
   it('render input',()=>{
@@ -50,6 +50,60 @@ describe('Search',()=>{
     c.find('.merry-icon').simulate('click');
     expect(fn).toHaveBeenCalledTimes(1)
   });
+  it('enterButton',()=>{
+    const c = mount(<Search enterButton>Password</Search>);
+    expect(c.find('.search-btn').exists()).toBe(true);
+
+    c.setProps({ enterButton: "123" });
+    expect(c.find('.search-btn > span').text()).toBe('123')
+  });
+  it('onChange',()=>{
+    const fn = jest.fn();
+    const c = mount(<Search onChange={fn}>Password</Search>);
+    c.find('.merry-input').simulate('change');
+    expect(fn).toHaveBeenCalledTimes(1)
+  });
+  it('defaultValue',()=>{
+    const c = mount(<Search>Password</Search>);
+    c.find('.merry-input').simulate('change',{ target: { value: '123' } });
+    expect(c.find('.merry-input').props().defaultValue).toBe("123")
+  })
 });
 
-
+describe('Textarea',()=>{
+  it('render Textarea',()=>{
+    const json = renderer.create(<Textarea/>).toJSON();
+    expect(json).toMatchSnapshot()
+  });
+  it('labelPosition',()=>{
+    const c = mount(<Textarea labelPosition={'top'}>123</Textarea>);
+    expect(c.find('.merry-textarea').hasClass('merry-textarea-top')).toBe(true)
+  });
+  it('autoSize is boolean',()=>{
+    const c = mount(<Textarea autoSize>123</Textarea>);
+    expect(document.querySelector('body > textarea')).not.toBe(null);
+  });
+  it('autoSize is object',()=>{
+    const c2 = mount(<Textarea autoSize={{maxRows: 5,minRows: 5}}>123</Textarea>);
+    expect(document.querySelector('body > textarea')).not.toBe(null);
+  });
+  it('autoSize is boolean onChange',()=>{
+    const fn = jest.fn();
+    const c = mount(<Textarea autoSize={true} onChange={fn}>123</Textarea>);
+    c.find('textarea').simulate('change');
+    expect(fn).toHaveBeenCalledTimes(1)
+  });
+  it('autoSize is false onChange',()=>{
+    const fn = jest.fn();
+    const c = mount(<Textarea onChange={fn}>123</Textarea>);
+    c.find('textarea').simulate('change');
+    expect(fn).toHaveBeenCalledTimes(1)
+  });
+  it('box-sizing === border-box',()=>{
+    const c = mount(<Textarea/>);
+    c.find('textarea').simulate('change');
+    // expect(c.find('textarea').props().style.boxSizing).toBe('border-box');
+    // c.setProps({ boxSizing: 'content-box' });
+    // expect(c.find('textarea').props().style.boxSizing).toBe('content-box')
+  })
+});

@@ -23,15 +23,6 @@ const Textarea: React.FC<TextareaProps & LabelProps> =
       const [textareaStyle,setTextareaStyle] = useState<any>({});
       const ref = React.createRef<HTMLTextAreaElement>();
 
-      useEffect(()=>{
-        const style = autoSize ? computeHeight(ref.current as HTMLTextAreaElement,{
-          minRows: _autoSize('minRows'),
-          maxRows: _autoSize('maxRows')
-        }) : {};
-
-        setTextareaStyle(style);
-      },[]);
-
       const {
         children,
         className,
@@ -42,6 +33,19 @@ const Textarea: React.FC<TextareaProps & LabelProps> =
         autoSize,
         ...textareaProps
       } = props;
+
+      useEffect(()=>{
+        updateStyle()
+      },[]);
+
+      const updateStyle = ():void => {
+        const style = autoSize ? computeHeight(ref.current as HTMLTextAreaElement,{
+          minRows: _autoSize('minRows'),
+          maxRows: _autoSize('maxRows')
+        }) : {};
+
+        setTextareaStyle(style);
+      };
 
       const labelProps: LabelProps = { htmlFor, form, style };
 
@@ -54,12 +58,7 @@ const Textarea: React.FC<TextareaProps & LabelProps> =
 
       const onChange:onChangeType = (event) => {
 
-        const style = autoSize ? computeHeight(event.target,{
-          minRows: _autoSize('minRows'),
-          maxRows: _autoSize('maxRows')
-        }) : {};
-
-        setTextareaStyle(style);
+        updateStyle();
         textareaProps.onChange && textareaProps.onChange(event)
       };
 

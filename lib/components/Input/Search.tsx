@@ -36,7 +36,12 @@ const Search: React.FC<SearchProps> =
 
   return (
       <Input {...restProps}
-             className={classes(className,'input-search')}
+             className={
+               classes(
+                   className,
+                   'input-search',
+                 enterButton ? 'input-search-has-enterBtn' : ''
+               )}
              onChange={onChange}
              defaultValue={defaultValue}
              suffix={

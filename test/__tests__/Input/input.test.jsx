@@ -47,7 +47,8 @@ describe('Search',()=>{
   it('onSearch',()=>{
     const fn = jest.fn();
     const c = mount(<Search onSearch={fn}>Password</Search>);
-    c
+    c.find('.merry-icon').simulate('click');
+    expect(fn).toHaveBeenCalledTimes(1)
   });
 });
 

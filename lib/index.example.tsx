@@ -125,7 +125,7 @@ const App = () => {
               Checkbox123
             </Checkbox>
             <div style={{width: "350px"}}>
-              <Input placeholder={"default"} value={'123'} defaultValue={'123'}>Email</Input>
+              <Input placeholder={"default"} defaultValue={'123'}>Email</Input>
               <br/>
               <Input.Password className={"password"} placeholder={"password"} size={'big'}>Email</Input.Password>
               <br/>
@@ -139,7 +139,6 @@ const App = () => {
               <Input.Textarea labelPosition={'top'} placeholder={"Textarea"}>123</Input.Textarea>
               <Input.Textarea autoSize={{minRows: 3,maxRows: 20}} labelPosition={'top'} placeholder={"Textarea"}>123</Input.Textarea>
               <Input.Search labelPosition={'left'}
-                            enterButton={'search'}
                             defaultValue={123}
                             onChange={(e) => console.log(e.target.value)}
                             onSearch={(e,v) => console.log(e,v)}

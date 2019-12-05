@@ -125,7 +125,7 @@ const App = () => {
               Checkbox123
             </Checkbox>
             <div style={{width: "350px"}}>
-              <Input placeholder={"default"} defaultValue={'123'}>Email</Input>
+              <Input placeholder={"default"} value={'123'} defaultValue={'123'}>Email</Input>
               <br/>
               <Input.Password className={"password"} placeholder={"password"} size={'big'}>Email</Input.Password>
               <br/>

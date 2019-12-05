@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`input render input 1`] = `
+exports[`Input render input 1`] = `
 <label
   className="merry-input-label"
 >
@@ -8,5 +8,60 @@ exports[`input render input 1`] = `
     className="merry-input"
     type="text"
   />
+</label>
+`;
+
+exports[`Password render Password 1`] = `
+<label
+  className="merry-input-label merry-input-password"
+>
+  <span
+    className="merry-input-affix-wrap"
+  >
+    <input
+      className="merry-input"
+      type="password"
+    />
+    <span
+      className="merry-input-affix-suffix"
+    >
+      <svg
+        className="merry-icon"
+        onClick={[Function]}
+      >
+        <use
+          xlinkHref="#close_eye"
+        />
+      </svg>
+    </span>
+  </span>
+</label>
+`;
+
+exports[`Search render Search 1`] = `
+<label
+  className="merry-input-label merry-input-search"
+>
+  <span
+    className="merry-input-affix-wrap"
+  >
+    <input
+      className="merry-input"
+      onChange={[Function]}
+      type="text"
+    />
+    <span
+      className="merry-input-affix-suffix"
+    >
+      <svg
+        className="merry-icon"
+        onClick={[Function]}
+      >
+        <use
+          xlinkHref="#search"
+        />
+      </svg>
+    </span>
+  </span>
 </label>
 `;

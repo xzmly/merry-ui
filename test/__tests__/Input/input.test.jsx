@@ -98,12 +98,5 @@ describe('Textarea',()=>{
     const c = mount(<Textarea onChange={fn}>123</Textarea>);
     c.find('textarea').simulate('change');
     expect(fn).toHaveBeenCalledTimes(1)
-  });
-  it('box-sizing === border-box',()=>{
-    const c = mount(<Textarea/>);
-    c.find('textarea').simulate('change');
-    // expect(c.find('textarea').props().style.boxSizing).toBe('border-box');
-    // c.setProps({ boxSizing: 'content-box' });
-    // expect(c.find('textarea').props().style.boxSizing).toBe('content-box')
   })
 });

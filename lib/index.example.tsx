@@ -8,6 +8,7 @@ import Menu from "./components/Menu/Menu";
 import Row from "./components/Grid/Row"
 import Checkbox from "./components/Checkbox/Checkbox";
 import Input from "./components/Input/Input"
+import InputNumber from "./components/InputNumber/InputNumber"
 
 const {Aside, Content, Header } = Layout;
 const {Item, SubMenu, ItemGroup} = Menu;
@@ -137,7 +138,7 @@ const App = () => {
                      labelPosition={'top'}>Name</Input>
               <br/>
               <Input.Textarea autoSize={{ maxRows: 3,minRows: 3}} onChange={()=>console.log(123123)}>autoSize</Input.Textarea>
-              <Input.Textarea autoSize={{minRows: 3,maxRows: 20}} labelPosition={'top'} placeholder={"Textarea"}>123</Input.Textarea>
+              <Input.Textarea autoSize={{minRows: 3,maxRows: 4}} labelPosition={'top'} placeholder={"Textarea"}>123</Input.Textarea>
               <Input.Search labelPosition={'left'}
                             enterButton={'search'}
                             defaultValue={123}
@@ -145,6 +146,7 @@ const App = () => {
                             onSearch={(e,v) => console.log(e,v)}
                             size={'small'}
               >Search</Input.Search>
+              <InputNumber max={10} min={1}/>
             </div>
           </Content>
         </Layout>

@@ -13,7 +13,7 @@ export interface LabelProps {
   style?: React.CSSProperties
 }
 
-type restProps = {
+export type restProps = {
   size?: "default" | "small" | "big"
   labelPosition?: "top" | "left"
   type?: "text" | "password" | "textarea"

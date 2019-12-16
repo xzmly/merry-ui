@@ -7,6 +7,7 @@ import Layout from "./components/Layout/Layout"
 import Menu from "./components/Menu/Menu";
 import Row from "./components/Grid/Row"
 import Checkbox from "./components/Checkbox/Checkbox";
+//@ts-ignore
 import Input from "./components/Input/Input"
 import InputNumber from "./components/InputNumber/InputNumber"
 
@@ -126,26 +127,26 @@ const App = () => {
               Checkbox123
             </Checkbox>
             <div style={{width: "350px"}}>
-              <Input placeholder={"default"} defaultValue={'123'}>Email</Input>
-              <br/>
-              <Input.Password className={"password"} placeholder={"password"} size={'big'}>Email</Input.Password>
-              <br/>
-              <Input placeholder={"small"} labelPosition={'top'}><span>Password</span></Input>
-              <br/>
-              <Input placeholder={"big"}
-                     prefix={"$"}
-                     suffix={"RMB"}
-                     labelPosition={'top'}>Name</Input>
-              <br/>
-              <Input.Textarea autoSize={{ maxRows: 3,minRows: 3}} onChange={()=>console.log(123123)}>autoSize</Input.Textarea>
-              <Input.Textarea autoSize={{minRows: 3,maxRows: 4}} labelPosition={'top'} placeholder={"Textarea"}>123</Input.Textarea>
-              <Input.Search labelPosition={'left'}
-                            enterButton={'search'}
-                            defaultValue={123}
-                            onChange={(e) => console.log(e.target.value)}
-                            onSearch={(e,v) => console.log(e,v)}
-                            size={'small'}
-              >Search</Input.Search>
+              {/*<Input placeholder={"default"} defaultValue={'123'}>Email</Input>*/}
+              {/*<br/>*/}
+              {/*<Input.Password className={"password"} placeholder={"password"} size={'big'}>Email</Input.Password>*/}
+              {/*<br/>*/}
+              {/*<Input placeholder={"small"} labelPosition={'top'}><span>Password</span></Input>*/}
+              {/*<br/>*/}
+              {/*<Input placeholder={"big"}*/}
+              {/*       prefix={"$"}*/}
+              {/*       suffix={"RMB"}*/}
+              {/*       labelPosition={'top'}>Name</Input>*/}
+              {/*<br/>*/}
+              {/*<Input.Textarea autoSize={{ maxRows: 3,minRows: 3}} onChange={()=>console.log(123123)}>autoSize</Input.Textarea>*/}
+              {/*<Input.Textarea autoSize={{minRows: 3,maxRows: 4}} labelPosition={'top'} placeholder={"Textarea"}>123</Input.Textarea>*/}
+              {/*<Input.Search labelPosition={'left'}*/}
+              {/*              enterButton={'search'}*/}
+              {/*              defaultValue={123}*/}
+              {/*              onChange={(e) => console.log(e.target.value)}*/}
+              {/*              onSearch={(e,v) => console.log(e,v)}*/}
+              {/*              size={'small'}*/}
+              {/*>Search</Input.Search>*/}
               <InputNumber max={10} min={1}/>
             </div>
           </Content>

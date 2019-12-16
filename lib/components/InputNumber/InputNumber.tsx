@@ -55,4 +55,9 @@ const InputNumber: React.FC<LabelProps & InputProps & restProps> =
     )
   };
 
+InputNumber.defaultProps = {
+  labelPosition: "left",
+  size: "default"
+};
+
 export default InputNumber

@@ -1,0 +1,32 @@
+@import '../../helpers/stylus.helper.styl';
+
+label = class-prefix + "-inputNumber-label"
+input = class-prefix + "-inputNumber"
+
+default-size-height = 32px
+small-size-height = 24px
+big-size-height = 40px
+
+
+.{input}
+  height default-size-height
+  position relative
+  margin 0
+  padding 0
+  outline 0
+  border 1px solid #d9d9d9
+  background #fff
+  box-sizing border-box
+  transition all .2s
+  font-size min-font-size
+  border-radius 4px
+  color font-default-color
+  display inline-block
+  line-height 1.5
+  &:focus
+    input-focus()
+  &[type=number]
+    -moz-appearance textfield
+  &[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button
+    -webkit-appearance: none;
+

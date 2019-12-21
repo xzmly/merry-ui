@@ -44,12 +44,16 @@ const InputNumber: React.FC<LabelProps & InputProps & restProps> =
                 className={classes("", 'inputNumber')}
         />;
 
-    const onAdd = (e: any):void => {
-      inputEl?.current?.blur();
+    const onAdd = (e: React.MouseEvent<HTMLSpanElement>):void => {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log(12312313);
     };
 
-    const onMinus = ():void => {
-      inputEl?.current?.blur()
+    const onMinus = (e: React.MouseEvent<HTMLSpanElement>):void => {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log(12312313);
     };
 
     return (
@@ -58,6 +62,7 @@ const InputNumber: React.FC<LabelProps & InputProps & restProps> =
             htmlFor={htmlFor}
             form={form}
             style={style}
+            onClick={()=>console.log(12321)}
         >
           {children &&
             <span className={restClass("label-text")}>

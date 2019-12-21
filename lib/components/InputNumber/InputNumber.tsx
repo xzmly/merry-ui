@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { useRef } from 'react'
 import classes from '../../helpers/classes';
-import {LabelProps} from "../Input/Input"
+import { LabelProps } from "../Input/Input"
 import Icon from "../Icon/Icon"
 import "./InputNumber.styl"
 
@@ -13,6 +14,8 @@ type InputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "ty
 
 const InputNumber: React.FC<LabelProps & InputProps & restProps> =
     props => {
+
+    const inputEl = useRef<HTMLInputElement>(null);
 
     const {
       className,
@@ -36,9 +39,16 @@ const InputNumber: React.FC<LabelProps & InputProps & restProps> =
 
     const renderInput = (): React.ReactElement =>
         <input  {...inputProps}
+                ref={inputEl}
                 type="number"
                 className={classes("", 'inputNumber', sizeClass)}
         />;
+
+    const onAdd = ():void => {
+    };
+
+    const onMinus = ():void => {
+    };
 
     return (
         <label
@@ -51,15 +61,15 @@ const InputNumber: React.FC<LabelProps & InputProps & restProps> =
             <span className={restClass("label-text")}>
               {children}
             </span>}
-          {renderInput()}
           <div className={restClass("action-wrap")}>
-            <span>
+            <span onClick={onAdd}>
               <Icon name={'arrow_up'}/>
             </span>
-            <span>
+            <span onClick={onMinus}>
               <Icon name={'arrow_down'}/>
             </span>
           </div>
+          {renderInput()}
         </label>
     )
   };

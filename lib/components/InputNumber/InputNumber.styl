@@ -2,17 +2,30 @@
 
 label = class-prefix + "-inputNumber-label"
 input = class-prefix + "-inputNumber"
+action-wrap = input + "-action-wrap"
 
 default-size-height = 32px
 small-size-height = 24px
 big-size-height = 40px
 
 
+.{label}
+  display inline-block
+  min-width 100%
+  position relative
+  transition all .2s
+  &:hover
+    .{input}
+      padding 0 22px 0 11px
+    .{action-wrap}
+      display flex
+
+
 .{input}
+  touch-action manipulation
   height default-size-height
   position relative
   margin 0
-  padding 0
   outline 0
   border 1px solid #d9d9d9
   background #fff
@@ -23,10 +36,52 @@ big-size-height = 40px
   color font-default-color
   display inline-block
   line-height 1.5
+  width 100%
+  padding 0 11px
+  &.{input}-big
+    height big-size-height
+    font-size middle-font-size
+
+  &.{input}-small
+    height small-size-height
+    font-size very-min-font-size
+
   &:focus
     input-focus()
-  &[type=number]
-    -moz-appearance textfield
   &[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button
     -webkit-appearance: none;
+
+
+.{action-wrap}
+  position absolute
+  width 22px
+  height: 100%
+  top 0
+  right 0
+  display none
+  flex-direction column
+  box-sizing border-box
+  border-left: 1px solid #ddd
+  overflow hidden
+  border-radius 0 4px 4px 0
+  > span
+    width 100%
+    height: 50%
+    overflow hidden
+    display flex
+    justify-content center
+    align-items center
+    box-sizing border-box
+    cursor pointer
+    transition all .2s
+    &:active
+      background rgba(0,0,0,0.02)
+      color warning-color
+    &:hover
+      height 90%
+      color warning-color
+    &:last-child
+      border-top 1px solid #ddd
+    > .merry-icon
+      font-size 12px
 

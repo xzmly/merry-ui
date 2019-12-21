@@ -1,6 +1,7 @@
 import * as React from 'react';
 import classes from '../../helpers/classes';
 import {LabelProps} from "../Input/Input"
+import Icon from "../Icon/Icon"
 import "./InputNumber.styl"
 
 type restProps = {
@@ -25,7 +26,7 @@ const InputNumber: React.FC<LabelProps & InputProps & restProps> =
     } = props;
 
     const sizeClass: string =
-        size === "default" ? "" : `input-${size}`;
+        size === "default" ? "" : `inputNumber-${size}`;
 
     const labelPsClass: string =
         labelPosition === "left" ? "" : `inputNumber-label-${labelPosition}`;
@@ -51,6 +52,14 @@ const InputNumber: React.FC<LabelProps & InputProps & restProps> =
               {children}
             </span>}
           {renderInput()}
+          <div className={restClass("action-wrap")}>
+            <span>
+              <Icon name={'arrow_up'}/>
+            </span>
+            <span>
+              <Icon name={'arrow_down'}/>
+            </span>
+          </div>
         </label>
     )
   };

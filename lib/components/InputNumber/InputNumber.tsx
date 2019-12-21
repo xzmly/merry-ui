@@ -41,18 +41,20 @@ const InputNumber: React.FC<LabelProps & InputProps & restProps> =
         <input  {...inputProps}
                 ref={inputEl}
                 type="number"
-                className={classes("", 'inputNumber', sizeClass)}
+                className={classes("", 'inputNumber')}
         />;
 
-    const onAdd = ():void => {
+    const onAdd = (e: any):void => {
+      inputEl?.current?.blur();
     };
 
     const onMinus = ():void => {
+      inputEl?.current?.blur()
     };
 
     return (
         <label
-            className={classes(className, 'inputNumber-label', labelPsClass)}
+            className={classes(className, 'inputNumber-label', labelPsClass,sizeClass)}
             htmlFor={htmlFor}
             form={form}
             style={style}

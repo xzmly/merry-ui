@@ -126,8 +126,8 @@ const App = () => {
                 onChange={(event:React.ChangeEvent<HTMLInputElement>) => console.log(event)}>
               Checkbox123
             </Checkbox>
-            <div style={{width: "100px"}}>
-              {/*<Input placeholder={"default"} defaultValue={'123'}>Email</Input>*/}
+            <div style={{width: "350px"}}>
+              <Input placeholder={"default"} defaultValue={'123'}>Email</Input>
               {/*<br/>*/}
               {/*<Input.Password className={"password"} placeholder={"password"} size={'big'}>Email</Input.Password>*/}
               {/*<br/>*/}
@@ -147,9 +147,11 @@ const App = () => {
               {/*              onSearch={(e,v) => console.log(e,v)}*/}
               {/*              size={'small'}*/}
               {/*>Search</Input.Search>*/}
-              <InputNumber max={10} min={1} size={'big'}/>
+              <InputNumber max={10} min={1} labelPosition={'left'} size={'big'}>增加数量</InputNumber>
+              <br/>
               <InputNumber max={10} min={1} style={{margin: '20px 0'}}/>
-              <InputNumber max={10} min={1} size={'small'}/>
+              <br/>
+              <InputNumber max={10} min={1} labelPosition={'top'} size={'small'}>增加数量</InputNumber>
             </div>
           </Content>
         </Layout>

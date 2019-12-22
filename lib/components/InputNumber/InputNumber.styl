@@ -2,6 +2,8 @@
 
 label = class-prefix + "-inputNumber-label"
 input = class-prefix + "-inputNumber"
+text = input + "-label-text"
+input-wrap = input + "-wrap"
 action-wrap = input + "-action-wrap"
 
 default-size-height = 32px
@@ -17,19 +19,20 @@ change-size-style(height,fontSize)
 
 
 .{label}
-  display inline-block
+  display flex
+  align-items center
   min-width 100%
-  position relative
   transition all .2s
   line-height 1.5
   height default-size-height
   font-size min-font-size
+  color font-default-color
 
   &.{input}-big
-    change-size-style(big-size-height,middle-font-size)
+    height big-size-height
 
   &.{input}-small
-    change-size-style(small-size-height,very-min-font-size)
+    height small-size-height
 
   &:hover
     .{input}
@@ -37,6 +40,41 @@ change-size-style(height,fontSize)
       input-focus()
     .{action-wrap}
       display flex
+
+
+.{label}-top
+  flex-direction column
+  align-items flex-start
+  height default-size-height + 29
+
+  &.{input}-big
+    height big-size-height + 29
+
+  &.{input}-small
+    height small-size-height + 29
+
+  .{label}-text
+    padding-bottom 8px
+    &:after
+      display none
+  .{input-wrap}
+    width 100%
+    flex 1
+
+
+.{text}
+  font-size min-font-size
+  &:after
+    content ':'
+    padding 0 6px 0 3px
+    top -0.6px
+    position relative
+
+
+.{input-wrap}
+  position relative
+  height 100%
+  flex 1
 
 
 .{input}
@@ -49,12 +87,12 @@ change-size-style(height,fontSize)
   box-sizing border-box
   transition all .2s
   border-radius 4px
-  color font-default-color
   display inline-block
-  width 100%
   height 100%
   padding 0 11px
   font-size min-font-size
+  color font-default-color
+  width 100%
   &:focus
     input-focus()
   &[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button

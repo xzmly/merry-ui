@@ -37,6 +37,7 @@ const InputNumber: React.FC<LabelProps & InputProps & restProps> =
       const restClass = (name: string): string =>
           classes('', `inputNumber-${name}`);
 
+      //TODO:按钮增加 1 和 减 1 都必须使用 value 去改变
       const renderInput = (): React.ReactElement =>
           <input  {...inputProps}
                   ref={inputEl}
